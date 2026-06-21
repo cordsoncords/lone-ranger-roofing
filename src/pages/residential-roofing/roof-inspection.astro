@@ -1,0 +1,590 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const faqs = [
+  {
+    q: 'Is the roof inspection really free?',
+    a: "Yes, roof inspections by Lone Ranger Roofing are completely free — no trip charge, no inspection fee, and no obligation to hire us afterward. Homeowners across Temple, Killeen, Harker Heights, Belton, and the greater DFW area can schedule a free roof inspection and get an honest assessment with zero strings attached.",
+  },
+  {
+    q: 'How fast can you get out for an inspection?',
+    a: "Lone Ranger Roofing offers same-day roof inspections across Central Texas and DFW — including Temple, Killeen, Harker Heights, Belton, Salado, and surrounding areas. Call in the morning and we can often have someone out the same day.",
+  },
+  {
+    q: "What's the difference between the free inspection and the paid seller report?",
+    a: "Lone Ranger Roofing's free roof inspection is available to any homeowner who wants to know the condition of their roof — it covers the full exterior and provides honest recommendations at no cost. The paid Seller Report is a separate service specifically for homeowners listing their home in Central Texas or DFW. It includes a detailed written report with high-resolution photos that can be shared directly with buyers, agents, and title companies to get ahead of any roofing issues before closing.",
+  },
+  {
+    q: 'Do you inspect the attic too?',
+    a: "Yes — Lone Ranger Roofing inspects the attic as part of the full roof inspection when access is available. Attic inspections help identify leaks, ventilation issues, and insulation problems that aren't visible from the roof surface. Most roofing companies in Central Texas skip this step entirely.",
+  },
+  {
+    q: 'What happens if Lone Ranger Roofing finds damage during the inspection?',
+    a: "If Lone Ranger Roofing finds damage during a roof inspection, we walk the homeowner through exactly what was found, what it means, and what their options are. If the damage is storm-related and potentially claimable, we explain the insurance process and can help document everything for a claim — serving homeowners across Temple, Killeen, Belton, and throughout Central Texas and DFW.",
+  },
+  {
+    q: 'Do I need to be home during the roof inspection?',
+    a: "Homeowners do not need to be present during a Lone Ranger Roofing inspection, though it helps to be available to walk through the findings in person immediately after. If you can't be home, our team will document everything and go over it by phone or at a time that works for you.",
+  },
+];
+
+const whatIncluded = [
+  {
+    title: 'Exterior Roof Review',
+    body: "We check shingles, flashing, gutters, and everything exposed to the elements. We're looking for signs of wear, storm damage, and anything that could become a problem down the road.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+  },
+  {
+    title: 'Attic Inspection',
+    body: "We get up in your attic to look for leaks, insulation gaps, ventilation issues, and anything structural that needs attention. Most roofers skip this step entirely.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>`,
+  },
+  {
+    title: 'Ventilation & Drainage Check',
+    body: "A roof that isn't breathing and draining properly deteriorates faster. We make sure yours is working the way it should.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"/></svg>`,
+  },
+  {
+    title: 'Full Exterior Assessment',
+    body: "Beyond the roof itself, we look at your gutters, fascia, siding, and vents. If there's storm damage elsewhere on your home, we'll find it.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+  },
+  {
+    title: 'Insurance Claim Guidance',
+    body: "If we find damage, we'll tell you exactly what's claimable and walk you through next steps. You won't leave the inspection not knowing what to do.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
+  },
+  {
+    title: 'Honest Recommendations',
+    body: "No guessing games — just real advice on what to fix and what's perfectly fine. We're not going to manufacture a problem to sell you a replacement you don't need.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>`,
+  },
+];
+
+const whyCards = [
+  {
+    title: 'Same-Day Availability',
+    body: 'Same-day inspections available across Bell County, Burnet County, and DFW — including Temple, Killeen, Harker Heights, Belton, Frisco, Plano, Arlington, and more.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  },
+  {
+    title: 'We Look at the Whole Picture',
+    body: "Most roofers look at the roof. We inspect your full exterior because we work with insurance claims daily and know what gets missed.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+  },
+  {
+    title: "Honest — Even When It's Not What You Want to Hear",
+    body: "If your roof is fine, we'll tell you it's fine. We're not going to manufacture a problem to sell you a replacement you don't need.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>`,
+  },
+  {
+    title: 'Insurance Claim Expertise',
+    body: "If there's damage worth claiming, we know how to document it properly so your claim reflects the full scope of what happened.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
+  },
+  {
+    title: 'Veteran-Owned & Operated',
+    body: "Built on the same standard Julio held in the Army. Show up, assess accurately, give a straight answer.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`,
+  },
+  {
+    title: 'Free — No Strings Attached',
+    body: "The inspection costs you nothing. We earn your business by being straight with you, not by charging you to look at your own roof.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>`,
+  },
+];
+
+const CITY_SLUGS: Record<string, string | null> = {
+  'Temple': 'temple', 'Killeen': 'killeen', 'Harker Heights': 'harker-heights',
+  'Belton': 'belton', 'Salado': 'salado', 'Nolanville': 'nolanville',
+  'Little River-Academy': 'little-river-academy', 'Troy': 'troy',
+  'Copperas Cove': 'copperas-cove', 'Gatesville': 'gatesville',
+  'Waco': 'waco', 'Moody': 'moody',
+  "Morgan's Point Resort": null, 'Bartlett': null, 'Holland': null,
+  'Arlington': 'dfw', 'Plano': 'dfw', 'Irving': 'dfw', 'Garland': 'dfw',
+  'Frisco': 'dfw', 'Denton': 'dfw', 'Richardson': 'dfw', 'McKinney': 'dfw',
+  'Grapevine': 'dfw', 'Euless': 'dfw', 'Bedford': 'dfw', 'Southlake': 'dfw',
+  'Burnet': 'burnet', 'surrounding areas': 'burnet',
+};
+
+const serviceAreas = {
+  'Bell County': ['Temple', 'Killeen', 'Harker Heights', 'Belton', 'Salado', 'Nolanville', "Morgan's Point Resort", 'Little River-Academy', 'Troy', 'Bartlett', 'Holland', 'Copperas Cove', 'Gatesville', 'Moody'],
+  'McLennan County': ['Waco'],
+  'DFW Metroplex': ['Arlington', 'Plano', 'Irving', 'Garland', 'Frisco', 'Denton', 'Richardson', 'McKinney', 'Grapevine', 'Euless', 'Bedford', 'Southlake'],
+  'Burnet County': ['Burnet', 'surrounding areas'],
+};
+---
+
+<MainLayout
+  title="Free Roof Inspection in Temple, Killeen & Central Texas | Lone Ranger Roofing"
+  description="Lone Ranger Roofing offers free same-day roof inspections across Temple, Killeen, and Central Texas. We inspect your full exterior — not just the roof — so you never miss a claim you're owed."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/storm-damage8.webp"
+        alt="Free roof inspection — Temple and Killeen TX"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Residential Roofing &rsaquo; Roof Inspection</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Free Roof Inspection in Temple, Killeen &amp; Central Texas
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">
+          Most roofers look at the roof. We inspect the whole picture — boots on the roof, boots in the attic, full exterior.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">
+            Schedule Free Inspection
+          </a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">
+            Call (254) 300-1413
+          </a>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-10">
+          {[
+            'Same-Day Availability',
+            'Full Exterior Inspection',
+            'Insurance Claim Guidance',
+          ].map(t => (
+            <div class="flex items-center gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FULL EXTERIOR ===================== -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+
+        <!-- Text side -->
+        <div class="order-1">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Full Exterior Inspection</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            We Don't Just Inspect Your Roof. We Inspect Your Whole Exterior.
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Here's something most roofing companies won't tell you: the Central Texas hailstorm that damaged your roof probably damaged more than your roof. Gutters, siding, fascia, vents, flashing — all of it takes a beating in a hailstorm or high-wind event.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Most roofers only look at what they're being paid to fix. Lone Ranger Roofing inspects your full exterior because we work with insurance claims daily and we know what adjusters look for across the whole property. If there's damage you're entitled to claim, we'll find it — not just the part that's obvious from the ground.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Whether you're in Bell County, Burnet County, or anywhere across DFW — we inspect the full picture.
+          </p>
+        </div>
+
+        <!-- Photo + checklist side -->
+        <div class="relative order-2">
+          <img
+            src="/home-inspection.webp"
+            alt="Lone Ranger Roofing full exterior inspection — Central Texas"
+            class="w-full h-[480px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute bottom-6 right-6 bg-brand-900 text-white rounded-xl p-5 max-w-[220px] shadow-xl border border-white/10" style="align-self: end;">
+            <p class="text-gold-400 font-bold text-xs uppercase tracking-widest mb-3">What We Inspect</p>
+            <ul class="space-y-1.5">
+              {[
+                'Roof shingles and decking',
+                'Flashing and ridge caps',
+                'Gutters and downspouts',
+                'Soffit and fascia',
+                'Attic ventilation and insulation',
+                'Siding and exterior walls',
+                'Vents and skylights',
+              ].map(item => (
+                <li class="flex items-start gap-2 text-brand-200 text-xs leading-snug">
+                  <svg class="w-3 h-3 text-accent-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="relative py-24 bg-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery1.webp"
+        alt="Lone Ranger Roofing inspector on a Central Texas roof"
+        class="w-full h-full object-cover opacity-15"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">How It Works</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            Same-Day Roof Inspections — Here's What to Expect
+          </h2>
+          <p class="text-brand-200 leading-relaxed">
+            Scheduling a free inspection with Lone Ranger Roofing is straightforward. Here's how it works from your first call to your honest assessment. We serve homeowners across Temple, Killeen, Belton, Harker Heights, Nolanville, Salado, Burnet, Waco, and the entire DFW metro — including Frisco, Plano, Arlington, Richardson, Garland, and more.
+          </p>
+        </div>
+
+        <!-- Right: interactive step accordion -->
+        <div class="space-y-2" id="steps-list">
+          {[
+            { n: '01', title: 'Call or Schedule Online — Same-Day Availability', detail: 'Call (254) 300-1413 or schedule online. We offer same-day inspections across Central Texas and DFW — tell us where you are and we\'ll get someone out fast.' },
+            { n: '02', title: 'We Inspect Your Full Roof and Exterior', detail: 'We get on the roof and go through everything — shingles, flashing, ridge caps, gutters, fascia, vents, and siding. No drive-by assessments.' },
+            { n: '03', title: 'We Get in the Attic If Needed', detail: 'If there\'s reason to look — and often there is — we\'ll get in your attic to check for leaks, ventilation issues, and structural concerns that aren\'t visible from outside.' },
+            { n: '04', title: 'Honest Assessment — What Needs Attention and What Doesn\'t', detail: 'We walk you through exactly what we found, what it means, and what your realistic options are. If your roof is fine, we tell you it\'s fine.' },
+            { n: '05', title: 'Insurance Claim Guidance If Damage Is Found', detail: 'If we find storm damage that\'s claimable, we explain the insurance process, document everything properly, and help you get the full payout you\'re owed.' },
+          ].map((step, i) => (
+            <div class="step-item rounded-xl border overflow-hidden transition-all duration-200" data-active={i === 0 ? 'true' : 'false'}>
+              <button class="step-item-btn w-full flex items-center gap-4 px-5 py-4 text-left" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <div class="step-circle w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-xs transition-colors">
+                  {step.n}
+                </div>
+                <span class="step-label font-bold text-sm flex-1 transition-colors">{step.title}</span>
+                <svg class="step-arrow w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class={`step-item-body px-5 pb-4 ${i === 0 ? '' : 'hidden'}`}>
+                <p class="text-brand-200 text-sm leading-relaxed pl-[52px]">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY STRIP ===================== -->
+  <div class="grid grid-cols-3 md:grid-cols-6 h-48">
+    {[
+      '/home-gallery1.webp',
+      '/home-gallery2.webp',
+      '/home-gallery3.webp',
+      '/home-gallery4.webp',
+      '/home-gallery5.webp',
+      '/home-gallery6.webp',
+    ].map((src, i) => (
+      <div class="relative overflow-hidden group">
+        <img
+          src={src}
+          alt={`Roof inspection project ${i + 1} — Central Texas`}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-brand-900/30 group-hover:bg-brand-900/0 transition-colors duration-300"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ===================== WHAT'S INCLUDED ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">What's Included</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            What's Included in Your Free Roof Inspection
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            No basic drive-by check here. We pull out all the stops — and if you're lucky, our very own shingle scent comes with it.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/storm-damage7.webp" alt="Lone Ranger Roofing roof inspection" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/scent.webp" alt="Full exterior assessment — Central Texas" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whatIncluded.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SELLER REPORT ===================== -->
+  <section class="relative py-24 bg-white overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Text side -->
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">For Home Sellers</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Selling Your Home? Get a Professional Roof Inspection Report.
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            If you're listing a home in Temple, Killeen, Belton, Harker Heights, or anywhere across Central Texas and DFW, a roof surprise during the buyer's inspection can kill a deal fast. Lone Ranger Roofing offers a paid Professional Roof Inspection Report specifically for home sellers — a deeper assessment with a detailed written report and photos you can share with buyers, agents, and title companies.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Getting ahead of roofing issues before listing keeps your closing smoother than a Texas two-step. No surprises for the buyer means no last-minute repair demands or price reductions.
+          </p>
+
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 mb-6">
+            <p class="text-brand-900 font-black text-xs uppercase tracking-widest mb-4">What's Included in the Seller Report</p>
+            <ul class="space-y-2.5">
+              {[
+                'Full roof and exterior inspection',
+                'Attic inspection',
+                'Detailed written report with high-resolution photos',
+                'Clear itemized recommendations — what needs repair, what\'s fine',
+                'Documentation you can share directly with buyers and agents',
+              ].map(item => (
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-600 text-sm leading-snug">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a href="tel:+12543001413" class="inline-flex items-center gap-2 border-2 border-brand-900 text-brand-900 hover:bg-brand-900 hover:text-white font-black px-7 py-3.5 rounded-lg text-sm uppercase tracking-wide transition-colors">
+            Call (254) 300-1413 to Ask About the Seller Report
+          </a>
+        </div>
+
+        <!-- Photo side -->
+        <div class="relative">
+          <img
+            src="/inspection-report.webp"
+            alt="Professional roof inspection report for home sellers — Central Texas"
+            class="w-full h-[500px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute bottom-6 left-6 bg-white rounded-xl px-5 py-4 shadow-lg">
+            <p class="font-black text-brand-900 text-sm">Paid Seller Report</p>
+            <p class="text-accent-600 font-bold text-xs mt-0.5">Get Ahead of Closing Day Surprises</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY LONE RANGER ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Why Lone Ranger Roofing</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Why Central Texas Homeowners Trust Lone Ranger for Roof Inspections
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            A lot of "free inspections" are just a sales pitch. Ours are actually free — and actually thorough.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/vet-photo1.webp" alt="Lone Ranger Roofing inspection" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/roof-a-vet.webp" alt="Central Texas roof inspector" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whyCards.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-lg">
+          Schedule Free Inspection
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICE AREAS ===================== -->
+  <section class="py-20 bg-white border-t border-gray-100 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Map visual -->
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/map-service-areas.png"
+            alt="Lone Ranger Roofing inspection service areas across Central Texas and DFW"
+            class="w-full h-auto object-contain rounded-2xl"
+          />
+          <div class="absolute top-4 left-4 bg-brand-900 text-white rounded-xl px-4 py-3 shadow-xl">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest">Coverage Area</p>
+            <p class="text-white font-bold text-sm mt-0.5">Bell County · DFW · Burnet</p>
+          </div>
+        </div>
+
+        <!-- City list -->
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Service Areas</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Free Roof Inspections in Bell County, DFW &amp; Burnet
+          </h2>
+          <p class="text-gray-500 mb-8 leading-relaxed">
+            Same-day inspections available throughout Central Texas and DFW. Call <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a> to get someone out today.
+          </p>
+
+          <div class="space-y-6">
+            {Object.entries(serviceAreas).map(([region, cities]) => (
+              <div>
+                <p class="text-brand-900 font-black text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span class="w-4 h-px bg-accent-600 inline-block"></span>
+                  {region}
+                </p>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+                  {cities.map(city => (
+                    <div class="flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-accent-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.898-5.096 3.898-8.827a8.25 8.25 0 00-16.5 0c0 3.731 1.954 6.744 3.898 8.827a19.58 19.58 0 002.683 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                      </svg>
+                      {CITY_SLUGS[city] ? (
+                        <a href={`/service-areas/${CITY_SLUGS[city]}`} class="text-gray-600 text-sm hover:text-accent-600 hover:underline transition-colors">
+                          {city === 'surrounding areas' ? city : `${city}, TX`}
+                        </a>
+                      ) : (
+                        <span class="text-gray-500 text-sm">{city === 'surrounding areas' ? city : `${city}, TX`}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Common Questions</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">
+          Roof Inspection FAQs: Temple, Killeen &amp; Central Texas
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden faq-item">
+            <button
+              class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 faq-trigger"
+              aria-expanded="false"
+              data-index={i}
+            >
+              <span class="font-bold text-brand-900 text-sm leading-snug">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-5">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    overline="NOT SURE WHAT'S UP THERE?"
+    title="Schedule a Free Roof Inspection"
+    blurb="Same-day availability across Temple, Killeen, Harker Heights, Belton, and the greater DFW area. We'll inspect your full exterior and give you a straight answer on what your roof actually needs."
+    bgImage="/pre-footer-background.webp"
+  />
+
+</MainLayout>
+
+<script>
+  const GOLD = '#ECC765';
+  const NAVY = '#111140';
+  const BLUE = '#AAB0D9';
+
+  function applyStepState(item: Element, active: boolean) {
+    const circle = item.querySelector('.step-circle') as HTMLElement | null;
+    const label  = item.querySelector('.step-label')  as HTMLElement | null;
+    const arrow  = item.querySelector('.step-arrow')  as HTMLElement | null;
+    const body   = item.querySelector('.step-item-body');
+
+    (item as HTMLElement).style.borderColor     = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+    (item as HTMLElement).style.backgroundColor = active ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)';
+    if (circle) { circle.style.backgroundColor = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+                  circle.style.color           = active ? NAVY                     : '#ffffff'; }
+    if (label)  { label.style.color            = active ? '#ffffff'                : BLUE; }
+    if (arrow)  { arrow.style.color            = active ? GOLD                     : 'rgba(255,255,255,0.4)';
+                  arrow.style.transform        = active ? 'rotate(180deg)'         : 'rotate(0deg)'; }
+    body?.classList.toggle('hidden', !active);
+  }
+
+  document.querySelectorAll<HTMLElement>('.step-item').forEach((item, i) => {
+    applyStepState(item, i === 0);
+  });
+
+  document.querySelectorAll('.step-item-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.step-item').forEach((item, i) => {
+        const isTarget = i === idx;
+        applyStepState(item, isTarget);
+        item.setAttribute('data-active', isTarget ? 'true' : 'false');
+        item.querySelector('.step-item-btn')?.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+      });
+    });
+  });
+
+  document.querySelectorAll('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.querySelector('.faq-answer')?.classList.add('hidden');
+        el.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        el.querySelector('.faq-icon')?.classList.remove('rotate-180');
+      });
+      if (!isOpen) {
+        answer?.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        icon?.classList.add('rotate-180');
+      }
+    });
+  });
+</script>

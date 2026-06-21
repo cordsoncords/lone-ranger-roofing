@@ -1,0 +1,641 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const faqs = [
+  {
+    q: 'How long do asphalt shingles last in Central Texas?',
+    a: 'Asphalt shingles installed by Lone Ranger Roofing in Temple, Killeen, and across Central Texas typically last 20-30 years depending on the shingle grade, installation quality, and how much hail and storm exposure the roof sees. Impact-resistant shingles like IKO Dynasty perform better in Bell County and DFW\'s hail corridor and can significantly extend lifespan.',
+  },
+  {
+    q: 'What shingles does Lone Ranger Roofing install?',
+    a: 'Lone Ranger Roofing primarily installs IKO shingles on residential properties across Temple, Killeen, Harker Heights, Belton, Georgetown, and throughout DFW. We commonly install the IKO Cambridge, Dynasty, and Nordic lines depending on the homeowner\'s budget, performance goals, and the climate demands of their specific location.',
+  },
+  {
+    q: 'Can I get my asphalt shingle roof done in one day?',
+    a: 'Yes. Most residential asphalt shingle roof replacements by Lone Ranger Roofing in Temple, Killeen, Belton, and across Central Texas are completed in a single day. We send one crew with a dedicated supervisor on site from tear-off to cleanup.',
+  },
+  {
+    q: 'Does Lone Ranger Roofing warranty the labor on shingle installations?',
+    a: 'Yes. Lone Ranger Roofing backs both the IKO manufacturer warranty on materials and our own labor warranty on every shingle installation across Central Texas and DFW. If something fails because of how the roof was installed, we stand behind it — not just the shingles themselves.',
+  },
+  {
+    q: 'My shingle roof has hail damage — what should I do?',
+    a: 'Call Lone Ranger Roofing for a free inspection. We serve homeowners across Temple, Killeen, Harker Heights, Belton, and throughout DFW who have hail-damaged shingle roofs. We\'ll inspect the full roof, document every hit, and walk you through the insurance claim process to make sure you\'re compensated for the full scope of damage. Don\'t wait — insurance claims in Texas have filing windows.',
+  },
+  {
+    q: 'Should I replace my shingles or switch to metal?',
+    a: 'It depends on your goals, budget, and how long you plan to stay in the home. Asphalt shingles are the most cost-effective upfront and the right choice for most Central Texas homeowners replacing a standard residential roof. Metal roofing costs more upfront but lasts 50+ years with lower maintenance. Lone Ranger Roofing will give you an honest recommendation based on your specific situation — not based on which option is more profitable for us.',
+  },
+];
+
+const ikoLines = [
+  {
+    title: 'IKO Cambridge',
+    body: 'The reliable workhorse. Architectural shingle, durable construction, excellent wind resistance, and available in a wide range of colors. A strong choice for most Central Texas homes.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+  },
+  {
+    title: 'IKO Dynasty',
+    body: "IKO's performance line. SBS-modified asphalt, enhanced impact resistance, and IKO's strongest wind rating. The right call for homes in the Bell County or DFW hail corridor.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`,
+  },
+  {
+    title: 'IKO Nordic',
+    body: 'High-wind rated, premium performance. Built for homeowners who want the top of IKO\'s shingle lineup without moving to metal.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+];
+
+const whyCards = [
+  {
+    title: 'IKO Shingles Built for Texas',
+    body: 'Impact-resistant, wind-rated, and SBS-modified for heat flexibility. Not the cheapest shingles on the market — the right ones for Central Texas weather.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>`,
+  },
+  {
+    title: 'Done in One Day',
+    body: 'Most residential shingle replacements are completed in a single day. One crew, one supervisor, done before dinner.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  },
+  {
+    title: 'Material + Labor Warranty',
+    body: 'We back the shingles and the installation. Both. Not just one.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+  {
+    title: 'Insurance Claim Expertise',
+    body: 'If hail hit your roof, we know how to document it and fight for the full claim.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
+  },
+  {
+    title: 'Veteran-Owned & Operated',
+    body: 'Same standard on every shingle job across Central Texas and DFW. Done right, no shortcuts.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`,
+  },
+  {
+    title: 'Honest About Your Options',
+    body: "If your roof is a better candidate for metal than shingles, we'll tell you. We're not going to put shingles on a roof that needs a different solution.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>`,
+  },
+];
+
+const CITY_SLUGS: Record<string, string | null> = {
+  'Temple': 'temple', 'Killeen': 'killeen', 'Harker Heights': 'harker-heights',
+  'Belton': 'belton', 'Salado': 'salado', 'Nolanville': 'nolanville',
+  'Little River-Academy': 'little-river-academy', 'Troy': 'troy',
+  'Copperas Cove': 'copperas-cove', 'Gatesville': 'gatesville',
+  'Waco': 'waco', 'Moody': 'moody',
+  "Morgan's Point Resort": null, 'Bartlett': null, 'Holland': null,
+  'Arlington': 'dfw', 'Plano': 'dfw', 'Irving': 'dfw', 'Garland': 'dfw',
+  'Frisco': 'dfw', 'Denton': 'dfw', 'Richardson': 'dfw', 'McKinney': 'dfw',
+  'Grapevine': 'dfw', 'Euless': 'dfw', 'Bedford': 'dfw', 'Southlake': 'dfw',
+  'Burnet': 'burnet', 'surrounding areas': 'burnet',
+};
+
+const serviceAreas = {
+  'Bell County': ['Temple', 'Killeen', 'Harker Heights', 'Belton', 'Salado', 'Nolanville', "Morgan's Point Resort", 'Little River-Academy', 'Troy', 'Bartlett', 'Holland', 'Copperas Cove', 'Gatesville', 'Moody'],
+  'McLennan County': ['Waco'],
+  'DFW Metroplex': ['Arlington', 'Plano', 'Irving', 'Garland', 'Frisco', 'Denton', 'Richardson', 'McKinney', 'Grapevine', 'Euless', 'Bedford', 'Southlake'],
+  'Burnet County': ['Burnet', 'surrounding areas'],
+};
+---
+
+<MainLayout
+  title="Asphalt Shingle Roofing in Temple, Killeen & Central Texas | Lone Ranger Roofing"
+  description="Lone Ranger Roofing installs IKO asphalt shingles across Temple, Killeen, and Central Texas. Hail-resistant, wind-rated, and backed by a material and labor warranty. Free estimate."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/shingle-hero.webp"
+        alt="Asphalt shingle roofing installation — Temple and Killeen TX"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Residential Roofing Services</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Asphalt Shingle Roofing in Temple, Killeen &amp; Central Texas
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">
+          The most popular residential roofing system in Texas — when it's installed right. Done in one day, backed by a warranty on materials and labor.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">
+            Schedule Free Inspection
+          </a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">
+            Call (254) 300-1413
+          </a>
+        </div>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-10">
+          {[
+            'IKO Shingles',
+            'Done in One Day',
+            'Material + Labor Warranty',
+          ].map(t => (
+            <div class="flex items-center gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY SHINGLES ===================== -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+
+        <!-- Text side -->
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">WHY SHINGLES</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Asphalt Shingles: Why They're Still the Most Popular Roof in Central Texas
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Asphalt shingles aren't the flashiest option on the market. They're just the most practical for most Texas homeowners — cost-effective upfront, wide variety of colors and styles, and when you use the right shingle for the climate, they hold up well through hail, wind, and heat.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            The problem is that most homeowners don't know there's a significant difference between shingle lines — or that the installation matters just as much as the product. Lone Ranger Roofing primarily installs IKO shingles and gets them on in one day, with a supervisor on site from start to finish and a warranty that covers both the materials and the labor. Serving Temple, Killeen, Harker Heights, Belton, Salado, Georgetown, and across the DFW metro.
+          </p>
+        </div>
+
+        <!-- Photo side with checklist overlay -->
+        <div class="relative">
+          <img
+            src="/shingle1.webp"
+            alt="IKO shingle installation — Central Texas"
+            class="w-full h-[480px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute bottom-6 right-6 bg-brand-900 text-white rounded-xl px-5 py-4 shadow-xl max-w-[230px] border border-white/10">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest mb-3">Asphalt Shingles Are a Good Fit If:</p>
+            <ul class="space-y-2">
+              {[
+                'You want the most cost-effective quality option',
+                'Your neighborhood has HOA shingle requirements',
+                'You need a full replacement done in one day',
+                'You want a wide selection of colors and styles',
+                'Your roof is pitched and you\'re replacing an existing shingle system',
+              ].map(item => (
+                <li class="flex items-start gap-2 text-gray-300 text-xs">
+                  <svg class="w-3 h-3 text-gold-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== IKO SHINGLES ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">IKO SHINGLES</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            We Primarily Install IKO Shingles — Built for Texas Weather
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Lone Ranger Roofing primarily installs IKO shingles because they're built for what Central Texas homeowners actually deal with — hail, high winds, and brutal summer heat that causes lesser shingles to crack and lose granules faster than their warranty suggests. IKO's top lines use SBS-modified asphalt that stays flexible in heat rather than becoming brittle. Their impact-resistant options are engineered to survive the hail that Central Texas gets every spring. And they're backed by IKO's manufacturer warranty on top of our own material and labor warranty.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/iko-badge.webp" alt="IKO certified shingle installer — Lone Ranger Roofing" class="w-full h-40 object-contain rounded-xl" />
+          <img src="/home-gallery2.webp" alt="IKO shingle roof installation Central Texas" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-5">
+        {ikoLines.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="relative py-24 bg-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery1.webp"
+        alt="Lone Ranger Roofing shingle installation crew"
+        class="w-full h-full object-cover opacity-15"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <div>
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">HOW IT WORKS</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            Asphalt Shingle Installation by Lone Ranger — Completed in One Day
+          </h2>
+          <p class="text-brand-200 leading-relaxed">
+            Most residential shingle roof replacements by Lone Ranger Roofing are completed in a single day. One crew, one supervisor on site the whole time, and the job site cleaned before we leave.
+          </p>
+        </div>
+
+        <div class="space-y-2" id="steps-list">
+          {[
+            { n: '01', title: 'Free Inspection & Honest Assessment', detail: 'We inspect your current roof, document the condition, and give you a straight assessment of what it needs. No inflated scope, no unnecessary work recommended.' },
+            { n: '02', title: 'Shingle Selection & Color Choice', detail: 'We walk you through the IKO shingle lines that fit your home, your neighborhood\'s HOA requirements if applicable, and your budget. Cambridge, Dynasty, or Nordic — we\'ll recommend the right one.' },
+            { n: '03', title: 'Tear-Off & Deck Inspection', detail: 'Your old shingles come off entirely. We always go down to the decking and inspect for any soft spots, rot, or structural issues before anything new goes on.' },
+            { n: '04', title: 'Underlayment, Flashing & Shingle Installation', detail: 'Proper underlayment, new flashing at all penetration points, and IKO shingles installed to manufacturer specifications with a dedicated supervisor on-site the entire time.' },
+            { n: '05', title: 'Full Cleanup & Warranty Documentation', detail: 'We sweep the property multiple times, run an industrial magnet for loose nails, remove all debris, and hand you warranty documentation covering both the IKO materials and our labor before we leave.' },
+          ].map((step, i) => (
+            <div class="step-item rounded-xl border overflow-hidden transition-all duration-200" data-active={i === 0 ? 'true' : 'false'}>
+              <button class="step-item-btn w-full flex items-center gap-4 px-5 py-4 text-left" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <div class="step-circle w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-xs transition-colors">
+                  {step.n}
+                </div>
+                <span class="step-label font-bold text-sm flex-1 transition-colors">{step.title}</span>
+                <svg class="step-arrow w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class={`step-item-body px-5 pb-4 ${i === 0 ? '' : 'hidden'}`}>
+                <p class="text-brand-200 text-sm leading-relaxed pl-[52px]">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY STRIP ===================== -->
+  <div class="grid grid-cols-3 md:grid-cols-6 h-48">
+    {[
+      '/home-gallery1.webp',
+      '/home-gallery2.webp',
+      '/home-gallery3.webp',
+      '/home-gallery4.webp',
+      '/home-gallery5.webp',
+      '/home-gallery6.webp',
+    ].map((src, i) => (
+      <div class="relative overflow-hidden group">
+        <img
+          src={src}
+          alt={`Shingle roofing project ${i + 1} — Central Texas`}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-brand-900/30 group-hover:bg-brand-900/0 transition-colors duration-300"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ===================== WARRANTY ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">WARRANTY</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Warranty on Materials AND Labor — Not Just the Shingles
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Most roofing companies in Central Texas warranty the shingles. What they don't always back is the installation. Lone Ranger Roofing warranties both — because a shingle roof that fails because of how it was installed isn't a materials problem. It's a workmanship problem. We back both with our ironclad warranty so you're covered either way.
+          </p>
+
+          <div class="divide-y divide-gray-100 border border-gray-200 rounded-xl overflow-hidden">
+            {[
+              { label: 'IKO Manufacturer Warranty', sub: 'Every IKO shingle we install carries the manufacturer\'s product warranty — covering material defects over the life of the shingle line.' },
+              { label: 'Lone Ranger Labor Warranty', sub: 'We back the installation — not just the shingles. If a nail pops, flashing fails, or something was done wrong, we come back and fix it.' },
+              { label: 'Workmanship Guarantee', sub: 'Every shingle installation meets or exceeds IKO\'s installation specifications. Done right means done right — we verify before we leave.' },
+            ].map((item, i) => (
+              <details class="group" open={i === 0}>
+                <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none select-none hover:bg-gray-50 transition-colors">
+                  <span class="font-bold text-brand-900 text-sm">{item.label}</span>
+                  <svg class="w-4 h-4 text-gray-400 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </summary>
+                <p class="px-5 pb-4 text-gray-500 text-sm leading-relaxed">{item.sub}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <div class="relative">
+          <img
+            src="/shingle2.webp"
+            alt="IKO certified shingle installation — Lone Ranger Roofing"
+            class="w-full h-[400px] object-contain rounded-2xl"
+          />
+          <div class="absolute bottom-6 left-6 bg-white rounded-xl px-5 py-4 shadow-lg">
+            <p class="font-black text-brand-900 text-sm">Materials + Labor</p>
+            <p class="text-accent-600 font-bold text-xs mt-0.5">Both Covered. No Loopholes.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INSURANCE ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <div class="relative">
+          <img
+            src="/home-storm-damage-repair.webp"
+            alt="Hail damage inspection on shingle roof — Bell County Texas"
+            class="w-full h-[460px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute top-6 right-6 bg-brand-900 text-white rounded-xl p-5 max-w-[200px] shadow-xl border border-white/10">
+            <svg class="w-6 h-6 text-gold-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+            </svg>
+            <p class="font-black text-sm leading-tight">Adjusters miss damage regularly — we make sure you don't</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">HAIL DAMAGE & INSURANCE</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Hail Damage to Your Shingle Roof? We Handle the Insurance Claim.
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Central Texas homeowners deal with hail every spring. If your shingle roof has hail damage, your homeowner's insurance likely covers it — but insurance adjusters miss damage regularly, especially granule loss and soft spots that aren't visible from the ground.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Lone Ranger Roofing inspects your full roof, documents every hit, and walks you through the claim process so you don't leave money on the table. Serving Temple, Killeen, Belton, Harker Heights, and throughout DFW.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { stat: '90%+', label: 'of Hail Claims Have Missed Damage' },
+              { stat: 'We Document', label: 'Everything' },
+              { stat: 'You Get', label: 'What You\'re Owed' },
+            ].map(item => (
+              <div class="text-center border-t-2 border-accent-600 pt-4">
+                <p class="text-brand-900 font-black text-xl leading-none mb-1">{item.stat}</p>
+                <p class="text-gray-500 text-xs leading-snug">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY LONE RANGER ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">WHY LONE RANGER ROOFING</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Why Central Texas Homeowners Choose Lone Ranger for Asphalt Shingle Roofing
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            The right shingle installed right, backed by a warranty that actually means something. That's the standard on every asphalt job we take.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/home-gallery4.webp" alt="Lone Ranger Roofing shingle installation" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/shingle3.webp" alt="Central Texas shingle roofing crew" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whyCards.map(item => (
+          <div class="bg-gray-50 rounded-2xl p-7 border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-lg">
+          Get a Free Shingle Roofing Estimate
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICE AREAS ===================== -->
+  <section class="py-20 bg-gray-50 border-t border-gray-100 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/map-service-areas.png"
+            alt="Lone Ranger Roofing shingle service areas across Central Texas and DFW"
+            class="w-full h-auto object-contain rounded-2xl"
+          />
+          <div class="absolute top-4 left-4 bg-brand-900 text-white rounded-xl px-4 py-3 shadow-xl">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest">Coverage Area</p>
+            <p class="text-white font-bold text-sm mt-0.5">Bell County · DFW · Burnet</p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">SERVICE AREAS</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Asphalt Shingle Roofing in Bell County, DFW &amp; Burnet
+          </h2>
+          <p class="text-gray-500 mb-8 leading-relaxed">
+            Lone Ranger Roofing installs IKO asphalt shingles across Central Texas and DFW. Call <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a> to schedule your free estimate.
+          </p>
+
+          <div class="space-y-6">
+            {Object.entries(serviceAreas).map(([region, cities]) => (
+              <div>
+                <p class="text-brand-900 font-black text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span class="w-4 h-px bg-accent-600 inline-block"></span>
+                  {region}
+                </p>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+                  {cities.map(city => (
+                    <div class="flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-accent-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.898-5.096 3.898-8.827a8.25 8.25 0 00-16.5 0c0 3.731 1.954 6.744 3.898 8.827a19.58 19.58 0 002.683 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                      </svg>
+                      {CITY_SLUGS[city] ? (
+                        <a href={`/service-areas/${CITY_SLUGS[city]}`} class="text-gray-600 text-sm hover:text-accent-600 hover:underline transition-colors">
+                          {city === 'surrounding areas' ? city : `${city}, TX`}
+                        </a>
+                      ) : (
+                        <span class="text-gray-500 text-sm">{city === 'surrounding areas' ? city : `${city}, TX`}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">COMMON QUESTIONS</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">
+          Asphalt Shingle Roofing FAQs: Temple, Killeen &amp; Central Texas
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden faq-item">
+            <button
+              class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 faq-trigger"
+              aria-expanded="false"
+              data-index={i}
+            >
+              <span class="font-bold text-brand-900 text-sm leading-snug">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-5">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    overline="TIME FOR NEW SHINGLES?"
+    title="Get a Free Asphalt Shingle Roofing Estimate"
+    blurb="We'll inspect your roof, recommend the right IKO shingle for your home and budget, and get it done in one day. Backed by a warranty on materials and labor."
+    bgImage="/pre-footer-background.webp"
+  />
+
+</MainLayout>
+
+<script>
+  const GOLD = '#ECC765';
+  const NAVY = '#111140';
+  const BLUE = '#AAB0D9';
+
+  function applyStepState(item: Element, active: boolean) {
+    const circle = item.querySelector('.step-circle') as HTMLElement | null;
+    const label  = item.querySelector('.step-label')  as HTMLElement | null;
+    const arrow  = item.querySelector('.step-arrow')  as HTMLElement | null;
+    const body   = item.querySelector('.step-item-body');
+
+    (item as HTMLElement).style.borderColor     = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+    (item as HTMLElement).style.backgroundColor = active ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)';
+    if (circle) { circle.style.backgroundColor = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+                  circle.style.color           = active ? NAVY                     : '#ffffff'; }
+    if (label)  { label.style.color            = active ? '#ffffff'                : BLUE; }
+    if (arrow)  { arrow.style.color            = active ? GOLD                     : 'rgba(255,255,255,0.4)';
+                  arrow.style.transform        = active ? 'rotate(180deg)'         : 'rotate(0deg)'; }
+    body?.classList.toggle('hidden', !active);
+  }
+
+  document.querySelectorAll<HTMLElement>('.step-item').forEach((item, i) => {
+    applyStepState(item, i === 0);
+  });
+
+  document.querySelectorAll('.step-item-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.step-item').forEach((item, i) => {
+        applyStepState(item, i === idx);
+      });
+    });
+  });
+</script>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = !answer?.classList.contains('hidden');
+
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+      document.querySelectorAll('.faq-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+      if (!isOpen) {
+        answer?.classList.remove('hidden');
+        icon?.classList.add('rotate-180');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long do asphalt shingles last in Central Texas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Typically 20-30 years depending on shingle grade, installation quality, and storm exposure. Impact-resistant shingles like IKO Dynasty perform better in hail corridors." }
+    },
+    {
+      "@type": "Question",
+      "name": "What shingles does Lone Ranger Roofing install?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Lone Ranger Roofing primarily installs IKO shingles — Cambridge, Dynasty, and Nordic lines — on residential properties across Central Texas and DFW." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get my asphalt shingle roof done in one day?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most residential shingle replacements by Lone Ranger Roofing are completed in a single day with one dedicated crew and supervisor." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Lone Ranger Roofing warranty the labor on shingle installations?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Lone Ranger Roofing backs both the IKO manufacturer warranty on materials and our own labor warranty on every shingle installation." }
+    },
+    {
+      "@type": "Question",
+      "name": "My shingle roof has hail damage — what should I do?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Call Lone Ranger Roofing for a free inspection. We document all damage and walk you through the insurance claim process to ensure full compensation." }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I replace my shingles or switch to metal?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Shingles are the most cost-effective upfront for most Central Texas homes. Metal costs more but lasts 50+ years. We'll give you an honest recommendation based on your situation." }
+    }
+  ]
+}
+</script>

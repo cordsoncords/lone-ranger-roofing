@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx astro *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(pkill -f \"astro\")",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__computer",
+      "Bash(ls /Users/corderomiguel/lone-ranger-roofing/)",
+      "Bash(git -C /Users/corderomiguel/lone-ranger-roofing show main:src/pages/index.astro)",
+      "Bash(git -C /Users/corderomiguel/lone-ranger-roofing branch -a)",
+      "Bash(git -C /Users/corderomiguel/lone-ranger-roofing log --oneline -5)",
+      "Bash(grep -n \"Down Options\\\\|Approval Time\\\\|Interest Promos\\\\|Satisfaction\\\\|\\\\$0\\\\|5 min\\\\|0%\\\\|100%\" /Users/corderomiguel/lone-ranger-roofing/.claude/worktrees/brave-bose-87ff3e/src/pages/index.astro)",
+      "Bash(xargs -n1 basename)",
+      "Bash(grep -v \"^--$\")",
+      "Bash(sed -i '' 's/Free Estimate/Schedule Free Inspection/g' /Users/corderomiguel/lone-ranger-roofing/.claude/worktrees/brave-bose-87ff3e/src/layouts/MainLayout.astro)",
+      "Bash(sed -i '' 's/>Send</>Schedule Free Inspection</g' /Users/corderomiguel/lone-ranger-roofing/.claude/worktrees/brave-bose-87ff3e/src/components/PreFooterCTA.astro)",
+      "Bash(npm run *)",
+      "Bash(awk '{print $5, $9}')"
+    ]
+  }
+}

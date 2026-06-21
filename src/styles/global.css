@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Rye', serif;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply text-gray-700 leading-relaxed;
+  }
+  .prose h2 {
+    @apply text-2xl font-black text-brand-900 mt-10 mb-4;
+  }
+  .prose h3 {
+    @apply text-xl font-bold text-brand-900 mt-8 mb-3;
+  }
+  .prose p {
+    @apply mb-5;
+  }
+  .prose ul {
+    @apply list-disc pl-6 mb-5 space-y-1;
+  }
+  .prose ol {
+    @apply list-decimal pl-6 mb-5 space-y-1;
+  }
+  .prose li {
+    @apply text-gray-700;
+  }
+  .prose a {
+    @apply text-accent-600 font-semibold hover:underline;
+  }
+  .prose strong {
+    @apply font-bold text-brand-900;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-gold-400 pl-4 italic text-gray-500 my-6;
+  }
+  .prose hr {
+    @apply border-gray-200 my-8;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Desktop dropdown visibility is managed via JS in Header.astro */
+}

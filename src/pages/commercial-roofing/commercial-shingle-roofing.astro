@@ -1,0 +1,507 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const faqs = [
+  {
+    q: 'What types of commercial properties use shingle roofing instead of flat roofing?',
+    a: "Lone Ranger Roofing installs commercial shingle roofing for churches, smaller office buildings, multi-family housing complexes, retail storefronts with pitched roofs, and professional office parks across Temple, Killeen, and Central Texas. If your commercial building has a pitched roof, architectural shingles are a strong choice — they're cost-effective, durable, and easier to repair than flat roofing systems.",
+  },
+  {
+    q: 'What shingle brands does Lone Ranger Roofing use for commercial properties?',
+    a: "Lone Ranger Roofing installs IKO commercial-grade architectural shingles for commercial properties across Central Texas and DFW. IKO shingles are designed to handle the Texas climate — high heat, intense UV exposure, and periodic hailstorms — and come with manufacturer warranties to match. We'll recommend the right IKO product line based on your building's requirements and budget.",
+  },
+  {
+    q: 'How long do commercial shingles last on a commercial building in Texas?',
+    a: "A properly installed commercial architectural shingle roof by Lone Ranger Roofing in Temple, Killeen, or Belton typically lasts 25-40 years depending on the product grade, attic ventilation, and maintenance. The Texas heat and UV exposure shorten that range without proper ventilation. We assess your building's ventilation as part of every installation to maximize lifespan.",
+  },
+  {
+    q: 'What is the warranty on commercial shingle roofing from Lone Ranger Roofing?',
+    a: "Every commercial shingle installation by Lone Ranger Roofing in Central Texas and DFW comes with both an IKO manufacturer warranty on the materials and our own labor warranty covering the installation. Most commercial shingle failures happen at the installation level — flashing, valleys, penetrations — not the shingles themselves. Our labor warranty means we're accountable for both.",
+  },
+  {
+    q: 'Can Lone Ranger Roofing handle a commercial shingle roof insurance claim in Central Texas?',
+    a: "Yes. Lone Ranger Roofing assists commercial property owners across Temple, Killeen, Belton, Waco, and the DFW metro with hail and storm damage insurance claims for shingle roofing systems. We inspect the full roof, document all damage with photos and measurements, and work directly with your insurance company to ensure the complete scope of repairs or replacement is covered.",
+  },
+  {
+    q: 'How long does a commercial shingle roof replacement take?',
+    a: "Most commercial shingle roof replacements by Lone Ranger Roofing can be completed in one to three days depending on the size and complexity of the building. We minimize operational disruption with a clear schedule, efficient crew, and daily cleanup. We'll give you a realistic timeline before any work begins so you can plan around it.",
+  },
+];
+
+const whyShingleCards = [
+  {
+    title: 'Cost-Effective Performance',
+    body: 'Commercial shingles deliver strong weather protection and a 25-40 year lifespan at a lower upfront cost than metal or tile. For churches, office buildings, and multi-family properties with pitched roofs in Central Texas, shingles typically deliver the best cost-to-value ratio.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>`,
+  },
+  {
+    title: 'IKO Commercial-Grade Shingles',
+    body: 'We install IKO architectural shingles — built to handle Texas heat, UV exposure, and hail. IKO products carry manufacturer warranties, and we back every installation with our own labor warranty.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+  {
+    title: 'Faster Installation',
+    body: 'Most commercial shingle roofs are completed in one to three days. Less project time means less disruption to your business operations — and your building is protected sooner.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  },
+  {
+    title: 'Easier Repairs',
+    body: 'Unlike flat roofing systems, shingle repairs on pitched commercial roofs are straightforward to diagnose and execute. Single sections can be replaced without disturbing the entire roof.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>`,
+  },
+  {
+    title: 'Insurance Claim Experience',
+    body: 'Hail or storm damage? Lone Ranger Roofing documents all damage and works directly with your insurance company to ensure the full scope of the commercial shingle roof claim is covered.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
+  },
+  {
+    title: 'Veteran-Owned & Operated',
+    body: "Lone Ranger Roofing is owned and operated by Julio Rojas, a U.S. Army Ranger. The same standard he held in the Army applies on every commercial shingle installation in Central Texas.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`,
+  },
+];
+
+const propertyTypes = [
+  { label: 'Churches & Houses of Worship' },
+  { label: 'Smaller Office Buildings' },
+  { label: 'Multi-Family Housing & Apartments' },
+  { label: 'Retail Storefronts with Pitched Roofs' },
+  { label: 'Professional Office Parks' },
+  { label: 'Commercial Warehouses with Pitch' },
+];
+
+const CITY_SLUGS: Record<string, string | null> = {
+  'Temple': 'temple', 'Killeen': 'killeen', 'Harker Heights': 'harker-heights',
+  'Belton': 'belton', 'Salado': 'salado', 'Nolanville': 'nolanville',
+  'Little River-Academy': 'little-river-academy', 'Troy': 'troy',
+  'Copperas Cove': 'copperas-cove', 'Gatesville': 'gatesville',
+  'Waco': 'waco', 'Moody': 'moody',
+  "Morgan's Point Resort": null, 'Bartlett': null, 'Holland': null,
+  'Arlington': 'dfw', 'Plano': 'dfw', 'Irving': 'dfw', 'Garland': 'dfw',
+  'Frisco': 'dfw', 'Denton': 'dfw', 'Richardson': 'dfw', 'McKinney': 'dfw',
+  'Grapevine': 'dfw', 'Euless': 'dfw', 'Bedford': 'dfw', 'Southlake': 'dfw',
+  'Burnet': 'burnet', 'surrounding areas': 'burnet',
+};
+
+const serviceAreas = {
+  'Bell County': ['Temple', 'Killeen', 'Harker Heights', 'Belton', 'Salado', 'Nolanville', "Morgan's Point Resort", 'Little River-Academy', 'Troy', 'Bartlett', 'Holland', 'Copperas Cove', 'Gatesville', 'Moody'],
+  'McLennan County': ['Waco'],
+  'DFW Metroplex': ['Arlington', 'Plano', 'Irving', 'Garland', 'Frisco', 'Denton', 'Richardson', 'McKinney', 'Grapevine', 'Euless', 'Bedford', 'Southlake'],
+  'Burnet County': ['Burnet', 'surrounding areas'],
+};
+---
+
+<MainLayout
+  title="Commercial Shingle Roofing in Temple, Killeen & Central Texas | Lone Ranger Roofing"
+  description="Lone Ranger Roofing installs IKO commercial-grade shingles for churches, office buildings, multi-family housing, and retail properties across Temple, Killeen, and Central Texas. Material + labor warranty. Free estimate."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/commercial-shingle-header.webp"
+        alt="Commercial shingle roofing installation — Temple and Killeen TX"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Commercial Roofing</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Commercial Shingle Roofing in Temple, Killeen &amp; Central Texas
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">
+          IKO commercial-grade shingles. Strong warranty on both materials and labor. Done right.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">
+            Get a Free Commercial Estimate
+          </a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">
+            Call (254) 300-1413
+          </a>
+        </div>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-10">
+          {[
+            'IKO Commercial-Grade Shingles',
+            'Material + Labor Warranty',
+            'Insurance Claim Support',
+          ].map(t => (
+            <div class="flex items-center gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">COMMERCIAL SHINGLE ROOFING</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Not Every Commercial Building Needs a Flat Roof. Shingles Work — When They're Installed Right.
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Churches, office buildings, retail storefronts, multi-family housing, professional parks — plenty of commercial properties have pitched roofs. And pitched commercial roofs have the same basic requirement as any roof: they need to be installed correctly, with the right materials, and backed by someone who's accountable when it rains.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Lone Ranger Roofing installs IKO commercial-grade architectural shingles for commercial properties across Temple, Killeen, Belton, Waco, and throughout DFW. Every installation comes with a manufacturer warranty on the IKO shingles themselves, plus our own labor warranty covering the installation.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Most commercial shingle roof failures happen at the installation level — bad flashing, improper valley work, inadequate ventilation. Our labor warranty exists because that's where the accountability matters.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3">
+            {propertyTypes.map(item => (
+              <div class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-accent-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700 text-sm">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="relative">
+          <img
+            src="/commercial-shingle4.webp"
+            alt="Commercial shingle roofing installation Central Texas"
+            class="w-full h-[500px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute top-6 left-6 bg-brand-900 text-white rounded-xl px-5 py-4 shadow-xl max-w-[220px] border border-white/10">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest mb-3">IKO Commercial Shingles</p>
+            <ul class="space-y-2">
+              {[
+                'Manufacturer warranty on materials',
+                'Built for Texas heat and UV',
+                'Hail-resistant ratings available',
+                'Wide color selection',
+                'Backed by our own labor warranty',
+              ].map(item => (
+                <li class="flex items-start gap-2 text-gray-300 text-xs">
+                  <svg class="w-3 h-3 text-gold-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY COMMERCIAL SHINGLES ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">WHY SHINGLES FOR COMMERCIAL</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+          Why Commercial Properties in Central Texas Choose Architectural Shingles
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          For commercial buildings with pitched roofs, architectural shingles offer strong performance at a lower upfront cost than metal. Here's why property owners and managers across Temple, Killeen, and DFW choose them.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whyShingleCards.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="relative py-24 bg-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery2.webp"
+        alt="Lone Ranger Roofing commercial roofing crew Central Texas"
+        class="w-full h-full object-cover opacity-15"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <div>
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">HOW IT WORKS</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            How Lone Ranger Handles a Commercial Shingle Roofing Project
+          </h2>
+          <p class="text-brand-200 leading-relaxed mb-4">
+            A commercial shingle replacement follows a clear process. You get a realistic timeline upfront, consistent crew throughout, and a final walkthrough before we call it done.
+          </p>
+          <img
+            src="/iko-badge.webp"
+            alt="IKO Certified Roofing Contractor badge"
+            class="h-16 object-contain mt-6"
+          />
+        </div>
+
+        <div class="space-y-2" id="steps-list">
+          {[
+            { n: '01', title: 'Free Commercial Assessment & Estimate', detail: 'We assess your building, existing roof condition, and requirements. You receive a written scope, product recommendation, and honest timeline before any commitment.' },
+            { n: '02', title: 'Product Selection — IKO System for Your Building', detail: 'We recommend the right IKO shingle product based on your building type, pitch, attic ventilation, and budget. No upsell pressure — the right system for your property.' },
+            { n: '03', title: 'Tear-Off & Deck Inspection', detail: 'Existing roofing is removed and the deck inspected for soft spots, moisture damage, or structural issues. Nothing gets covered up that needs to be fixed.' },
+            { n: '04', title: 'Underlayment, Ice & Water Shield, Ventilation', detail: 'Proper underlayment, ice and water shield at valleys and penetrations, and ventilation assessment are completed before a single shingle goes down.' },
+            { n: '05', title: 'IKO Shingle Installation With Dedicated Supervision', detail: 'A supervisor is on-site throughout. Flashing at walls, valleys, and penetrations is done correctly — this is where most commercial shingle failures happen and where our labor warranty is most valuable.' },
+            { n: '06', title: 'Final Inspection, Cleanup & Warranty Documentation', detail: 'Full property cleanup, final inspection walkthrough, and documentation of both the IKO manufacturer warranty and our labor warranty.' },
+          ].map((step, i) => (
+            <div class="step-item rounded-xl border overflow-hidden transition-all duration-200">
+              <button class="step-item-btn w-full flex items-center gap-4 px-5 py-4 text-left" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <div class="step-circle w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-xs transition-colors">
+                  {step.n}
+                </div>
+                <span class="step-label font-bold text-sm flex-1 transition-colors">{step.title}</span>
+                <svg class="step-arrow w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class={`step-item-body px-5 pb-4 ${i === 0 ? '' : 'hidden'}`}>
+                <p class="text-brand-200 text-sm leading-relaxed pl-[52px]">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY STRIP ===================== -->
+  <div class="grid grid-cols-3 md:grid-cols-6 h-48">
+    {[
+      '/commercial-shingle2.webp',
+      '/commercial-shingle-header.webp',
+      '/commercial-shingle5.webp',
+      '/commercial-shingle3.webp',
+      '/commercial-shingle4.webp',
+      '/commercial-shingle1.webp',
+    ].map((src, i) => (
+      <div class="relative overflow-hidden group">
+        <img
+          src={src}
+          alt={`Commercial shingle roofing project ${i + 1} — Central Texas`}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-brand-900/30 group-hover:bg-brand-900/0 transition-colors duration-300"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ===================== SERVICE AREAS ===================== -->
+  <section class="py-20 bg-white border-t border-gray-100 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/map-service-areas.png"
+            alt="Lone Ranger Roofing commercial shingle roofing service areas"
+            class="w-full h-auto object-contain rounded-2xl"
+          />
+          <div class="absolute top-4 left-4 bg-brand-900 text-white rounded-xl px-4 py-3 shadow-xl">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest">Coverage Area</p>
+            <p class="text-white font-bold text-sm mt-0.5">Bell County · DFW · Burnet</p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">SERVICE AREAS</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Commercial Shingle Roofing in Bell County, DFW &amp; Burnet
+          </h2>
+          <p class="text-gray-500 mb-8 leading-relaxed">
+            Lone Ranger Roofing serves commercial properties across Central Texas and DFW with IKO shingle roofing systems. Call <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a> for a free commercial estimate.
+          </p>
+
+          <div class="space-y-6">
+            {Object.entries(serviceAreas).map(([region, cities]) => (
+              <div>
+                <p class="text-brand-900 font-black text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span class="w-4 h-px bg-accent-600 inline-block"></span>
+                  {region}
+                </p>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+                  {cities.map(city => (
+                    <div class="flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-accent-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.898-5.096 3.898-8.827a8.25 8.25 0 00-16.5 0c0 3.731 1.954 6.744 3.898 8.827a19.58 19.58 0 002.683 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                      </svg>
+                      {CITY_SLUGS[city] ? (
+                        <a href={`/service-areas/${CITY_SLUGS[city]}`} class="text-gray-600 text-sm hover:text-accent-600 hover:underline transition-colors">
+                          {city === 'surrounding areas' ? city : `${city}, TX`}
+                        </a>
+                      ) : (
+                        <span class="text-gray-500 text-sm">{city === 'surrounding areas' ? city : `${city}, TX`}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">COMMON QUESTIONS</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">
+          Commercial Shingle Roofing FAQs: Temple, Killeen &amp; Central Texas
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden faq-item">
+            <button
+              class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 faq-trigger"
+              aria-expanded="false"
+              data-index={i}
+            >
+              <span class="font-bold text-brand-900 text-sm leading-snug">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-5">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    overline="READY FOR A COMMERCIAL SHINGLE ROOF DONE RIGHT?"
+    title="Get a Free Commercial Shingle Roofing Estimate"
+    blurb="IKO commercial-grade shingles, full material and labor warranty, and honest scope from assessment to final walkthrough. Serving Temple, Killeen, Belton, Waco, and throughout DFW."
+    bgImage="/pre-footer-background.webp"
+  />
+
+</MainLayout>
+
+<script>
+  const GOLD = '#ECC765';
+  const NAVY = '#111140';
+  const BLUE = '#AAB0D9';
+
+  function applyStepState(item: Element, active: boolean) {
+    const circle = item.querySelector('.step-circle') as HTMLElement | null;
+    const label  = item.querySelector('.step-label')  as HTMLElement | null;
+    const arrow  = item.querySelector('.step-arrow')  as HTMLElement | null;
+    const body   = item.querySelector('.step-item-body');
+
+    (item as HTMLElement).style.borderColor     = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+    (item as HTMLElement).style.backgroundColor = active ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)';
+    if (circle) { circle.style.backgroundColor = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+                  circle.style.color           = active ? NAVY                     : '#ffffff'; }
+    if (label)  { label.style.color            = active ? '#ffffff'                : BLUE; }
+    if (arrow)  { arrow.style.color            = active ? GOLD                     : 'rgba(255,255,255,0.4)';
+                  arrow.style.transform        = active ? 'rotate(180deg)'         : 'rotate(0deg)'; }
+    body?.classList.toggle('hidden', !active);
+  }
+
+  document.querySelectorAll<HTMLElement>('.step-item').forEach((item, i) => {
+    applyStepState(item, i === 0);
+  });
+
+  document.querySelectorAll('.step-item-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.step-item').forEach((item, i) => {
+        applyStepState(item, i === idx);
+      });
+    });
+  });
+</script>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = !answer?.classList.contains('hidden');
+
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+      document.querySelectorAll('.faq-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+      if (!isOpen) {
+        answer?.classList.remove('hidden');
+        icon?.classList.add('rotate-180');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What commercial properties use shingle roofing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Churches, office buildings, multi-family housing, retail storefronts with pitched roofs, and professional office parks. If your commercial building has a pitched roof, architectural shingles are a strong choice." }
+    },
+    {
+      "@type": "Question",
+      "name": "What shingle brands does Lone Ranger Roofing use for commercial properties?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Lone Ranger Roofing installs IKO commercial-grade architectural shingles for commercial properties across Central Texas and DFW." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long do commercial shingles last in Texas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "25-40 years depending on product grade, attic ventilation, and maintenance. Texas heat and UV exposure shorten that range without proper ventilation — we assess ventilation on every installation." }
+    },
+    {
+      "@type": "Question",
+      "name": "What warranty does Lone Ranger Roofing offer on commercial shingles?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Every installation includes an IKO manufacturer warranty on materials plus our own labor warranty on the installation — because most failures happen at the installation level, not the shingles." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Lone Ranger handle commercial shingle insurance claims?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We document all storm and hail damage and work directly with your insurance company to ensure the full scope of repairs or replacement is covered for commercial properties across Central Texas and DFW." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a commercial shingle roof replacement take?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most commercial shingle replacements are completed in 1-3 days depending on building size and complexity. We minimize operational disruption with efficient crew scheduling and daily cleanup." }
+    }
+  ]
+}
+</script>

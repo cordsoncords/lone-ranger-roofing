@@ -1,0 +1,153 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PreFooterCTA from '../components/PreFooterCTA.astro';
+---
+<MainLayout
+  darkHero={true}
+  title="Roof-A-Vet Program | Free Roofs for Veterans | Lone Ranger Roofing"
+  description="Lone Ranger Roofing's Roof-A-Vet program provides free roof replacements to deserving veterans in Bell County and Central Texas. Every inspection and job funds the next one."
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section
+    class="relative min-h-[65vh] flex items-center text-white text-center -mt-28 overflow-hidden"
+    style="background-image: url('/vet-header.webp'); background-size: cover; background-position: center;"
+  >
+    <div class="absolute inset-0 bg-brand-900/75"></div>
+    <div class="relative z-10 w-full">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Honoring Our Heroes</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+        A Free Roof for a Veteran Who Earned It
+      </h1>
+      <p class="text-brand-200 text-lg leading-relaxed max-w-2xl mx-auto">
+        Lone Ranger Roofing is veteran-owned. We've seen what service costs people. The Roof-A-Vet program is how we give something back — a free roof replacement for a deserving veteran in our community, funded by every inspection and every job we complete.
+      </p>
+    </div>
+    </div>
+  </section>
+
+  <!-- ===================== VIDEO + COPY ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Left: video embed -->
+        <div class="rounded-2xl overflow-hidden shadow-xl aspect-video">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/LYqbkpFptDs?si=I98wRRH3CpvMQ8Fi"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            style="display:block; min-height: 320px;"
+          ></iframe>
+        </div>
+
+        <!-- Right: copy -->
+        <div>
+          <p class="text-gold-500 font-bold text-xs uppercase tracking-widest mb-3">Our Mission</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6 leading-tight">
+            Veteran-Owned.<br/>Community-Driven.
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            We started Roof-A-Vet because talking about supporting veterans is easy. Actually doing something is harder. As a veteran-owned company working out of Bell County — home to Fort Hood and thousands of military families — we wanted to build something real into how we operate.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Not a one-time donation. A program that funds itself with every job we take.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-14">
+        <p class="text-gold-500 font-bold text-xs uppercase tracking-widest mb-3">The Process</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">Here's How It Works</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-5xl font-black text-gold-400 leading-none mb-4">01</div>
+          <h3 class="font-black text-brand-900 text-lg mb-3">Every inspection funds the program.</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Each roof inspection we complete puts $50 into the Roof-A-Vet fund. You schedule an inspection, a veteran benefits.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-5xl font-black text-gold-400 leading-none mb-4">02</div>
+          <h3 class="font-black text-brand-900 text-lg mb-3">Every job adds more.</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">When a customer moves forward with a repair or replacement, we add another $200 to the fund.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-5xl font-black text-gold-400 leading-none mb-4">03</div>
+          <h3 class="font-black text-brand-900 text-lg mb-3">The community nominates.</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Once we hit our target amount, we open it up — neighbors, family members, and community organizations nominate veterans who could use a new roof.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <div class="text-5xl font-black text-gold-400 leading-none mb-4">04</div>
+          <h3 class="font-black text-brand-900 text-lg mb-3">We pick a recipient and get to work.</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">One veteran is selected and gets a full roof replacement on us. Same one-day process, same crew, same warranty. Done right.</p>
+        </div>
+
+      </div>
+
+      <p class="text-center text-gray-500 text-sm italic mt-10 max-w-2xl mx-auto">
+        That means every inspection and every job you book with us is supporting a member of this community.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== COPY + PHOTOS ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <p class="text-gold-500 font-bold text-xs uppercase tracking-widest mb-3">Our Community</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6 leading-tight">
+            Bell County Takes Care of Its Own
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Fort Hood is in our backyard. We've roofed houses for active duty families, retirees, and veterans all across Killeen, Harker Heights, Temple, and Belton. These are people who gave years — some gave everything. A roof isn't much. But it's ours to give, and we give it without hesitation.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            If you know a veteran in Bell County or the surrounding area who needs a new roof and can't afford one, keep an eye on our nominations — or call us directly at <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a>.
+          </p>
+        </div>
+
+        <!-- Right: photos -->
+        <div class="grid grid-cols-2 gap-3">
+          <div class="rounded-2xl overflow-hidden shadow-md col-span-2 h-[300px]">
+            <img src="/vet-photo1.webp" alt="Roof-A-Vet program — Lone Ranger Roofing" class="w-full h-full object-cover object-center" />
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-md h-[220px]">
+            <img src="/vet-photo2.webp" alt="Roof-A-Vet program — veteran roof replacement" class="w-full h-full object-cover" />
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-md bg-brand-900 h-[220px] flex items-center justify-center p-6">
+            <p class="text-gold-400 font-black text-xl text-center leading-snug">Every job funds the next roof.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    overline="WANT TO HELP?"
+    title="Every Inspection You Schedule Funds the Next Roof"
+    blurb="Book your free roof inspection and you're already part of it."
+    bgImage="/home-gallery2.webp"
+  />
+
+</MainLayout>

@@ -1,0 +1,268 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PreFooterCTA from '../components/PreFooterCTA.astro';
+
+const qaItems = [
+  { q: 'One thing you regret buying', a: 'A brand new Ford Fiesta right out of high school. I could barely fit inside and I could barely afford the payments.' },
+  { q: 'Hidden talents', a: 'The ability to eat an entire jar of pickles in one sitting. The stuff heroes are made of.' },
+  { q: 'How you unwind after 5', a: "Does not unwind after 5... but you might find a cold brewski at my desk by then." },
+  { q: 'Go-to karaoke song', a: 'My Way by Frank Sinatra. I grow a couple of chest hairs every time.' },
+  { q: 'In a global game of hide and seek, where do you hide', a: 'North Korea. People go there and are magically never to be seen again.' },
+  { q: 'Favorite quote', a: '"Don\'t be weak. Figure it out. Make things happen." — A mantra passed down by an Army Ranger when I was in the service.' },
+  { q: 'Favorite hobby outside roofing', a: 'Riding my motorcycle with no destination in mind. Lots of hidden gems to discover.' },
+];
+---
+
+<MainLayout
+  title="About Lone Ranger Roofing | Veteran-Owned Roofing in Central Texas & DFW"
+  description="Lone Ranger Roofing was founded by Army Ranger Julio Rojas in 2024. Veteran-owned, Central Texas-based, and built on three things: communicate, show up, do right."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/about-hero.webp"
+        alt="Lone Ranger Roofing — Army Ranger turned Central Texas roofer"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">About Lone Ranger Roofing</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Built on Service.<br />Backed by a Ranger.
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">
+          Lone Ranger Roofing was founded by Julio Rojas — Army Ranger, homebuilder, and the kind of guy who will tell you straight what your roof needs and show up on time to do it.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">
+            Schedule Free Inspection
+          </a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">
+            Call (254) 300-1413
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE MAN BEHIND THE HARD HAT ===================== -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
+
+        <!-- Video side -->
+        <div class="relative order-2 lg:order-1">
+          <div class="rounded-2xl overflow-hidden shadow-xl aspect-video">
+            <iframe
+              src="https://www.youtube.com/embed/DIG1yaUYgJ8?rel=0&modestbranding=1&playsinline=1"
+              title="Lone Ranger Roofing — Our Story"
+              width="100%"
+              height="100%"
+              style="display:block; width:100%; height:100%;"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="absolute -top-4 -left-4 w-20 h-20 bg-gold-400/20 rounded-2xl -z-10"></div>
+        </div>
+
+        <!-- Text side -->
+        <div class="order-1 lg:order-2">
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">The Man Behind the Hard Hat</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 leading-tight mb-6">
+            The Man Behind The Hammer
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Julio didn't start in roofing. He started in the Army, where he served as a Ranger — one of the most demanding combat roles in the U.S. military. That experience doesn't leave you. It shapes how you operate, how you lead a crew, how you communicate with a homeowner in Killeen or Temple who's stressed about storm damage, and how seriously you take the word "done right."
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            After the Army, Julio channeled that same standard into construction — building homes, remodeling properties, and eventually roofing across Bell County. He knows what a structure is supposed to look like from the ground up. When Lone Ranger Roofing puts a roof on a home in Belton, Harker Heights, or anywhere in between, a Ranger's standard of done right comes with it.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            {[
+              { stat: 'Army', label: 'Ranger' },
+              { stat: '1-Day', label: 'Completions' },
+            ].map(item => (
+              <div class="text-center border-t-2 border-gold-400 pt-4">
+                <p class="text-brand-900 font-black text-xl leading-none mb-1">{item.stat}</p>
+                <p class="text-gray-500 text-xs leading-snug">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY WE STARTED THIS ===================== -->
+  <section class="relative py-24 bg-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/home-roof-replacement.webp"
+        alt="Roofing crew in Central Texas"
+        class="w-full h-full object-cover opacity-10"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">Why We Started This</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            Why We Started Lone Ranger Roofing
+          </h2>
+          <p class="text-brand-200 leading-relaxed mb-5">
+            Central Texas is full of roofing companies. It's also full of roofing companies that disappear after a storm, send rotating crews with no supervisor on site, and warranty the materials but go quiet when the labor fails.
+          </p>
+          <p class="text-brand-200 leading-relaxed">
+            Julio started Lone Ranger Roofing because he believed Bell County homeowners — including the military families around Fort Hood who've trusted this community with everything — deserved better than that. Same for the families in Waco, Georgetown, and across DFW who've called us when their roof was on the line. A roofer who communicates. Shows up on time. Does right.
+          </p>
+        </div>
+
+        <!-- Right: photo -->
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl h-[420px] lg:h-auto">
+          <img
+            src="/about-why.webp"
+            alt="Lone Ranger Roofing crew on a Central Texas job site"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY STRIP ===================== -->
+  <div class="grid grid-cols-3 md:grid-cols-6 h-48">
+    {[
+      '/home-gallery1.webp',
+      '/home-gallery2.webp',
+      '/home-gallery3.webp',
+      '/home-gallery4.webp',
+      '/home-gallery5.webp',
+      '/home-gallery6.webp',
+    ].map((src, i) => (
+      <div class="relative overflow-hidden group">
+        <img
+          src={src}
+          alt={`Lone Ranger Roofing completed project ${i + 1}`}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-brand-900/30 group-hover:bg-brand-900/0 transition-colors duration-300"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ===================== THREE THINGS WE DON'T COMPROMISE ON ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">How We Operate</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Three Things We Don't Compromise On
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Every decision Lone Ranger Roofing makes comes back to three principles. Not a mission statement on a wall — the actual standard Julio operates by every day, on every job.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/home-gallery4.webp" alt="Lone Ranger Roofing on-site supervision" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/home-gallery5.webp" alt="Central Texas roofing crew" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-5">
+        {[
+          {
+            icon: `<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>`,
+            title: 'Great Work. Fair Price.',
+            body: "A lot of contractors make you choose between quality and cost. Lone Ranger Roofing doesn't. You get a roof done right, by people who know what they're doing, at a price that's fair. No inflated quotes and definitely no corners cut to make the numbers work.",
+          },
+          {
+            icon: `<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+            title: 'No Surprises. Ever.',
+            body: "You'll know the full scope before we start, get updates while we work, and never open an invoice that doesn't match what we discussed. If something changes, you hear it from us first.",
+          },
+          {
+            icon: `<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+            title: 'We Work Like You\'re Family.',
+            body: "Every homeowner we serve gets treated the way we'd treat someone we know. That means honest answers, real recommendations, and work we'd stand behind if it were our own house.",
+          },
+        ].map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-xl">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MEET THE FOUNDER Q&A ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <!-- Section header — full width -->
+      <div class="mb-12 text-center lg:text-left">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">Meet the Founder</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900 leading-tight">
+          The Guy You're Actually Hiring
+        </h2>
+      </div>
+
+      <!-- Two-column: sticky photos left | single Q&A column right -->
+      <div class="flex flex-col lg:flex-row gap-10 items-start">
+
+        <!-- Photos column — sticky on desktop only -->
+        <div class="flex flex-col w-full lg:flex-shrink-0 lg:sticky lg:top-[100px] mx-auto lg:mx-0" style="gap: 16px; max-width: 300px;">
+          <img
+            src="/founder.webp"
+            alt="Julio Rojas — founder of Lone Ranger Roofing"
+            style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;"
+          />
+          <img
+            src="/founder2.webp"
+            alt="Julio Rojas on the job site"
+            style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;"
+          />
+        </div>
+
+        <!-- Single Q&A column -->
+        <div class="flex-1">
+          {qaItems.map(item => (
+            <div style="padding-bottom: 20px; border-bottom: 1px solid #e8e8e8; margin-bottom: 20px;">
+              <p class="text-gold-400 font-bold text-xs uppercase tracking-widest mb-2">{item.q}</p>
+              <p class="text-brand-900 text-sm leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRE-FOOTER CTA ===================== -->
+  <PreFooterCTA
+    title="Schedule Your Free Roof Inspection"
+    blurb="We'll send someone who knows what they're doing, give you an honest answer on what your roof needs, and back everything we do with a warranty on materials and labor."
+    bgImage="/about-pre-footer.webp"
+  />
+
+</MainLayout>

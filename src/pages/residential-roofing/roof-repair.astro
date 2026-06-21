@@ -1,0 +1,610 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const faqs = [
+  {
+    q: 'How do I know if my roof needs repair or full replacement?',
+    a: "The answer depends on the age of the roof, the extent of the damage, and what the insurance adjuster documented. Lone Ranger Roofing offers free inspections across Temple, Killeen, Belton, and DFW — and we'll give you a straight answer on which option makes more sense for your specific situation. If your roof is under 15 years old with isolated damage, repair is usually the right call. If it's older with widespread hail damage or leaks in multiple spots, replacement may be smarter long-term.",
+  },
+  {
+    q: "Does homeowner's insurance cover roof repair in Texas?",
+    a: "In most cases, Texas homeowner's insurance covers roof repair when the damage was caused by a covered event like hail, wind, or a storm. Whether a specific claim gets approved depends on the policy, the adjuster's assessment, and how thoroughly the damage was documented. Lone Ranger Roofing helps homeowners across Central Texas and DFW through the full process — from inspection to claim documentation to completed repair.",
+  },
+  {
+    q: 'How long does a roof repair take with Lone Ranger Roofing?',
+    a: "Most roof repairs completed by Lone Ranger Roofing are done in a single day. We send a crew with the right materials, a supervisor on-site the entire time, and we don't leave until the work is finished and the property is clean — whether the job is in Temple, Killeen, Harker Heights, or anywhere across the DFW metro.",
+  },
+  {
+    q: 'What types of roof damage do you repair?',
+    a: "Lone Ranger Roofing repairs hail damage, wind damage, storm damage, missing or cracked shingles, flashing failures, active leaks, and damage from fallen debris. We serve homeowners across Central Texas and DFW — including Temple, Killeen, Belton, Salado, and the greater Bell County area. If the damage can be properly repaired, we'll repair it. If it can't, we'll tell you that too.",
+  },
+  {
+    q: 'Will you help me with my insurance claim for roof repair?',
+    a: "Yes — Lone Ranger Roofing assists homeowners across Temple, Killeen, and Central Texas with the full insurance claim process for roof repairs. The adjuster your insurance company sends works for them, not for you. We document the full scope of damage, communicate directly with your adjuster, and fight to make sure nothing gets missed or underpaid in the claim.",
+  },
+  {
+    q: 'What warranty do you offer on roof repairs?',
+    a: "Lone Ranger Roofing warranties both the materials and the labor on every roof repair. If something we repaired fails — whether it's the shingles themselves or how they were installed — we come back and fix it. No fine print, no pointing fingers at the manufacturer. We stand behind the work.",
+  },
+];
+
+const repairSigns = [
+  'Roof is less than 15 years old',
+  'Damage is isolated to one area',
+  'No widespread granule loss',
+  'Decking underneath is still solid',
+  'Storm damage is recent and localized',
+];
+
+const whyCards = [
+  {
+    title: 'Honest About What You Need',
+    body: "We're not going to tell you that you need a full replacement when a repair will do the job. Straight answer, every time.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+  {
+    title: 'Warranty on Materials AND Labor',
+    body: "Most roofers warranty the shingles. We warranty the work too. If the repair fails because of how it was installed, we come back and fix it.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+  {
+    title: 'Insurance Claim Help',
+    body: "We know what adjusters miss. We document the full damage so your claim reflects what actually happened — not just what the insurance company wanted to find.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
+  },
+  {
+    title: 'Veteran-Owned & Operated',
+    body: "Show up, do the job right, don't cut corners. That's it.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`,
+  },
+  {
+    title: 'Done in One Day',
+    body: "We send the right crew with the right materials and get it done. No dragging it out across multiple days while your roof sits exposed.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  },
+  {
+    title: 'Local — Storm Chasers Need Not Apply',
+    body: "We're based in Temple and we're here after the storm chasers leave. We know Bell County and we're invested in the community we serve.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>`,
+  },
+];
+
+const CITY_SLUGS: Record<string, string | null> = {
+  'Temple': 'temple', 'Killeen': 'killeen', 'Harker Heights': 'harker-heights',
+  'Belton': 'belton', 'Salado': 'salado', 'Nolanville': 'nolanville',
+  'Little River-Academy': 'little-river-academy', 'Troy': 'troy',
+  'Copperas Cove': 'copperas-cove', 'Gatesville': 'gatesville',
+  'Waco': 'waco', 'Moody': 'moody',
+  "Morgan's Point Resort": null, 'Bartlett': null, 'Holland': null,
+  'Arlington': 'dfw', 'Plano': 'dfw', 'Irving': 'dfw', 'Garland': 'dfw',
+  'Frisco': 'dfw', 'Denton': 'dfw', 'Richardson': 'dfw', 'McKinney': 'dfw',
+  'Grapevine': 'dfw', 'Euless': 'dfw', 'Bedford': 'dfw', 'Southlake': 'dfw',
+  'Burnet': 'burnet', 'surrounding areas': 'burnet',
+};
+
+const serviceAreas = {
+  'Bell County': ['Temple', 'Killeen', 'Harker Heights', 'Belton', 'Salado', 'Nolanville', "Morgan's Point Resort", 'Little River-Academy', 'Troy', 'Bartlett', 'Holland', 'Copperas Cove', 'Gatesville', 'Moody'],
+  'McLennan County': ['Waco'],
+  'DFW Metroplex': ['Arlington', 'Plano', 'Irving', 'Garland', 'Frisco', 'Denton', 'Richardson', 'McKinney', 'Grapevine', 'Euless', 'Bedford', 'Southlake'],
+  'Burnet County': ['Burnet', 'surrounding areas'],
+};
+---
+
+<MainLayout
+  title="Roof Repair in Temple, Killeen & Central Texas | Lone Ranger Roofing"
+  description="Lone Ranger Roofing handles roof repairs across Temple, Killeen, and Central Texas. Hail damage, wind damage, leaks, and storm damage fixed right — by a veteran-owned crew that actually shows up."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery1.webp"
+        alt="Roof repair in progress — Temple and Killeen TX"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+<p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Residential Roof Repair Services</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Roof Repair in Temple, Killeen &amp; Central Texas
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">
+          Lone Ranger Roofing fixes roofs the right way, right away. If your roof is damaged, we'll tell you honestly whether it needs repair or replacement. And if it's a repair, we'll do it in a day.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">
+            Schedule Free Inspection
+          </a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">
+            Call (254) 300-1413
+          </a>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-10">
+          {[
+            'Same-Day Repair',
+            'Material + Labor Warranty',
+            'Insurance Claim Help',
+          ].map(t => (
+            <div class="flex items-center gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REPAIR VS. REPLACE ===================== -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+
+        <!-- Photo side -->
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/home-gallery2.webp"
+            alt="Roof damage that needs repair — Bell County TX"
+            class="w-full h-[480px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute -bottom-5 -right-5 bg-accent-600 text-white rounded-2xl px-6 py-4 shadow-xl text-center">
+            <p class="text-3xl font-black leading-none">&lt;15</p>
+            <p class="text-xs font-bold uppercase tracking-wide mt-1 text-red-100">Years = May Repair</p>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">REPAIR OR REPLACE?</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Roof Repair vs. Full Replacement: How Do You Know Which One You Need?
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Not every damaged roof needs to be torn off and started over. But not every damaged roof can be saved with a patch either. The honest answer depends on the age of the roof, the extent of the damage, and what your insurance adjuster missed during their inspection.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            At Lone Ranger Roofing, we assess the full picture before recommending anything. If repair makes sense, we'll repair it. If replacement is the smarter call long-term, we'll tell you that too — even if it's a harder conversation.
+          </p>
+
+          <!-- Checklist -->
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+            <p class="text-brand-900 font-black text-sm uppercase tracking-wide mb-4">Roof Repair May Be Right If:</p>
+            <div class="space-y-3">
+              {repairSigns.map(sign => (
+                <div class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-600 text-sm leading-snug">{sign}</span>
+                </div>
+              ))}
+            </div>
+            <p class="text-gray-500 text-xs mt-4">Not sure which one you need? Call <a href="tel:+12543001413" class="font-bold text-accent-600">(254) 300-1413</a> for a free inspection. We'll give you a straight answer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="relative py-24 bg-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery3.webp"
+        alt="Lone Ranger Roofing crew at work"
+        class="w-full h-full object-cover opacity-15"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">HOW IT WORKS</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            Same-Day Roof Repair in Temple, Killeen &amp; Central Texas
+          </h2>
+          <p class="text-brand-200 leading-relaxed">
+            Most roof repairs don't need to take days. Lone Ranger Roofing sends a crew that knows what they're doing, with a supervisor on site from start to finish. We identify the damage, fix it properly, and leave the property clean.
+          </p>
+        </div>
+
+        <!-- Right: step accordion -->
+        <div class="space-y-2" id="steps-list">
+          {[
+            { n: '01', title: 'Free Inspection & Honest Assessment', detail: 'We come out, get on the roof, and document everything. We tell you exactly what the damage is and what it actually takes to fix it — no upselling, no pressure.' },
+            { n: '02', title: 'Insurance Claim Support (If Needed)', detail: 'If the damage is storm-related, we help you navigate the insurance claim. We document the full scope, communicate with your adjuster, and fight for everything you\'re owed.' },
+            { n: '03', title: 'Same-Day Repair With On-Site Supervision', detail: 'A dedicated supervisor stays on your property from start to finish. No rotating crews, no unsupervised work. The repair gets done right the first time.' },
+            { n: '04', title: 'Full Cleanup & Warranty Documentation', detail: 'We clean up all debris before we leave and provide documentation of the work completed and the warranty that covers it — both materials and labor.' },
+          ].map((step, i) => (
+            <div class={`step-item rounded-xl border overflow-hidden transition-all duration-200 ${i === 0 ? 'border-gold-400 bg-white/12' : 'border-white/15 bg-white/5'}`} data-step-idx={i}>
+              <button class="step-item-btn w-full flex items-center gap-4 px-5 py-4 text-left" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <div class={`w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-xs transition-colors ${i === 0 ? 'bg-gold-400 text-brand-900' : 'bg-white/15 text-white'}`}>
+                  {step.n}
+                </div>
+                <span class={`font-bold text-sm flex-1 transition-colors ${i === 0 ? 'text-white' : 'text-brand-200'}`}>{step.title}</span>
+                <svg class={`w-4 h-4 flex-shrink-0 transition-transform duration-200 ${i === 0 ? 'text-gold-400 rotate-180' : 'text-white/40'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class={`step-item-body px-5 pb-4 ${i === 0 ? '' : 'hidden'}`}>
+                <p class="text-brand-200 text-sm leading-relaxed pl-[52px]">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY STRIP ===================== -->
+  <div class="grid grid-cols-3 md:grid-cols-6 h-48">
+    {[
+      '/home-gallery1.webp',
+      '/home-gallery2.webp',
+      '/home-gallery3.webp',
+      '/home-gallery4.webp',
+      '/home-gallery5.webp',
+      '/home-gallery6.webp',
+    ].map((src, i) => (
+      <div class="relative overflow-hidden group">
+        <img
+          src={src}
+          alt={`Roof repair project ${i + 1} — Central Texas`}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-brand-900/30 group-hover:bg-brand-900/0 transition-colors duration-300"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ===================== WARRANTY ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Text side -->
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">WARRANTY</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Strong Warranty on Materials AND Labor
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            A lot of roofing companies warranty the materials. The labor warranty is where they go quiet. Lone Ranger Roofing backs both — because a repair that fails six months later because of how it was installed isn't a materials problem. If we fix it, we stand behind it.
+          </p>
+
+          <div class="divide-y divide-gray-100 border border-gray-200 rounded-xl overflow-hidden mb-8" id="warranty-accordion">
+            {[
+              { label: 'Manufacturer Warranty', sub: 'Every material we install carries a product-backed manufacturer warranty. If the shingles or components fail, you\'re covered.' },
+              { label: 'Labor Warranty', sub: 'We warranty the work itself — not just the materials. If the repair fails because of how it was installed, we come back and fix it.' },
+              { label: 'Workmanship Guarantee', sub: 'We stand behind every job we do. If something we repaired isn\'t right, we make it right. No runaround, no fine print.' },
+            ].map((item, i) => (
+              <details class="group warranty-item" open={i === 0}>
+                <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none select-none hover:bg-gray-50 transition-colors">
+                  <span class="font-bold text-brand-900 text-sm">{item.label}</span>
+                  <svg class="w-4 h-4 text-gray-400 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </summary>
+                <p class="px-5 pb-4 text-gray-500 text-sm leading-relaxed">{item.sub}</p>
+              </details>
+            ))}
+          </div>
+
+          <a href="/contact" class="inline-flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white font-black px-7 py-3.5 rounded-lg text-sm uppercase tracking-wide transition-colors">
+            Schedule Free Inspection
+          </a>
+        </div>
+
+        <!-- Photo -->
+        <div class="relative">
+          <img
+            src="/home-gallery4.webp"
+            alt="Quality roof repair — Lone Ranger Roofing"
+            class="w-full h-[500px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute bottom-6 left-6 bg-white rounded-xl px-5 py-4 shadow-lg">
+            <p class="font-black text-brand-900 text-sm">Materials + Labor</p>
+            <p class="text-accent-600 font-bold text-xs mt-0.5">Both Covered. No Loopholes.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INSURANCE CLAIM HELP ===================== -->
+  <section class="relative py-24 bg-white overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Photo side -->
+        <div class="relative">
+          <img
+            src="/home-storm-damage-repair.webp"
+            alt="Storm damage roof inspection — Bell County Texas"
+            class="w-full h-[500px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute top-6 right-6 bg-brand-900 text-white rounded-xl p-5 max-w-[200px] shadow-xl border border-white/10">
+            <svg class="w-6 h-6 text-gold-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+            </svg>
+            <p class="font-black text-sm leading-tight">Adjusters work for the insurer — not for you</p>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">INSURANCE CLAIM HELP</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Insurance Claim Help: The Adjuster Sent By Your Insurance Company Doesn't Work For You
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            When a storm damages your roof and you file a claim, your insurance company sends an adjuster. That person's job is to assess the damage — but they work for the insurance company, not for you. If they miss something, you pay for it out of pocket.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Lone Ranger Roofing knows what adjusters look for and what they overlook. We fight to make sure the full scope of damage gets documented so you don't leave money on the table.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            {[
+              { stat: '90%+', label: 'of claims have missed damage' },
+              { stat: 'We Fight', label: 'for full documentation' },
+              { stat: 'You Win', label: 'more of what you\'re owed' },
+            ].map(item => (
+              <div class="text-center border-t-2 border-accent-600 pt-4">
+                <p class="text-brand-900 font-black text-xl leading-none mb-1">{item.stat}</p>
+                <p class="text-gray-500 text-xs leading-snug">{item.label}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY LONE RANGER ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">WHY LONE RANGER ROOFING</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Why Temple &amp; Killeen Homeowners Trust Lone Ranger for Roof Repair
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            There's no shortage of roofing contractors willing to patch your roof. The question is whether that patch will hold — and whether they'll answer the phone if it doesn't.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/home-gallery5.webp" alt="Lone Ranger Roofing completed repair" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/home-gallery6.webp" alt="Central Texas roofing crew" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whyCards.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-lg">
+          Schedule Free Inspection
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICE AREAS ===================== -->
+  <section class="py-20 bg-white border-t border-gray-100 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Map visual -->
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/map-service-areas.png"
+            alt="Lone Ranger Roofing service areas across Central Texas and DFW"
+            class="w-full h-auto object-contain rounded-2xl"
+          />
+          <div class="absolute top-4 left-4 bg-brand-900 text-white rounded-xl px-4 py-3 shadow-xl">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest">Coverage Area</p>
+            <p class="text-white font-bold text-sm mt-0.5">Bell County · DFW · Burnet</p>
+          </div>
+        </div>
+
+        <!-- City list -->
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">SERVICE AREAS</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Roof Repair Services in Bell County, DFW &amp; Burnet
+          </h2>
+          <p class="text-gray-500 mb-8 leading-relaxed">
+            Lone Ranger Roofing serves homeowners throughout Central Texas and DFW with roof repairs, storm damage restoration, and insurance claim help. Call <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a> to schedule your free inspection.
+          </p>
+
+          <div class="space-y-6">
+            {Object.entries(serviceAreas).map(([region, cities]) => (
+              <div>
+                <p class="text-brand-900 font-black text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span class="w-4 h-px bg-accent-600 inline-block"></span>
+                  {region}
+                </p>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+                  {cities.map(city => (
+                    <div class="flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-accent-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.898-5.096 3.898-8.827a8.25 8.25 0 00-16.5 0c0 3.731 1.954 6.744 3.898 8.827a19.58 19.58 0 002.683 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                      </svg>
+                      {CITY_SLUGS[city] ? (
+                        <a href={`/service-areas/${CITY_SLUGS[city]}`} class="text-gray-600 text-sm hover:text-accent-600 hover:underline transition-colors">
+                          {city === 'surrounding areas' ? city : `${city}, TX`}
+                        </a>
+                      ) : (
+                        <span class="text-gray-500 text-sm">{city === 'surrounding areas' ? city : `${city}, TX`}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">COMMON QUESTIONS</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">
+          Roof Repair FAQs: Temple, Killeen &amp; Central Texas
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden faq-item">
+            <button
+              class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 faq-trigger"
+              aria-expanded="false"
+              data-index={i}
+            >
+              <span class="font-bold text-brand-900 text-sm leading-snug">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-5">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    title="Get a Free Roof Repair Estimate"
+    blurb="We'll inspect the damage, give you a straight answer on what it needs, and handle the insurance claim if there is one."
+    bgImage="/pre-footer-background.webp"
+  />
+
+</MainLayout>
+
+<!-- Step accordion script -->
+<script>
+  document.querySelectorAll('.step-item-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      const allItems = document.querySelectorAll('.step-item');
+      allItems.forEach((item, i) => {
+        const body = item.querySelector('.step-item-body');
+        const circle = item.querySelector('.w-9.h-9');
+        const label = item.querySelector('.font-bold.text-sm');
+        const arrow = item.querySelector('svg');
+        const isTarget = i === idx;
+        item.classList.toggle('border-gold-400', isTarget);
+        item.classList.toggle('bg-white\\/12', isTarget);
+        item.classList.toggle('border-white\\/15', !isTarget);
+        item.classList.toggle('bg-white\\/5', !isTarget);
+        circle?.classList.toggle('bg-gold-400', isTarget);
+        circle?.classList.toggle('text-brand-900', isTarget);
+        circle?.classList.toggle('bg-white\\/15', !isTarget);
+        circle?.classList.toggle('text-white', !isTarget);
+        label?.classList.toggle('text-white', isTarget);
+        label?.classList.toggle('text-brand-200', !isTarget);
+        arrow?.classList.toggle('text-gold-400', isTarget);
+        arrow?.classList.toggle('rotate-180', isTarget);
+        arrow?.classList.toggle('text-white\\/40', !isTarget);
+        body?.classList.toggle('hidden', !isTarget);
+        btn.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+      });
+    });
+  });
+</script>
+
+<!-- FAQ accordion script -->
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = !answer.classList.contains('hidden');
+
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+      document.querySelectorAll('.faq-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+      if (!isOpen) {
+        answer.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know if my roof needs repair or full replacement?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It depends on the age of the roof, the extent of the damage, and what your insurance adjuster documented. If your roof is under 15 years old and the damage is isolated to one area, repair is usually the right call. If it's older, has widespread hail damage, or is leaking in multiple spots, replacement may be smarter long-term." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does homeowner's insurance cover roof repair in Texas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In most cases, yes — if the damage was caused by a covered event like hail, wind, or a storm. Whether your specific claim gets approved depends on your policy, the adjuster's assessment, and how thoroughly the damage was documented." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a roof repair take with Lone Ranger Roofing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most roof repairs are completed in a single day. We send a crew with the right materials, a supervisor on site the entire time, and we don't leave until the work is done and the property is clean." }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of roof damage do you repair?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Hail damage, wind damage, storm damage, missing or cracked shingles, flashing failures, leaks, and any damage from fallen debris. If it can be repaired properly, we'll repair it. If it can't, we'll tell you that too." }
+    },
+    {
+      "@type": "Question",
+      "name": "Will you help me with my insurance claim for roof repair?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The adjuster your insurance company sends works for them — not for you. Lone Ranger Roofing documents the full scope of damage, communicates with your adjuster, and fights to make sure nothing gets missed in the claim." }
+    },
+    {
+      "@type": "Question",
+      "name": "What warranty do you offer on roof repairs?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We warranty both the materials and the labor. If something we repaired fails — whether it's the shingles or how they were installed — we come back and fix it. No fine print." }
+    }
+  ]
+}
+</script>

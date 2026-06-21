@@ -1,0 +1,499 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PreFooterCTA from '../components/PreFooterCTA.astro';
+
+const projects = [
+  // ── Bell County ──────────────────────────────────────────────
+  {
+    id: 1,
+    city: 'Harker Heights',
+    region: 'Bell County',
+    type: 'Roof Replacement',
+    description: "This Harker Heights homeowner had their full roof replaced after storm season took a toll. One crew, one day, done. We installed algae-resistant shingles with a warranty covering both materials and labor. If you're in Harker Heights or Bell County and need an honest roof inspection, call (254) 300-1413.",
+    photos: [
+      '/roof replacement harker heights, tx .webp',
+      '/roof replacement harker heights, tx 2.webp',
+    ],
+  },
+  {
+    id: 2,
+    city: 'Harker Heights',
+    region: 'Bell County',
+    type: 'Roof Replacement',
+    description: "Another completed roof replacement in Harker Heights, TX. Same process every time — dedicated on-site supervisor, full tear-off, clean job site before we leave. Bell County homeowners trust us because we show up and finish what we start. Schedule your free inspection at lonerangerroofing.com.",
+    photos: [
+      '/roof replacement harker heights, tx 3.webp',
+      '/roof replacement harker heights, tx 4.webp',
+    ],
+  },
+  {
+    id: 3,
+    city: 'Temple',
+    region: 'Bell County',
+    type: 'Roof Replacement',
+    description: "Full roof replacement in Temple, TX. This homeowner needed a new roof and didn't want a week-long project with rotating crews. We came in, completed the replacement in one day, and backed it with our material and labor warranty. Temple and Bell County are our home turf — we're here when you need us. (254) 300-1413.",
+    photos: [
+      '/roof replacement temple, tx.webp',
+      '/roof replacement temple, tx 2.webp',
+    ],
+  },
+  {
+    id: 4,
+    city: 'Temple',
+    region: 'Bell County',
+    type: 'Roof Replacement',
+    description: "Another Temple, TX roof replacement in the books. One day, one dedicated crew, on-site supervision from start to finish. If you're a homeowner in Temple or the surrounding Bell County area and your roof is showing its age, give us a call before it becomes a bigger problem. (254) 300-1413.",
+    photos: [
+      '/roof replacement temple, tx 3.webp',
+      '/roof replacement temple, tx 4.webp',
+    ],
+  },
+  {
+    id: 5,
+    city: 'Belton',
+    region: 'Bell County',
+    type: 'Wind Damage Repair',
+    description: "Wind-damaged roof in Belton, TX. Lifted shingles and exposed decking left this home vulnerable — we got in, repaired the damage, and sealed it up properly. If a storm has hit your Belton home and you're not sure what the damage looks like underneath, we'll come take a look. Free inspection, honest answer. (254) 300-1413.",
+    photos: [
+      '/wind damage roof replacement belton, tx.webp',
+      '/wind damage roof replacement belton, tx 2.webp',
+    ],
+  },
+  {
+    id: 6,
+    city: 'Belton',
+    region: 'Bell County',
+    type: 'Hail Damage Repair',
+    description: "Hail damage repair in Belton, TX. This roof took a beating from a Texas hailstorm and needed more than a patch job. We assessed the full damage, handled the repair properly, and made sure nothing was missed. Insurance claim help available if needed — the adjuster works for the insurance company, not for you. We make sure you don't leave money on the table. (254) 300-1413.",
+    photos: [
+      '/hail damage roof replacement bulton, tx.webp',
+      '/hail damage roof replacement belton, tx 2.webp',
+    ],
+  },
+  {
+    id: 7,
+    city: 'Nolanville',
+    region: 'Bell County',
+    type: 'Hail Damage Repair',
+    description: "Hail damage repair in Nolanville, TX. Hail in Central Texas can do more damage than it looks from the ground — granule loss, cracked shingles, and compromised decking don't always show up clearly until it's raining inside. We inspected and repaired this Nolanville roof the right way. Call us for a free inspection if your neighborhood took a hit. (254) 300-1413.",
+    photos: [
+      '/hail damage roof replacement nolanville tx.webp',
+      '/hail damage roof replacement nolanville, tx 2.webp',
+    ],
+  },
+  {
+    id: 8,
+    city: 'Killeen',
+    region: 'Bell County',
+    type: 'Roof Replacement',
+    description: "Full roof replacement in Killeen, TX. This Killeen homeowner needed a complete tear-off and reinstall — new shingles, proper ventilation, and a clean finish. One day. One crew. Strong warranty on materials and labor. Killeen and the Fort Hood area are part of our regular service area. (254) 300-1413.",
+    photos: [
+      '/roof replacement killeen, tx.webp',
+      '/roof replacement killeen, tx 2.webp',
+    ],
+  },
+  {
+    id: 9,
+    city: 'Killeen',
+    region: 'Bell County',
+    type: 'Roof Replacement',
+    description: "Another completed roof replacement in Killeen, TX. We work with a lot of military families in the Killeen area who need reliable work done fast and done right. This job was no different — finished in a single day with full on-site supervision. Ready for a new roof? Call (254) 300-1413.",
+    photos: [
+      '/roof replacement killeen, tx 3.webp',
+      '/roof replacement killeen, tx 4.webp',
+    ],
+  },
+  {
+    id: 10,
+    city: 'Salado',
+    region: 'Bell County',
+    type: 'Roof Replacement',
+    description: "Roof replacement in Salado, TX. Salado homes have character — and they deserve a roof that protects that investment. We replaced this roof in one day with the same process we use on every job: one crew, dedicated supervisor, and a warranty that actually means something. (254) 300-1413.",
+    photos: [
+      '/roof replacement salado, tx.webp',
+      '/roof replacement salado, tx 2.webp',
+      '/roof replacement salado, tx 3.webp',
+    ],
+  },
+  {
+    id: 11,
+    city: 'Salado',
+    region: 'Bell County',
+    type: 'Roof Replacement',
+    description: "Another Salado, TX roof replacement completed. Full tear-off, new shingles, proper ventilation, job site cleaned before we leave. If you're a Salado homeowner and your roof is 15 years or older, it's worth getting eyes on it before the next storm season. Free inspection at (254) 300-1413.",
+    photos: [
+      '/roof replacement salado, tx 4.webp',
+      '/roof replacement salado, tx 5.webp',
+    ],
+  },
+  // ── DFW ─────────────────────────────────────────────────────
+  {
+    id: 12,
+    city: 'Frisco',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Roof replacement in Frisco, TX. DFW homeowners have options when it comes to roofers — and a lot of those options are storm chasers who'll be gone before you realize something was missed. We do it right the first time, with a warranty on both materials and labor. Serving Frisco and the greater DFW area. Call (254) 300-1413.",
+    photos: [
+      '/roof replacement frisco, tx .webp',
+      '/roof replacement frisco, tx 2.webp',
+      '/roof replacement frisco, tx 3.webp',
+    ],
+  },
+  {
+    id: 13,
+    city: 'Richardson',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Full roof replacement in Richardson, TX. This homeowner got a new roof in a single day without the week-long disruption most contractors put you through. If you're in Richardson or the DFW area and your roof needs replacing, we'll give you a straight answer on what it actually takes. (254) 300-1413.",
+    photos: [
+      '/roof replacement richardson, tx.webp',
+      '/roof replacement richardson, tx 2.webp',
+    ],
+  },
+  {
+    id: 14,
+    city: 'Arlington',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Roof replacement in Arlington, TX. One of our DFW-area jobs — same one-day process, same dedicated on-site supervisor, same warranty. Arlington homeowners deal with serious Texas weather and deserve a roof that's installed properly, not quickly. Call us at (254) 300-1413 to schedule your free inspection.",
+    photos: [
+      '/roof replacement arlington, tx.webp',
+      '/roof replacement arlington, tx 2.webp',
+    ],
+  },
+  {
+    id: 15,
+    city: 'Plano',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Full roof replacement in Plano, TX. We completed this job in a single day for a Plano homeowner who'd already dealt with a contractor that dragged things out for weeks. One crew. One supervisor on site. Done before dinner. Serving Plano and the DFW metro. (254) 300-1413.",
+    photos: [
+      '/roof replacement plano, tx.webp',
+      '/roof replacement plano, tx 2.webp',
+    ],
+  },
+  {
+    id: 16,
+    city: 'Garland',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Roof replacement in Garland, TX. This Garland homeowner needed a full replacement and wanted it done without the runaround. We showed up, finished the job in one day, and left the property clean. Strong warranty on materials and labor. DFW homeowners, we're here. (254) 300-1413.",
+    photos: [
+      '/roof replacement garland, tx.webp',
+      '/roof replacement garland, tx2.webp',
+    ],
+  },
+  {
+    id: 17,
+    city: 'Irving',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Full roof replacement in Irving, TX. Every job in DFW gets the same treatment as our Central Texas work — dedicated supervisor, one-day completion, and a real warranty. If you're in Irving and your roof is due for replacement or you've had recent storm damage, call (254) 300-1413 for a free inspection.",
+    photos: [
+      '/roof replacement irving, tx.webp',
+      '/roof replacement irving, tx 2.webp',
+    ],
+  },
+  {
+    id: 18,
+    city: 'Carrollton',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Roof replacement in Carrollton, TX. New shingles, proper ventilation, full tear-off — completed in one day. Carrollton is part of our regular DFW service area. If your roof is aging or you're dealing with damage from recent weather, we'll come take a look and give you a straight answer. (254) 300-1413.",
+    photos: [
+      '/roof replacement carrollton, tx.webp',
+      '/roof replacement carrollton, tx 2.webp',
+      '/roof replacement carrollton, tx 3.webp',
+    ],
+  },
+  {
+    id: 19,
+    city: 'Southlake',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Full roof replacement in Southlake, TX. Southlake homeowners invest in their properties — your roof should reflect that. We installed quality shingles with a full material and labor warranty, completed in one day with dedicated on-site supervision. Serving Southlake and surrounding DFW communities. (254) 300-1413.",
+    photos: [
+      '/roof replacement southlake, tx.webp',
+      '/roof replacement southlake, tx 2.webp',
+    ],
+  },
+  {
+    id: 20,
+    city: 'Euless',
+    region: 'DFW',
+    type: 'Storm Damage Repair',
+    description: "Storm damage repair in Euless, TX. DFW storms can be sudden and brutal. This Euless homeowner had storm damage that needed proper repair, not a quick patch that fails in the next round of weather. We fixed it right. If your Euless home took storm damage, call us before it gets worse. (254) 300-1413.",
+    photos: [
+      '/roof replacement euless, tx.webp',
+      '/roof replacement euless, tx 2.webp',
+    ],
+  },
+  {
+    id: 21,
+    city: 'Waxahachie',
+    region: 'DFW',
+    type: 'Roof Replacement',
+    description: "Roof replacement in Waxahachie, TX. One of our southern DFW-area jobs. Full tear-off, new shingles, one-day completion with a supervisor on site the entire time. Waxahachie homeowners, we cover your area. Schedule a free inspection at lonerangerroofing.com or call (254) 300-1413.",
+    photos: [
+      '/roof replacement waxahachie, tx.webp',
+      '/roof replacement waxahachie, tx 2.webp',
+    ],
+  },
+  // ── Burnet County ────────────────────────────────────────────
+  {
+    id: 22,
+    city: 'Burnet',
+    region: 'Burnet County',
+    type: 'Roof Replacement',
+    description: "Roof replacement in Burnet, TX. Burnet is one of our home markets — we know the area and we know the homeowners here want the job done right, not done fast and forgotten. Full replacement, one day, warranty on materials and labor. Call us at (254) 300-1413 or visit lonerangerroofing.com.",
+    photos: [
+      '/roof replacement burnet, tx.webp',
+      '/roof replacement burnet, tx 2.webp',
+      '/roof replacement burnet, tx 3.webp',
+    ],
+  },
+];
+
+---
+
+<MainLayout
+  title="Roofing Project Gallery | Lone Ranger Roofing — Temple, Killeen & DFW"
+  description="Browse completed roof replacements and storm damage repairs by Lone Ranger Roofing across Bell County, DFW, and Burnet County. Real projects. Real results."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery1.webp"
+        alt="Completed roofing projects by Lone Ranger Roofing"
+        class="w-full h-full object-cover opacity-20"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/90 to-brand-900/60"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 py-32 text-center">
+      <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Our Work</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+        Roofs We've Replaced Across<br class="hidden sm:block" /> Central Texas and DFW
+      </h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Every one of these is a job we walked off of knowing it was done right. Take a look around — then call us about yours.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-7xl">
+
+      <!-- Project grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start" id="gallery-grid">
+        {projects.map(project => (
+          <div
+            class="gallery-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group"
+            data-region={project.region}
+          >
+            <!-- Photo layout: 2 photos side by side -->
+            {project.photos.length === 2 && (
+              <div class="flex gap-0.5 h-52">
+                {project.photos.map((photo, i) => (
+                  <button
+                    class="lightbox-trigger flex-1 overflow-hidden"
+                    data-project={project.id}
+                    data-index={i}
+                    aria-label={`View photo ${i + 1} of ${project.city} project`}
+                  >
+                    <img
+                      src={photo}
+                      alt={`${project.type} in ${project.city}, TX`}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+            <!-- Photo layout: 3 photos — main left, 2 stacked right -->
+            {project.photos.length === 3 && (
+              <div class="flex gap-0.5 h-56">
+                <button
+                  class="lightbox-trigger w-1/2 overflow-hidden flex-shrink-0"
+                  data-project={project.id}
+                  data-index={0}
+                  aria-label={`View main photo of ${project.city} project`}
+                >
+                  <img
+                    src={project.photos[0]}
+                    alt={`${project.type} in ${project.city}, TX`}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </button>
+                <div class="w-1/2 flex flex-col gap-0.5">
+                  <button
+                    class="lightbox-trigger flex-1 overflow-hidden"
+                    data-project={project.id}
+                    data-index={1}
+                    aria-label={`View photo 2 of ${project.city} project`}
+                  >
+                    <img
+                      src={project.photos[1]}
+                      alt={`${project.type} in ${project.city}, TX — photo 2`}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    class="lightbox-trigger flex-1 overflow-hidden"
+                    data-project={project.id}
+                    data-index={2}
+                    aria-label={`View photo 3 of ${project.city} project`}
+                  >
+                    <img
+                      src={project.photos[2]}
+                      alt={`${project.type} in ${project.city}, TX — photo 3`}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </button>
+                </div>
+              </div>
+            )}
+
+            <!-- Card footer -->
+            <div class="px-5 py-5">
+              <p class="font-black text-brand-900 text-sm">{project.city}, TX</p>
+              <p class="text-accent-600 text-xs font-bold uppercase tracking-wide mt-0.5 mb-3">{project.type}</p>
+              <p class="text-gray-600 text-sm leading-relaxed">{project.description}</p>
+            </div>
+          </div>
+        ))}
+          <!-- Where We Work card -->
+          <div class="sm:col-span-2 bg-brand-900 rounded-2xl p-8 min-h-[320px]">
+            <div class="w-8 h-0.5 bg-gold-400 mb-5"></div>
+            <p class="text-gold-400 font-bold text-xs uppercase tracking-widest mb-6">Where We Work</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-1.5">
+              {[
+                { city: 'Temple',                href: '/service-areas/temple' },
+                { city: 'Killeen',               href: '/service-areas/killeen' },
+                { city: 'Belton',                href: '/service-areas/belton' },
+                { city: 'Salado',                href: '/service-areas/salado' },
+                { city: 'Georgetown',            href: '/service-areas/georgetown' },
+                { city: 'Burnet',                href: '/service-areas/burnet' },
+                { city: 'Harker Heights',        href: '/service-areas/harker-heights' },
+                { city: 'Nolanville',            href: '/service-areas/nolanville' },
+                { city: 'Copperas Cove',         href: '/service-areas/copperas-cove' },
+                { city: 'Waco',                  href: '/service-areas/waco' },
+                { city: 'Gatesville',            href: '/service-areas/gatesville' },
+                { city: 'Little River Academy',  href: '/service-areas/little-river-academy' },
+                { city: 'Moody',                 href: '/service-areas/moody' },
+                { city: 'Troy',                  href: '/service-areas/troy' },
+                { city: 'DFW',                   href: '/service-areas/dfw' },
+              ].map(({ city, href }) => (
+                <a href={href} class="flex items-center gap-1.5 group">
+                  <span class="text-gold-400 text-xs flex-shrink-0">→</span>
+                  <span class="text-white/75 text-sm group-hover:text-white transition-colors">{city}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <PreFooterCTA
+    overline="READY FOR A NEW ROOF?"
+    title="Your Home Could Be Next"
+    blurb="Storm chasers show up after a hailstorm and disappear once the check clears. We're still in Bell County long after that. Call us and find out the difference."
+    bgImage="/home-gallery1.webp"
+  />
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div id="lightbox" class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/90" role="dialog" aria-modal="true">
+    <button id="lb-close" class="absolute top-4 right-4 text-white/70 hover:text-white p-2" aria-label="Close">
+      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <button id="lb-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-2" aria-label="Previous photo">
+      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <button id="lb-next" class="absolute right-12 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-2" aria-label="Next photo">
+      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+    <div class="max-w-4xl w-full mx-8">
+      <img id="lb-img" src="" alt="" class="w-full max-h-[80vh] object-contain rounded-xl" />
+      <p id="lb-caption" class="text-white/70 text-sm text-center mt-3"></p>
+    </div>
+  </div>
+
+</MainLayout>
+
+<!-- Project data for JS -->
+<script define:vars={{ projects }}>
+  // ── Lightbox ────────────────────────────────────────────────
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  const lbClose = document.getElementById('lb-close');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+
+  let currentProjectPhotos = [];
+  let currentIndex = 0;
+
+  function openLightbox(projectId, index) {
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
+    currentProjectPhotos = project.photos;
+    currentIndex = index;
+    showPhoto();
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function showPhoto() {
+    lbImg.src = currentProjectPhotos[currentIndex];
+    lbImg.alt = `Project photo ${currentIndex + 1}`;
+    lbCaption.textContent = `${currentIndex + 1} / ${currentProjectPhotos.length}`;
+    lbPrev.style.opacity = currentIndex === 0 ? '0.3' : '1';
+    lbNext.style.opacity = currentIndex === currentProjectPhotos.length - 1 ? '0.3' : '1';
+  }
+
+  document.querySelectorAll('.lightbox-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      openLightbox(Number(btn.dataset.project), Number(btn.dataset.index));
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  lbPrev.addEventListener('click', () => {
+    if (currentIndex > 0) { currentIndex--; showPhoto(); }
+  });
+  lbNext.addEventListener('click', () => {
+    if (currentIndex < currentProjectPhotos.length - 1) { currentIndex++; showPhoto(); }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft' && currentIndex > 0) { currentIndex--; showPhoto(); }
+    if (e.key === 'ArrowRight' && currentIndex < currentProjectPhotos.length - 1) { currentIndex++; showPhoto(); }
+  });
+</script>

@@ -1,0 +1,50 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const services = [
+  { title: 'TPO Roofing', desc: 'Durable, energy-efficient thermoplastic roofing for flat and low-slope commercial buildings.', href: '/commercial-roofing/tpo-roofing', img: '/gallery1.webp' },
+  { title: 'Commercial Metal Roofing', desc: 'Long-lasting metal systems built for Texas weather and commercial loads.', href: '/commercial-roofing/commercial-metal-roofing', img: '/gallery5.webp' },
+  { title: 'Commercial Shingle Roofing', desc: 'High-grade asphalt shingles for commercial properties that demand curb appeal.', href: '/commercial-roofing/commercial-shingle-roofing', img: '/gallery3.webp' },
+];
+---
+
+<MainLayout
+  darkHero={true}
+  title="Commercial Roofing in Central Texas | Lone Ranger Roofing"
+  description="Lone Ranger Roofing provides commercial roofing services across Central Texas and DFW — TPO, metal, and shingle systems. Veteran-owned. Call (254) 300-1413."
+>
+  <section class="bg-brand-900 py-20 text-white text-center">
+    <div class="container mx-auto px-4">
+      <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">COMMERCIAL ROOFING</p>
+      <h1 class="text-4xl sm:text-5xl font-black mb-4">Built for Business</h1>
+      <p class="text-brand-200 max-w-2xl mx-auto text-lg">
+        Commercial roofing done right — on schedule and on budget. Lone Ranger Roofing serves businesses across Central Texas and DFW with systems built to last.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.map(s => (
+          <a href={s.href} class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100">
+            <div class="aspect-[16/9] overflow-hidden">
+              <img src={s.img} alt={s.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <div class="p-6">
+              <h2 class="text-lg font-black text-brand-900 mb-2 group-hover:text-accent-600 transition-colors">{s.title}</h2>
+              <p class="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    title="Get a Free Commercial Roofing Estimate"
+    blurb="We work with business owners and property managers across Central Texas and DFW. Call (254) 300-1413 or fill out the form and we'll get back to you same day."
+    bgImage="/header.webp"
+  />
+</MainLayout>

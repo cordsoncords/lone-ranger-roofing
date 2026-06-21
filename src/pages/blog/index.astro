@@ -1,0 +1,73 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<MainLayout
+  darkHero={true}
+  title="Roofing Blog | Lone Ranger Roofing | Central Texas Tips & News"
+  description="Roofing tips, storm guides, and local news from Lone Ranger Roofing. Serving Killeen, Temple, Belton, Salado, Georgetown, Burnet, and DFW."
+>
+  <!-- Hero -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 text-white overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/about-hero.webp"
+        alt="Lone Ranger Roofing crew on a Central Texas roof"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">THE LONE RANGER BLOG</p>
+        <h1 class="text-4xl sm:text-5xl font-black mb-4">Roofing Stuff Nobody Explains Right</h1>
+        <p class="text-gray-200 max-w-xl text-lg leading-relaxed">
+          We've been on thousands of Central Texas roofs. Here's what we tell homeowners when they ask the questions everyone else glosses over.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Posts grid -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      {posts.length === 0 ? (
+        <p class="text-center text-gray-500">No posts yet — check back soon.</p>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map(post => (
+            <a href={`/blog/${post.slug}`}
+               class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100 flex flex-col">
+              <div class="p-6 flex flex-col flex-1">
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <p class="text-accent-600 text-xs font-bold uppercase tracking-widest mb-2">
+                    {post.data.tags[0]}
+                  </p>
+                )}
+                <h2 class="text-lg font-black text-brand-900 leading-snug mb-2 group-hover:text-accent-600 transition-colors">
+                  {post.data.title}
+                </h2>
+                <p class="text-gray-500 text-sm leading-relaxed flex-1 mb-4">
+                  {post.data.description}
+                </p>
+                <div class="flex items-center justify-between text-xs text-gray-400 border-t border-gray-100 pt-4 mt-auto">
+                  <span>{post.data.author}</span>
+                  <span>{formatDate(post.data.date)}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</MainLayout>

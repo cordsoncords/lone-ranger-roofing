@@ -79,7 +79,7 @@ export const MultiStepForm: React.FC = () => {
       {/* Header - Simplified as requested */}
       <div className="bg-brand-50 p-6 border-b border-gray-100 text-center">
         <h3 className="text-2xl font-black text-brand-900 tracking-tight">
-          Get Your Free Estimate
+          Schedule Free Inspection
         </h3>
       </div>
 
@@ -292,8 +292,9 @@ export const MultiStepForm: React.FC = () => {
               Get My Free Quote
             </Button>
             
-            <p className="text-[10px] text-gray-400 text-center leading-tight px-4">
-              By clicking "Get My Free Quote", you consent to receive texts from Lone Ranger Roofing regarding your estimate. 
+            <p className="text-[10px] text-gray-400 text-center leading-snug px-2">
+              By submitting this form, you authorize Lone Ranger Roofing to contact you via text message regarding your estimate request and project needs. We will never share your personal information with third parties for marketing purposes. Messaging frequency varies based on your project needs. You can opt out at any time by replying STOP. Message and data rates may apply. Consent is not a condition of purchase.{' '}
+              <a href="/terms" className="underline hover:text-gray-600">Terms &amp; Conditions</a> | <a href="/privacy-policy" className="underline hover:text-gray-600">Privacy Policy</a>
             </p>
 
             <div className="flex justify-center pt-2">

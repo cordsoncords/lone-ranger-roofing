@@ -1,0 +1,134 @@
+---
+interface Props {
+  title: string;
+  blurb: string;
+  bgImage?: string;
+  overline?: string;
+}
+
+const { title, blurb, bgImage = '/header.webp', overline } = Astro.props;
+
+const inputClass = "w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent";
+const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2";
+---
+
+<section
+  class="relative py-16 md:py-24 overflow-hidden"
+  style={`background-image: url('${bgImage}'); background-size: cover; background-position: center;`}
+>
+  <div class="absolute inset-0 bg-brand-900/70"></div>
+
+  <div class="relative z-10 container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+      <!-- Left: title, blurb, map -->
+      <div class="lg:pt-4 text-center lg:text-left">
+        {overline && (
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">{overline}</p>
+        )}
+        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white uppercase leading-tight mb-6">
+          {title}
+        </h2>
+        <p class="text-gray-200 text-lg leading-relaxed mb-8">
+          {blurb}
+        </p>
+
+        <!-- Map — square -->
+        <div class="rounded-xl overflow-hidden border border-white/20 shadow-xl mx-auto lg:mx-0" style="aspect-ratio:1/1; width:100%; max-width:420px;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3416.419390991688!2d-97.33402522289269!3d31.098073574410073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x279f7b5cd7e77991%3A0x53ba1fd7bdc7fcc2!2sLone%20Ranger%20Roofing%2C%20LLC!5e0!3m2!1sen!2sus!4v1778701764986!5m2!1sen!2sus"
+            width="100%"
+            height="100%"
+            style="border:0; display:block; height:100%; min-height:360px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lone Ranger Roofing service area map"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Right: contact form — pushed down slightly -->
+      <div class="lg:mt-16">
+        <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
+          <form
+            action="https://formspree.io/f/mlgyrabo"
+            method="POST"
+            class="space-y-5"
+          >
+            <!-- Name row -->
+            <div>
+              <label class={labelClass}>
+                Name <span class="text-accent-600">(required)</span>
+              </label>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <input type="text" name="first_name" placeholder="First Name" required class={inputClass} />
+                  <p class="text-[10px] text-gray-400 mt-1">First Name (required)</p>
+                </div>
+                <div>
+                  <input type="text" name="last_name" placeholder="Last Name" required class={inputClass} />
+                  <p class="text-[10px] text-gray-400 mt-1">Last Name (required)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label class={labelClass}>Phone <span class="text-accent-600">(required)</span></label>
+              <input type="tel" name="phone" placeholder="(___) ___-____" required class={inputClass} />
+            </div>
+
+            <p class="text-[10px] text-gray-400 leading-snug">
+              By submitting this form, you authorize Lone Ranger Roofing to contact you via text message regarding your estimate request and project needs. We will never share your personal information with third parties for marketing purposes. Messaging frequency varies based on your project needs. You can opt out at any time by replying STOP. Message and data rates may apply. Consent is not a condition of purchase.{' '}
+              <a href="/terms" class="underline hover:text-gray-600">Terms &amp; Conditions</a> | <a href="/privacy-policy" class="underline hover:text-gray-600">Privacy Policy</a>
+            </p>
+
+            <!-- Email -->
+            <div>
+              <label class={labelClass}>Email <span class="text-accent-600">(required)</span></label>
+              <input type="email" name="email" placeholder="you@email.com" required class={inputClass} />
+            </div>
+
+            <!-- Address -->
+            <div>
+              <label class={labelClass}>Address <span class="text-accent-600">(required)</span></label>
+              <input type="text" name="address" placeholder="123 Main St, Killeen, TX" required class={inputClass} />
+            </div>
+
+            <!-- Service needed -->
+            <div>
+              <label class={labelClass}>Service Needed <span class="text-accent-600">(required)</span></label>
+              <select name="service" required class={inputClass + " bg-white"}>
+                <option value="" disabled selected>Select a service…</option>
+                <option value="Roof Repair">Roof Repair</option>
+                <option value="Roof Replacement">Roof Replacement</option>
+                <option value="Not Sure">Not Sure</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label class={labelClass}>Message <span class="text-accent-600">(required)</span></label>
+              <textarea
+                name="message"
+                rows="3"
+                placeholder="Tell us a little more about your situation…"
+                class={inputClass + " resize-none"}
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="w-full bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-3.5 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-md"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

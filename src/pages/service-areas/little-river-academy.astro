@@ -1,0 +1,204 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const city = 'Little River-Academy';
+const county = 'Bell County';
+
+const services = [
+  { title: 'Roof Replacement', href: '/residential-roofing/roof-replacement', body: 'Full roof replacement for Little River-Academy homes. IKO architectural shingles or metal roofing. Most residential roofs completed in one day.' },
+  { title: 'Storm Damage Repair', href: '/residential-roofing/storm-damage-repair', body: 'Hail and wind damage documentation and insurance claim support for Little River-Academy homeowners.' },
+  { title: 'Roof Inspection', href: '/residential-roofing/roof-inspection', body: 'Free roof inspections for Little River-Academy homes — before buying, after a storm, or any time you want clarity.' },
+  { title: 'Roof Tune Up', href: '/residential-roofing/roof-tune-up', body: 'Preventative maintenance for Little River-Academy homes: minor repairs, sealant, debris removal, and gutter check.' },
+  { title: 'Metal Roofing', href: '/residential-roofing/metal-roofing', body: 'Metal roofing for Little River-Academy properties. 40+ year lifespan, excellent hail resistance.' },
+  { title: 'Gutter Installation', href: '/residential-roofing/gutter-installation', body: 'Seamless gutter installation and repair for Little River-Academy homes. Protect your foundation and landscaping.' },
+];
+
+const faqs = [
+  {
+    q: 'Does Lone Ranger Roofing serve Little River-Academy, TX?',
+    a: "Yes. Little River-Academy is in our Bell County service area. Lone Ranger Roofing serves homeowners in Little River-Academy with roof replacements, storm damage repair, and free inspections. We're Bell County based and serve smaller communities across the county year-round.",
+  },
+  {
+    q: 'How quickly does Lone Ranger Roofing respond to roofing emergencies in Little River-Academy?',
+    a: "Lone Ranger Roofing responds to roofing emergencies in Little River-Academy quickly since we're based in Bell County. Call (254) 300-1413 for active leaks or storm damage. We'll get to your property to assess and tarp if needed.",
+  },
+  {
+    q: 'Does Lone Ranger Roofing assist Little River-Academy homeowners with storm damage claims?',
+    a: "Yes. After hail or wind damage in Little River-Academy, Lone Ranger Roofing documents all roof damage and works with your insurance company to ensure the full scope of the claim is covered. Many homeowners in smaller Bell County communities qualify for full replacements under storm damage claims.",
+  },
+  {
+    q: 'What does a roof replacement cost in Little River-Academy?',
+    a: "Residential roof replacements in Little River-Academy typically range from $8,000–$18,000+ depending on roof size, pitch, and material. Lone Ranger Roofing provides free estimates without pressure.",
+  },
+  {
+    q: 'How long does a roof replacement take in Little River-Academy?',
+    a: "Most residential roof replacements by Lone Ranger Roofing in Little River-Academy are completed in one day. One dedicated crew, start to finish.",
+  },
+  {
+    q: 'Is Lone Ranger Roofing insured in Texas?',
+    a: "Yes. Lone Ranger Roofing is insured in Texas with general liability and workers' comp coverage on every job. Ask for proof before any contractor starts on your home.",
+  },
+];
+
+const nearbyAreas = ['Temple', 'Belton', 'Killeen', 'Troy', 'Bartlett', 'Salado'];
+---
+
+<MainLayout
+  title={`Roofing in ${city}, TX | Lone Ranger Roofing | (254) 300-1413`}
+  description={`Lone Ranger Roofing serves ${city}, TX with roof replacements, storm damage repair, and free inspections. Veteran-owned, Bell County based. Call (254) 300-1413.`}
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img src="/about-hero.webp" alt={`Roofing in ${city}, TX`} class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/40"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Service Area — {county}</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">Roofing in {city}, TX</h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">Veteran-owned Bell County roofing contractor. One-day completions, full warranties, honest service for smaller communities.</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">Get a Free Estimate</a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">Call (254) 300-1413</a>
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-10">
+          {['Same-Day Response', 'One-Day Completions', 'Military Family Friendly'].map(t => (
+            <div class="flex items-center gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">YOUR LOCAL ROOFER</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">Smaller Communities in Bell County Deserve the Same Quality as the Bigger Cities.</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Little River-Academy is a small Bell County community where finding a reliable roofing contractor can be harder than it should be. Many contractors focus exclusively on Killeen and Temple and skip smaller communities. Lone Ranger Roofing doesn't.</p>
+          <p class="text-gray-600 leading-relaxed mb-4">We're Bell County based and veteran-owned. We serve Little River-Academy homeowners with the same standard we bring to every market: one crew, one day, warranty on both materials and labor, and a real person to call if anything comes up after the job is done.</p>
+          <p class="text-gray-600 leading-relaxed mb-6">Call <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a> for a free inspection — no cost, no pressure.</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-6 py-3 rounded-lg text-sm uppercase tracking-wide transition-colors text-center">Free Estimate</a>
+            <a href="tel:+12543001413" class="border border-brand-900 text-brand-900 hover:bg-brand-900 hover:text-white font-bold px-6 py-3 rounded-lg text-sm uppercase tracking-wide transition-colors text-center">(254) 300-1413</a>
+          </div>
+        </div>
+        <div class="relative">
+          <img
+            src="/waco2.webp"
+            alt="Roofing in Little River-Academy, TX — Lone Ranger Roofing"
+            class="w-full h-[480px] object-cover object-top rounded-2xl shadow-xl"
+          />        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section class="bg-gray-50">
+    <div class="relative py-16 overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="/home-gallery1.webp" alt={`Roofing services in ${city}, TX`} class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-brand-900/80"></div>
+      </div>
+      <div class="relative z-10 container mx-auto px-4 max-w-6xl text-center">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">SERVICES IN LITTLE RIVER-ACADEMY</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">Roofing Services Available in {city}, TX</h2>
+        <p class="text-gray-200 max-w-2xl mx-auto">From full roof replacements to tune-ups and storm damage repair, Lone Ranger Roofing handles it all for {city} homeowners and commercial property owners.</p>
+      </div>
+    </div>
+    <div class="py-14 container mx-auto px-4 max-w-6xl">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+        {services.map(svc => (
+          <a href={svc.href} class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:border-accent-600/30 hover:shadow-md transition-all flex flex-col gap-3 group">
+            <h3 class="font-black text-brand-900 text-lg group-hover:text-accent-600 transition-colors">{svc.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed flex-1">{svc.body}</p>
+            <span class="text-accent-600 font-bold text-xs uppercase tracking-wide flex items-center gap-1">
+              Learn More
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="bg-brand-900 rounded-2xl px-8 py-8 text-center">
+        <svg class="w-6 h-6 text-gold-400 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        <h3 class="font-black text-white text-base mb-2">Also Serving the Areas Around {city}</h3>
+        <p class="text-brand-200 text-sm leading-relaxed mb-4 max-w-xl mx-auto">
+          We also serve the areas around {city} — {nearbyAreas.join(', ')}. If you're just outside {city}, we've got you covered.
+        </p>
+        <div class="flex flex-wrap gap-2 justify-center">
+          {nearbyAreas.map(area => (
+            <span class="border border-white/30 text-white text-xs font-semibold px-3 py-1.5 rounded-full hover:border-white/60 transition-colors">{area}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">COMMON QUESTIONS</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">Roofing in {city}, TX — Frequently Asked Questions</h2>
+      </div>
+      <div class="space-y-3">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden faq-item">
+            <button class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 faq-trigger" aria-expanded="false">
+              <span class="font-bold text-brand-900 text-sm leading-snug">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-5">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    overline="SERVING LITTLE RIVER-ACADEMY & BELL COUNTY"
+    title={`Get a Free Roofing Estimate in ${city}, TX`}
+    blurb="Lone Ranger Roofing serves Little River-Academy with one-day completions, full warranties, and honest assessments. Bell County based, veteran-owned."
+    bgImage="/pre-footer-background.webp"
+  />
+
+</MainLayout>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = !answer?.classList.contains('hidden');
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+      document.querySelectorAll('.faq-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      if (!isOpen) {
+        answer?.classList.remove('hidden');
+        icon?.classList.add('rotate-180');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

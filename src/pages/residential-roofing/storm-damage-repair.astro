@@ -1,0 +1,581 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const faqs = [
+  {
+    q: 'What should I do immediately after a storm damages my roof?',
+    a: "Stay safe first — don't get on the roof yourself. Call Lone Ranger Roofing to schedule a free storm damage inspection as soon as possible. The faster the damage is documented, the stronger your insurance claim will be. Lone Ranger Roofing serves homeowners across Temple, Killeen, Belton, and the greater Central Texas and DFW area — and if there's active water intrusion, we can emergency tarp the affected area to prevent further interior damage while the claim is processed.",
+  },
+  {
+    q: "Will my homeowner's insurance cover storm damage in Texas?",
+    a: "Most standard homeowner's insurance policies in Texas cover storm damage caused by hail, wind, and rain. The challenge is that insurance adjusters sometimes classify storm damage as pre-existing wear to reduce the payout. Lone Ranger Roofing documents everything thoroughly — serving homeowners in Temple, Killeen, Harker Heights, and throughout Central Texas — so your claim accurately reflects what the storm actually did to your roof, not what the insurance company wanted to find.",
+  },
+  {
+    q: 'How long do I have to file an insurance claim after a storm?',
+    a: "Most Texas homeowner's insurance policies require storm damage claims to be filed within one year of the storm event, but some policies have shorter windows. Lone Ranger Roofing advises homeowners across Central Texas and DFW not to assume they have time — call after any significant weather event so the damage can be inspected and documented while it's fresh. Waiting can cost you the ability to file at all.",
+  },
+  {
+    q: 'Do I need to be home when Lone Ranger Roofing inspects my roof?',
+    a: "Homeowners don't need to be on the roof during a Lone Ranger Roofing storm damage inspection, but it helps to be available immediately after so we can walk you through the findings in person. If you can't be home, our team will document everything and go over it with you by phone or at a time that works — whether you're in Temple, Killeen, or anywhere across the DFW metro.",
+  },
+  {
+    q: 'What if my insurance adjuster says the damage is minimal?',
+    a: "That happens more than it should. Adjusters working for insurance companies are trained to minimize claims. If the assessment seems inaccurate, homeowners have the right to dispute it. Lone Ranger Roofing can meet the adjuster on-site, present independent documentation of the damage, and advocate for the full scope of what the storm actually caused — across Central Texas, Bell County, and DFW.",
+  },
+  {
+    q: 'Do you handle both the insurance claim and the actual repair?',
+    a: "Yes — that's the whole point. Lone Ranger Roofing doesn't just fix roofs and hand you a bill. We walk homeowners in Temple, Killeen, Belton, and throughout Central Texas through the entire storm damage claim process: inspecting the damage, documenting it properly, communicating with the insurance company, and completing the repair or replacement once the claim is approved. One call handles all of it.",
+  },
+];
+
+const damageTypes = [
+  {
+    title: 'Hail Damage',
+    body: 'Hail can destroy a roof without it being obvious from the ground. Cracked shingles, dented flashing, and granule loss all add up. We document every hit.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>`,
+  },
+  {
+    title: 'Wind Damage',
+    body: 'High winds lift shingles, tear off ridge caps, and create entry points for water. What looks minor from the street can be a serious leak waiting to happen.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33"/></svg>`,
+  },
+  {
+    title: 'Heavy Rain & Leaks',
+    body: 'Water finds every weakness. If your roof has been compromised, heavy rain will expose it. We find the source and fix it — not just the symptom.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
+  },
+  {
+    title: 'Storm Debris Impact',
+    body: 'Falling branches and flying debris can punch through shingles or crack decking. We assess the full impact, not just the visible damage.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>`,
+  },
+  {
+    title: 'Emergency Tarping',
+    body: 'If your roof needs immediate protection before repairs can begin, we\'ll tarp it fast to prevent further water damage inside your home.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+];
+
+const whyCards = [
+  {
+    title: 'We Specialize in Insurance Claims',
+    body: "This isn't something we help with on the side. Storm damage claims are a core part of what we do. We know the process and we fight for the full payout you're owed.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
+  },
+  {
+    title: 'Fast Response',
+    body: "We know storms don't wait for a good time. We move quickly to inspect, document, and protect your home before more damage sets in.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  },
+  {
+    title: 'Emergency Tarping Available',
+    body: "If your roof needs immediate protection, we'll get it covered fast.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+  },
+  {
+    title: 'Veteran-Owned & Operated',
+    body: "Julio built this company on the same standard he held in the Army. Show up. Do the job right. Don't leave until it's done.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`,
+  },
+  {
+    title: 'Warranty on Materials AND Labor',
+    body: "Every repair and replacement is backed by a warranty on both. If something fails, we stand behind it.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+  {
+    title: "Local — We're Here After the Storm Chasers Leave",
+    body: "Out-of-state storm chasers flood Central Texas after every major weather event. They'll be gone before your warranty matters. We live and work here.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>`,
+  },
+];
+
+const CITY_SLUGS: Record<string, string | null> = {
+  'Temple': 'temple', 'Killeen': 'killeen', 'Harker Heights': 'harker-heights',
+  'Belton': 'belton', 'Salado': 'salado', 'Nolanville': 'nolanville',
+  'Little River-Academy': 'little-river-academy', 'Troy': 'troy',
+  'Copperas Cove': 'copperas-cove', 'Gatesville': 'gatesville',
+  'Waco': 'waco', 'Moody': 'moody',
+  "Morgan's Point Resort": null, 'Bartlett': null, 'Holland': null,
+  'Arlington': 'dfw', 'Plano': 'dfw', 'Irving': 'dfw', 'Garland': 'dfw',
+  'Frisco': 'dfw', 'Denton': 'dfw', 'Richardson': 'dfw', 'McKinney': 'dfw',
+  'Grapevine': 'dfw', 'Euless': 'dfw', 'Bedford': 'dfw', 'Southlake': 'dfw',
+  'Burnet': 'burnet', 'surrounding areas': 'burnet',
+};
+
+const serviceAreas = {
+  'Bell County': ['Temple', 'Killeen', 'Harker Heights', 'Belton', 'Salado', 'Nolanville', "Morgan's Point Resort", 'Little River-Academy', 'Troy', 'Bartlett', 'Holland', 'Copperas Cove', 'Gatesville', 'Moody'],
+  'McLennan County': ['Waco'],
+  'DFW Metroplex': ['Arlington', 'Plano', 'Irving', 'Garland', 'Frisco', 'Denton', 'Richardson', 'McKinney', 'Grapevine', 'Euless', 'Bedford', 'Southlake'],
+  'Burnet County': ['Burnet', 'surrounding areas'],
+};
+---
+
+<MainLayout
+  title="Storm Damage Roof Repair in Temple, Killeen & Central Texas | Lone Ranger Roofing"
+  description="Storm damage to your roof? Lone Ranger Roofing handles the repair and walks you through the insurance claim from start to finish. Serving Temple, Killeen, and Central Texas."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/storm-damage.webp"
+        alt="Storm damage roof repair — Temple and Killeen TX"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Residential Roofing &rsaquo; Storm Damage Repair</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Storm Damage Roof Repair in Temple, Killeen &amp; Central Texas
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">
+          Hail. Wind. Heavy rain. The occasional flying pig. Whatever hit your roof, Lone Ranger Roofing will get out there fast, assess the full damage, and handle everything from emergency repairs to insurance claims.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">
+            Schedule Free Inspection
+          </a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">
+            Call (254) 300-1413
+          </a>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-10">
+          {[
+            'Fast Storm Response',
+            'Insurance Claim Help',
+            'Material + Labor Warranty',
+          ].map(t => (
+            <div class="flex items-center gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INSURANCE SECTION ===================== -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+
+        <!-- Text side -->
+        <div class="order-1">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Insurance Claim Help</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Most Homeowners Leave Money on the Table After a Storm. We Make Sure You Don't.
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            When a storm damages your roof and you file a claim, your insurance company sends an adjuster to assess the damage. That adjuster works for the insurance company — not for you. Their job is to minimize the payout. If they miss something, you pay for it out of pocket.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Lone Ranger Roofing specializes in storm damage claims. We know what adjusters look for, what they overlook, and how to document the full scope of damage so your claim reflects what actually happened to your roof. We walk you through every step of the process — from the initial inspection to final approval — so you're not navigating it alone.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { stat: '100%', label: 'Damage Documented' },
+              { stat: 'We Fight', label: 'Low Estimates' },
+              { stat: '100s', label: 'Claims Handled' },
+            ].map(item => (
+              <div class="text-center border-t-2 border-accent-600 pt-4">
+                <p class="text-brand-900 font-black text-xl leading-none mb-1">{item.stat}</p>
+                <p class="text-gray-500 text-xs leading-snug">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Checklist side -->
+        <div class="relative order-2">
+          <img
+            src="/home-storm-damage-repair.webp"
+            alt="Storm damage roof inspection — Bell County Texas"
+            class="w-full h-[480px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute bottom-6 right-6 bg-brand-900 text-white rounded-xl p-5 max-w-[220px] shadow-xl border border-white/10" style="align-self: end;">
+            <svg class="w-5 h-5 text-gold-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+            </svg>
+            <p class="text-gold-400 font-bold text-xs uppercase tracking-widest mb-3">What Adjusters Commonly Miss</p>
+            <ul class="space-y-1.5">
+              {[
+                'Hail hits on flashing and vents',
+                'Granule loss not visible from ground',
+                'Damaged ridge caps',
+                'Soft spots in decking',
+                'Wind-lifted shingles that look intact from street level',
+              ].map(item => (
+                <li class="flex items-start gap-2 text-brand-200 text-xs leading-snug">
+                  <svg class="w-3 h-3 text-accent-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="relative py-24 bg-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery1.webp"
+        alt="Lone Ranger Roofing crew at work"
+        class="w-full h-full object-cover opacity-15"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">How It Works</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            How Lone Ranger Handles Storm Damage
+          </h2>
+          <p class="text-brand-200 leading-relaxed">
+            We move fast after a storm. Here's what the process looks like from your first call to a finished roof.
+          </p>
+        </div>
+
+        <!-- Right: interactive step accordion -->
+        <div class="space-y-2" id="steps-list">
+          {[
+            { n: '01', title: 'Free Roof Inspection & Damage Assessment', detail: 'We get eyes on your roof fast and document every inch of damage — the kind adjusters miss and the kind they try to minimize.' },
+            { n: '02', title: 'Full Documentation for Your Insurance Claim', detail: 'We photograph, measure, and report the full scope of damage so your claim reflects what the storm actually did.' },
+            { n: '03', title: 'We Meet the Adjuster On-Site If Needed', detail: 'If the adjuster needs to see the damage firsthand, we\'re there. We present our documentation and advocate for the full payout.' },
+            { n: '04', title: 'Emergency Tarping or Leak Repair While You Wait on Approval', detail: 'We don\'t leave your home exposed. If you need immediate protection, we\'ll tarp the affected area to stop further water intrusion while the claim processes.' },
+            { n: '05', title: 'Full Repair or Replacement Once Claim Is Approved', detail: 'One crew. One day. Done right. We complete the full repair or replacement with a dedicated supervisor on-site the entire time.' },
+            { n: '06', title: 'Final Walkthrough & Warranty Documentation', detail: 'Before we leave, we walk the job with you, confirm everything meets our standard, and hand you your warranty on both materials and labor.' },
+          ].map((step, i) => (
+            <div class="step-item rounded-xl border overflow-hidden transition-all duration-200" data-active={i === 0 ? 'true' : 'false'}>
+              <button class="step-item-btn w-full flex items-center gap-4 px-5 py-4 text-left" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <div class="step-circle w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-xs transition-colors">
+                  {step.n}
+                </div>
+                <span class="step-label font-bold text-sm flex-1 transition-colors">{step.title}</span>
+                <svg class="step-arrow w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class={`step-item-body px-5 pb-4 ${i === 0 ? '' : 'hidden'}`}>
+                <p class="text-brand-200 text-sm leading-relaxed pl-[52px]">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY STRIP ===================== -->
+  <div class="grid grid-cols-3 md:grid-cols-6 h-48">
+    {[
+      '/storm-damage9.webp',
+      '/storm-damage3.webp',
+      '/storm-damage7.webp',
+      '/storm-damage6.webp',
+      '/storm-damage5.webp',
+      '/storm-damage10.webp',
+    ].map((src, i) => (
+      <div class="relative overflow-hidden group">
+        <img
+          src={src}
+          alt={`Storm damage repair project ${i + 1} — Central Texas`}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-brand-900/30 group-hover:bg-brand-900/0 transition-colors duration-300"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ===================== TYPES OF STORM DAMAGE ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Storm Damage Types</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Every Type of Storm Damage We Handle
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Central Texas weather doesn't pick favorites. We repair all of it.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/home-repair.webp" alt="Hail damage roof inspection — Central Texas" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/storm-damage11.webp" alt="Storm damage repair in progress" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {damageTypes.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY NOT TO WAIT ===================== -->
+  <section class="relative py-24 bg-white overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Photo side -->
+        <div class="relative">
+          <img
+            src="/storm-damage2.webp"
+            alt="Storm damaged roof — Central Texas"
+            class="w-full h-[500px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute top-6 right-6 bg-brand-900 text-white rounded-xl p-5 max-w-[200px] shadow-xl border border-white/10">
+            <svg class="w-6 h-6 text-gold-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="font-black text-sm leading-tight">Every day you wait costs more</p>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Don't Wait</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Storm Damage Gets Worse the Longer You Wait
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            A cracked shingle today is a ceiling leak next month. A lifted flashing is mold in your attic by spring. Storm damage compounds fast in Texas weather — one event creates the entry point, the next one does the real damage inside your home.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            There's also an insurance window to consider. Most policies require you to file a claim within a specific timeframe after the storm. If you wait too long, you lose the right to claim — and you're paying for all of it yourself.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Don't wait for the drip. Call Lone Ranger Roofing after any significant weather event and let us get eyes on your roof before the next storm does more damage.
+          </p>
+          <a href="/contact" class="inline-flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white font-black px-7 py-3.5 rounded-lg text-sm uppercase tracking-wide transition-colors">
+            Schedule Free Inspection
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY LONE RANGER ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Why Lone Ranger Roofing</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Why Central Texas Homeowners Call Lone Ranger After a Storm
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            After a storm, you'll have no shortage of contractors knocking on your door. Most of them drove in from out of state chasing insurance money. Here's why that matters.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/storm-damage4.webp" alt="Lone Ranger Roofing completed storm repair" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/storm-damage8.webp" alt="Central Texas roofing crew" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whyCards.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-lg">
+          Schedule Free Inspection
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICE AREAS ===================== -->
+  <section class="py-20 bg-white border-t border-gray-100 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Map visual -->
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/map-service-areas.png"
+            alt="Lone Ranger Roofing service areas across Central Texas and DFW"
+            class="w-full h-auto object-contain rounded-2xl"
+          />
+          <div class="absolute top-4 left-4 bg-brand-900 text-white rounded-xl px-4 py-3 shadow-xl">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest">Coverage Area</p>
+            <p class="text-white font-bold text-sm mt-0.5">Bell County · DFW · Burnet</p>
+          </div>
+        </div>
+
+        <!-- City list -->
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Service Areas</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Storm Damage Roof Repair in Bell County, DFW &amp; Burnet
+          </h2>
+          <p class="text-gray-500 mb-8 leading-relaxed">
+            Lone Ranger Roofing responds to storm damage throughout Central Texas and DFW. Call <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a> to schedule your free storm damage inspection.
+          </p>
+
+          <div class="space-y-6">
+            {Object.entries(serviceAreas).map(([region, cities]) => (
+              <div>
+                <p class="text-brand-900 font-black text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span class="w-4 h-px bg-accent-600 inline-block"></span>
+                  {region}
+                </p>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+                  {cities.map(city => (
+                    <div class="flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-accent-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.898-5.096 3.898-8.827a8.25 8.25 0 00-16.5 0c0 3.731 1.954 6.744 3.898 8.827a19.58 19.58 0 002.683 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                      </svg>
+                      {CITY_SLUGS[city] ? (
+                        <a href={`/service-areas/${CITY_SLUGS[city]}`} class="text-gray-600 text-sm hover:text-accent-600 hover:underline transition-colors">
+                          {city === 'surrounding areas' ? city : `${city}, TX`}
+                        </a>
+                      ) : (
+                        <span class="text-gray-500 text-sm">{city === 'surrounding areas' ? city : `${city}, TX`}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Common Questions</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">
+          Storm Damage Roof Repair FAQs: Temple, Killeen &amp; Central Texas
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden faq-item">
+            <button
+              class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 faq-trigger"
+              aria-expanded="false"
+              data-index={i}
+            >
+              <span class="font-bold text-brand-900 text-sm leading-snug">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-5">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    title="Get a Free Storm Damage Inspection"
+    blurb="We'll document the full damage, walk you through the insurance claim, and fix it right. Don't wait — storm damage compounds fast."
+    bgImage="/pre-footer-background.webp"
+  />
+
+</MainLayout>
+
+<script>
+  const GOLD   = '#ECC765';
+  const NAVY   = '#111140';
+  const BLUE   = '#AAB0D9'; // brand-200
+
+  function applyStepState(item: Element, active: boolean) {
+    const circle = item.querySelector('.step-circle') as HTMLElement | null;
+    const label  = item.querySelector('.step-label')  as HTMLElement | null;
+    const arrow  = item.querySelector('.step-arrow')  as HTMLElement | null;
+    const body   = item.querySelector('.step-item-body');
+
+    (item as HTMLElement).style.borderColor     = active ? GOLD                    : 'rgba(255,255,255,0.15)';
+    (item as HTMLElement).style.backgroundColor = active ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)';
+    if (circle) { circle.style.backgroundColor = active ? GOLD                    : 'rgba(255,255,255,0.15)';
+                  circle.style.color           = active ? NAVY                    : '#ffffff'; }
+    if (label)  { label.style.color            = active ? '#ffffff'               : BLUE; }
+    if (arrow)  { arrow.style.color            = active ? GOLD                    : 'rgba(255,255,255,0.4)';
+                  arrow.style.transform        = active ? 'rotate(180deg)'        : 'rotate(0deg)'; }
+    body?.classList.toggle('hidden', !active);
+  }
+
+  // Set initial state
+  document.querySelectorAll<HTMLElement>('.step-item').forEach((item, i) => {
+    applyStepState(item, i === 0);
+  });
+
+  document.querySelectorAll('.step-item-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.step-item').forEach((item, i) => {
+        const isTarget = i === idx;
+        applyStepState(item, isTarget);
+        item.setAttribute('data-active', isTarget ? 'true' : 'false');
+        item.querySelector('.step-item-btn')?.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+      });
+    });
+  });
+
+  document.querySelectorAll('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.querySelector('.faq-answer')?.classList.add('hidden');
+        el.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        el.querySelector('.faq-icon')?.classList.remove('rotate-180');
+      });
+      if (!isOpen) {
+        answer?.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        icon?.classList.add('rotate-180');
+      }
+    });
+  });
+</script>

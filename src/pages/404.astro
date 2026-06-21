@@ -1,0 +1,75 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="Page Not Found | Lone Ranger Roofing"
+  description="The page you're looking for doesn't exist. Lone Ranger Roofing serves Temple, Killeen, and Central Texas — call us at (254) 300-1413."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/home-about.webp"
+        alt="Lone Ranger Roofing — Central Texas"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 py-28 text-center">
+      <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">404 — Page Not Found</p>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none mb-6">
+        Wrong Turn.
+      </h1>
+      <p class="text-xl text-gray-200 leading-relaxed max-w-xl mx-auto mb-10">
+        That page doesn't exist — but your roof might still need attention. Head back and find what you're looking for.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-lg">
+          Back to Home
+        </a>
+        <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors hover:bg-white/10">
+          Call (254) 300-1413
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HELPFUL LINKS ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3 text-center">WHERE TO GO</p>
+      <h2 class="text-3xl font-black text-brand-900 mb-10 text-center">Common Pages</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { label: 'Roof Replacement',       href: '/residential-roofing/roof-replacement' },
+          { label: 'Roof Repair',            href: '/residential-roofing/roof-repair' },
+          { label: 'Storm Damage',           href: '/residential-roofing/storm-damage-repair' },
+          { label: 'Roof Inspection',        href: '/residential-roofing/roof-inspection' },
+          { label: 'Metal Roofing',          href: '/residential-roofing/metal-roofing' },
+          { label: 'Gutter Installation',    href: '/residential-roofing/gutter-installation' },
+          { label: 'Commercial Roofing',     href: '/commercial-roofing' },
+          { label: 'Gallery',                href: '/gallery' },
+          { label: 'About Us',               href: '/about' },
+          { label: 'Contact',                href: '/contact' },
+          { label: 'Roof-A-Vet Program',     href: '/roof-a-vet' },
+          { label: 'Blog',                   href: '/blog' },
+        ].map(link => (
+          <a
+            href={link.href}
+            class="flex items-center gap-3 bg-gray-50 hover:bg-accent-600 text-brand-900 hover:text-white rounded-xl px-5 py-4 font-bold text-sm transition-colors group border border-gray-100 hover:border-accent-600"
+          >
+            <svg class="w-4 h-4 text-accent-600 group-hover:text-white flex-shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</MainLayout>

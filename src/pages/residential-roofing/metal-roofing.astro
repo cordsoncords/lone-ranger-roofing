@@ -1,0 +1,583 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const faqs = [
+  {
+    q: 'How long does a metal roof last in Central Texas?',
+    a: 'A properly installed metal roof by Lone Ranger Roofing in Temple, Killeen, or anywhere across Central Texas can last 50 years or more. Compared to asphalt shingles — which typically last 15-20 years in the Texas heat and hail corridor — metal roofing is often the last roof a homeowner ever installs.',
+  },
+  {
+    q: 'What types of metal roofing does Lone Ranger Roofing install?',
+    a: 'Lone Ranger Roofing installs standing seam, metal shingles, and R-panel metal roofing systems for residential and commercial properties across Temple, Killeen, Belton, Harker Heights, and the greater DFW area. We also offer over-roof installations where applicable. We\'ll recommend the right system based on your home, budget, and goals.',
+  },
+  {
+    q: "What's the benefit of Lone Ranger Roofing having their own fabrication machine?",
+    a: "Because Lone Ranger Roofing owns our own metal panel fabrication machine, we cut panels to exact measurements on-site rather than ordering from a third-party supplier. If a dimension needs to change, we adjust and cut right there — no reordering, no waiting on a delivery, no project delays. For homeowners in Temple, Killeen, and Central Texas, that means faster installs and a better-fitting finished roof.",
+  },
+  {
+    q: 'Is metal roofing more expensive than asphalt shingles?',
+    a: 'Yes, metal roofing has a higher upfront cost than asphalt shingles. However, when you factor in the 50+ year lifespan, lower maintenance costs, energy savings from heat reflection, and fewer storm damage repairs over time, most homeowners in Central Texas and DFW find that metal roofing costs less over the life of the roof. Lone Ranger Roofing also offers financing options to make the upfront investment more manageable.',
+  },
+  {
+    q: 'Can a metal roof be installed over my existing shingles?',
+    a: "In some cases, yes. Lone Ranger Roofing can install a metal roof directly over existing asphalt shingles in Temple, Killeen, and surrounding Central Texas communities, which eliminates tear-off labor costs and speeds up installation. Not every roof is a good candidate — it depends on the existing deck condition, local building codes, and number of existing shingle layers. We'll assess during the free estimate and give you an honest answer.",
+  },
+  {
+    q: 'How long does a residential metal roof installation take?',
+    a: 'Most residential metal roof installations by Lone Ranger Roofing in Temple, Killeen, Belton, Harker Heights, and surrounding Central Texas communities are completed in a single day. Commercial metal roofing projects may take longer depending on size and scope — we\'ll give you a realistic timeline before the project starts so there are no surprises.',
+  },
+];
+
+const metalTypes = [
+  {
+    title: 'Standing Seam',
+    body: 'The premium option. Concealed fasteners, clean vertical lines, and maximum weather resistance. Ideal for homeowners who want the longest lifespan and the sharpest look. Popular across Temple, Killeen, and DFW.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+  },
+  {
+    title: 'Metal Shingles',
+    body: 'All the durability of metal with the look of traditional roofing. Can mimic asphalt, slate, or tile — a 50-year roof without sacrificing curb appeal. Great for neighborhoods with HOA requirements.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>`,
+  },
+  {
+    title: 'R-Panel (Exposed Fastener)',
+    body: 'Cost-effective and durable. Well-suited for agricultural buildings, barns, and commercial properties across Bell County and Burnet County. Also used on residential properties where budget is a priority.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>`,
+  },
+  {
+    title: 'Metal Over Existing Roof',
+    body: "In some cases, metal can be installed directly over existing shingles — saving on tear-off labor while still delivering the full benefit of a metal roof. We'll tell you upfront if your home is a good candidate.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>`,
+  },
+];
+
+const whyMetalCards = [
+  {
+    title: '50+ Year Lifespan',
+    body: 'A quality metal roof installed by Lone Ranger Roofing in Temple, Killeen, or anywhere across Central Texas can last 50 years or more with minimal maintenance.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  },
+  {
+    title: 'Energy Savings',
+    body: 'Metal roofs reflect solar radiant heat instead of absorbing it, reducing cooling costs by up to 25% during Central Texas summers. Less heat in means less work for your AC.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
+  },
+  {
+    title: 'Hail & Wind Resistance',
+    body: 'Central Texas hailstorms and high winds are hard on asphalt. Metal handles both significantly better — fewer repairs, fewer insurance claims over the life of the roof.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>`,
+  },
+  {
+    title: 'Low Maintenance',
+    body: "Metal doesn't rot, crack, warp, or grow algae. Once it's on, it largely takes care of itself.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+  {
+    title: 'Increased Home Value',
+    body: 'A metal roof is a selling point. Buyers in Temple, Killeen, and DFW recognize the long-term value of a roof that won\'t need replacing for decades.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+  },
+  {
+    title: 'Financing Available',
+    body: "Metal roofing is an investment. Lone Ranger Roofing offers financing options so you can get the roof your home deserves without paying it all upfront.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>`,
+  },
+];
+
+const whyCards = [
+  {
+    title: 'We Own Our Fabrication Machine',
+    body: 'Panels cut on-site to exact spec. No supplier delays, no wrong-size panels, no projects stalled waiting on a truck.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>`,
+  },
+  {
+    title: 'All Metal Roof Types',
+    body: "Standing seam, metal shingles, R-panel, and over-roof installations. We'll recommend the right system for your home and budget.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>`,
+  },
+  {
+    title: 'Residential Done in One Day',
+    body: 'Most residential metal roof installations are completed in a single day with a dedicated supervisor on site.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  },
+  {
+    title: 'Financing Available',
+    body: 'We offer financing options to make the upfront investment more manageable.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>`,
+  },
+  {
+    title: 'Material + Labor Warranty',
+    body: 'We warranty both the materials and the installation. If something fails, we stand behind it.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+  {
+    title: 'Veteran-Owned & Operated',
+    body: 'The same standard Julio held in the Army applies to every metal roof we install. Done right, the first time.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`,
+  },
+];
+
+const CITY_SLUGS: Record<string, string | null> = {
+  'Temple': 'temple', 'Killeen': 'killeen', 'Harker Heights': 'harker-heights',
+  'Belton': 'belton', 'Salado': 'salado', 'Nolanville': 'nolanville',
+  'Little River-Academy': 'little-river-academy', 'Troy': 'troy',
+  'Copperas Cove': 'copperas-cove', 'Gatesville': 'gatesville',
+  'Waco': 'waco', 'Moody': 'moody',
+  "Morgan's Point Resort": null, 'Bartlett': null, 'Holland': null,
+  'Arlington': 'dfw', 'Plano': 'dfw', 'Irving': 'dfw', 'Garland': 'dfw',
+  'Frisco': 'dfw', 'Denton': 'dfw', 'Richardson': 'dfw', 'McKinney': 'dfw',
+  'Grapevine': 'dfw', 'Euless': 'dfw', 'Bedford': 'dfw', 'Southlake': 'dfw',
+  'Burnet': 'burnet', 'surrounding areas': 'burnet',
+};
+
+const serviceAreas = {
+  'Bell County': ['Temple', 'Killeen', 'Harker Heights', 'Belton', 'Salado', 'Nolanville', "Morgan's Point Resort", 'Little River-Academy', 'Troy', 'Bartlett', 'Holland', 'Copperas Cove', 'Gatesville', 'Moody'],
+  'McLennan County': ['Waco'],
+  'DFW Metroplex': ['Arlington', 'Plano', 'Irving', 'Garland', 'Frisco', 'Denton', 'Richardson', 'McKinney', 'Grapevine', 'Euless', 'Bedford', 'Southlake'],
+  'Burnet County': ['Burnet', 'surrounding areas'],
+};
+---
+
+<MainLayout
+  title="Metal Roof Installation in Temple, Killeen & Central Texas | Lone Ranger Roofing"
+  description="Lone Ranger Roofing installs standing seam, metal shingle, and R-panel metal roofs across Temple, Killeen, and Central Texas. We fabricate panels on-site with our own machine. Financing available."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/home-roof-replacement.webp"
+        alt="Metal roof installation in Temple and Killeen TX"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Residential Roofing &rsaquo; Metal Roofing</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Metal Roof Installation in Temple, Killeen &amp; Central Texas
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">
+          The last roof you'll ever put on your house. We fabricate panels on-site with our own machine so your project never stalls waiting on a supplier.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">
+            Get a Free Metal Roof Estimate
+          </a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">
+            Call (254) 300-1413
+          </a>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-10">
+          {[
+            'On-Site Fabrication Machine',
+            'Material + Labor Warranty',
+            'Financing Available',
+          ].map(t => (
+            <div class="flex items-center gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ON-SITE MACHINE ===================== -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+
+        <!-- Photo side -->
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/fab1.webp"
+            alt="Lone Ranger Roofing on-site metal panel fabrication — Central Texas"
+            class="w-full h-[480px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute bottom-6 right-6 bg-brand-900 text-white rounded-xl p-5 max-w-[230px] shadow-xl border border-white/10">
+            <p class="text-gold-400 font-bold text-xs uppercase tracking-widest mb-3">What On-Site Fabrication Means For You</p>
+            <ul class="space-y-1.5">
+              {[
+                'Panels cut to exact measurements on-site',
+                'No supplier delays if dimensions change',
+                'Faster project completion',
+                'Better fit, cleaner finish',
+                'Less time with your home exposed',
+              ].map(item => (
+                <li class="flex items-start gap-2 text-brand-200 text-xs leading-snug">
+                  <svg class="w-3 h-3 text-accent-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">On-Site Fabrication</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            We Own Our Own Fabrication Machine. Here's Why That Matters to You.
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Most metal roofing contractors order panels from a supplier. That means if a measurement is off, if something ships wrong, or if the supplier runs short — your project stops. You wait. Your home sits exposed.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Lone Ranger Roofing owns our own metal panel fabrication machine. We cut panels to exact specifications on-site. If a measurement needs to change, we adjust and cut right there. No reordering. No waiting on a truck. No prolonged projects because a supplier got the dimensions wrong.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            For homeowners in Temple, Killeen, Harker Heights, Belton, and across Central Texas and DFW, that means a cleaner install, a faster turnaround, and a finished roof that fits exactly the way it should.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TYPES OF METAL ROOFING ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Metal Roofing Options</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Metal Roofing Options for Every Home and Budget
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Not every metal roof is the same. Lone Ranger Roofing installs all major metal roofing systems so you get the right fit for your home, your style, and your budget.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/metal1.webp" alt="Standing seam metal roof — Central Texas" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/metal2.webp" alt="Metal shingle roof — Killeen TX" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {metalTypes.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY METAL ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Why Metal</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Why Central Texas Homeowners Are Switching to Metal
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Asphalt shingles in Texas typically last 15-20 years — less if you're in a hail corridor or taking regular storm hits. Metal roofing lasts 50 years or more, reflects Texas heat instead of absorbing it, and handles hail, wind, and heavy rain better than any other residential roofing material. For most homeowners, it's the last roof they ever put on their house.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/home-gallery3.webp" alt="Metal roof installed in Temple TX" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/metal3.webp" alt="Central Texas metal roof installation" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whyMetalCards.map(item => (
+          <div class="bg-gray-50 rounded-2xl p-7 border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="relative py-24 bg-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery1.webp"
+        alt="Lone Ranger Roofing metal roof installation crew"
+        class="w-full h-full object-cover opacity-15"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Left: copy -->
+        <div>
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">How It Works</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            How a Metal Roof Installation Works With Lone Ranger
+          </h2>
+          <p class="text-brand-200 leading-relaxed">
+            Residential metal roof installations are typically completed in one day. Larger commercial projects may take longer depending on scope — we'll give you a realistic timeline before we start.
+          </p>
+        </div>
+
+        <!-- Right: interactive step accordion -->
+        <div class="space-y-2" id="steps-list">
+          {[
+            { n: '01', title: 'Free Estimate & Material Selection', detail: 'We inspect your home, take measurements, and walk you through the metal roofing systems that fit your home, your neighborhood, and your budget. No pressure — just the right information.' },
+            { n: '02', title: 'On-Site Panel Fabrication — Cut to Exact Measurements', detail: 'Our crew arrives with the fabrication machine and cuts panels on-site to your exact roof dimensions. No ordering from a supplier, no waiting on a delivery, no risk of wrong-size panels.' },
+            { n: '03', title: 'Tear-Off & Deck Preparation (or Over-Roof If Applicable)', detail: 'We strip the existing roof down to the decking and inspect for any rot, soft spots, or structural issues. If your home qualifies for an over-roof installation, we\'ll handle that instead and save you the tear-off cost.' },
+            { n: '04', title: 'Metal Roof Installation With Dedicated On-Site Supervision', detail: 'Panels are installed to manufacturer specs with a supervisor on-site the entire time. Every seam, every fastener, every flashing detail is checked before we move on.' },
+            { n: '05', title: 'Full Cleanup & Warranty Documentation', detail: 'We sweep the property, run a magnet for loose fasteners, and remove all old roofing debris. You receive warranty documentation covering both materials and labor before we leave.' },
+          ].map((step, i) => (
+            <div class="step-item rounded-xl border overflow-hidden transition-all duration-200" data-active={i === 0 ? 'true' : 'false'}>
+              <button class="step-item-btn w-full flex items-center gap-4 px-5 py-4 text-left" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <div class="step-circle w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-xs transition-colors">
+                  {step.n}
+                </div>
+                <span class="step-label font-bold text-sm flex-1 transition-colors">{step.title}</span>
+                <svg class="step-arrow w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class={`step-item-body px-5 pb-4 ${i === 0 ? '' : 'hidden'}`}>
+                <p class="text-brand-200 text-sm leading-relaxed pl-[52px]">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY STRIP ===================== -->
+  <div class="grid grid-cols-3 md:grid-cols-6 h-48">
+    {[
+      '/home-gallery1.webp',
+      '/home-gallery2.webp',
+      '/home-gallery3.webp',
+      '/home-gallery4.webp',
+      '/home-gallery5.webp',
+      '/home-gallery6.webp',
+    ].map((src, i) => (
+      <div class="relative overflow-hidden group">
+        <img
+          src={src}
+          alt={`Metal roofing project ${i + 1} — Central Texas`}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-brand-900/30 group-hover:bg-brand-900/0 transition-colors duration-300"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ===================== WHY LONE RANGER ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Why Lone Ranger Roofing</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Why Temple &amp; Killeen Homeowners Choose Lone Ranger for Metal Roofing
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            A metal roof is a long-term investment. You want it done right the first time by someone who'll still be around to stand behind it.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/metal4.webp" alt="Lone Ranger Roofing metal roof install" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/metal5.webp" alt="Central Texas metal roofing crew" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whyCards.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-lg">
+          Get a Free Metal Roof Estimate
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICE AREAS ===================== -->
+  <section class="py-20 bg-white border-t border-gray-100 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Map visual -->
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/map-service-areas.png"
+            alt="Lone Ranger Roofing metal roof service areas across Central Texas and DFW"
+            class="w-full h-auto object-contain rounded-2xl"
+          />
+          <div class="absolute top-4 left-4 bg-brand-900 text-white rounded-xl px-4 py-3 shadow-xl">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest">Coverage Area</p>
+            <p class="text-white font-bold text-sm mt-0.5">Bell County · DFW · Burnet</p>
+          </div>
+        </div>
+
+        <!-- City list -->
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Service Areas</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Metal Roof Installation in Bell County, DFW &amp; Burnet
+          </h2>
+          <p class="text-gray-500 mb-8 leading-relaxed">
+            Lone Ranger Roofing installs metal roofs for homeowners throughout Central Texas and DFW. Call <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a> to schedule your free estimate.
+          </p>
+
+          <div class="space-y-6">
+            {Object.entries(serviceAreas).map(([region, cities]) => (
+              <div>
+                <p class="text-brand-900 font-black text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span class="w-4 h-px bg-accent-600 inline-block"></span>
+                  {region}
+                </p>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+                  {cities.map(city => (
+                    <div class="flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-accent-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.898-5.096 3.898-8.827a8.25 8.25 0 00-16.5 0c0 3.731 1.954 6.744 3.898 8.827a19.58 19.58 0 002.683 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                      </svg>
+                      {CITY_SLUGS[city] ? (
+                        <a href={`/service-areas/${CITY_SLUGS[city]}`} class="text-gray-600 text-sm hover:text-accent-600 hover:underline transition-colors">
+                          {city === 'surrounding areas' ? city : `${city}, TX`}
+                        </a>
+                      ) : (
+                        <span class="text-gray-500 text-sm">{city === 'surrounding areas' ? city : `${city}, TX`}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Common Questions</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">
+          Metal Roofing FAQs: Temple, Killeen &amp; Central Texas
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden faq-item">
+            <button
+              class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 faq-trigger"
+              aria-expanded="false"
+              data-index={i}
+            >
+              <span class="font-bold text-brand-900 text-sm leading-snug">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-5">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    overline="READY FOR YOUR LAST ROOF?"
+    title="Get a Free Metal Roof Estimate"
+    blurb="We'll walk you through your options, fabricate panels on-site to exact measurements, and back every installation with a warranty on materials and labor. Financing available."
+    bgImage="/pre-footer-background.webp"
+  />
+
+</MainLayout>
+
+<script>
+  const GOLD = '#ECC765';
+  const NAVY = '#111140';
+  const BLUE = '#AAB0D9';
+
+  function applyStepState(item: Element, active: boolean) {
+    const circle = item.querySelector('.step-circle') as HTMLElement | null;
+    const label  = item.querySelector('.step-label')  as HTMLElement | null;
+    const arrow  = item.querySelector('.step-arrow')  as HTMLElement | null;
+    const body   = item.querySelector('.step-item-body');
+
+    (item as HTMLElement).style.borderColor     = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+    (item as HTMLElement).style.backgroundColor = active ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)';
+    if (circle) { circle.style.backgroundColor = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+                  circle.style.color           = active ? NAVY                     : '#ffffff'; }
+    if (label)  { label.style.color            = active ? '#ffffff'                : BLUE; }
+    if (arrow)  { arrow.style.color            = active ? GOLD                     : 'rgba(255,255,255,0.4)';
+                  arrow.style.transform        = active ? 'rotate(180deg)'         : 'rotate(0deg)'; }
+    body?.classList.toggle('hidden', !active);
+  }
+
+  document.querySelectorAll<HTMLElement>('.step-item').forEach((item, i) => {
+    applyStepState(item, i === 0);
+  });
+
+  document.querySelectorAll('.step-item-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.step-item').forEach((item, i) => {
+        const isTarget = i === idx;
+        applyStepState(item, isTarget);
+        item.setAttribute('data-active', isTarget ? 'true' : 'false');
+        item.querySelector('.step-item-btn')?.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+      });
+    });
+  });
+
+  document.querySelectorAll('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.querySelector('.faq-answer')?.classList.add('hidden');
+        el.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        el.querySelector('.faq-icon')?.classList.remove('rotate-180');
+      });
+      if (!isOpen) {
+        answer?.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        icon?.classList.add('rotate-180');
+      }
+    });
+  });
+</script>

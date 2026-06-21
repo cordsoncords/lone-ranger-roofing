@@ -1,0 +1,548 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PreFooterCTA from '../../components/PreFooterCTA.astro';
+
+const faqs = [
+  {
+    q: 'Does Lone Ranger Roofing install solar panels?',
+    a: 'Yes. Lone Ranger Roofing installs solar panels for homeowners across Temple, Killeen, Harker Heights, Belton, Georgetown, Burnet, and throughout DFW. Unlike most solar companies, Lone Ranger also handles all the roofing work — penetrations, flashing, and waterproofing — so homeowners don\'t need to coordinate between two separate contractors.',
+  },
+  {
+    q: 'Why should I use one contractor for both solar and roofing?',
+    a: 'Solar panels are installed through your roof. If the penetrations and flashing aren\'t done correctly by someone who understands roofing, you\'re at risk for leaks and water damage. Most solar companies aren\'t roofing contractors — the roofing side gets treated as secondary. Lone Ranger Roofing handles both, which means proper waterproofing on every attachment point and one clear warranty covering the entire installation.',
+  },
+  {
+    q: 'Should I replace my roof before installing solar panels?',
+    a: 'If your roof is aging or has existing damage, Lone Ranger Roofing strongly recommends addressing it before solar panels go on. Installing solar on a roof that needs replacement means pulling the panels off in a few years to do the work that should have been done first — at significant added cost. We assess your roof before any solar installation and give you an honest recommendation.',
+  },
+  {
+    q: 'What is the federal solar tax credit and does it apply to my installation?',
+    a: 'The federal Investment Tax Credit (ITC) currently allows homeowners to deduct 30% of their solar installation costs from their federal taxes. This applies to most residential solar installations including those in Temple, Killeen, and Central Texas. Tax situations vary — Lone Ranger Roofing recommends consulting a tax professional to confirm your specific eligibility.',
+  },
+  {
+    q: 'How long do solar panels last in Central Texas?',
+    a: 'Solar panels installed in Temple, Killeen, and across Central Texas typically carry 25-30 year manufacturer warranties and can produce energy beyond that lifespan with some performance degradation over time. Central Texas\'s consistent sun exposure makes this a strong long-term investment for most homeowners.',
+  },
+  {
+    q: 'How long does a solar installation take?',
+    a: 'The timeline for a solar installation by Lone Ranger Roofing in Temple, Killeen, or across Central Texas depends on roof condition, system size, and permitting requirements. We\'ll give you a realistic timeline during the free consultation before any work begins.',
+  },
+];
+
+const benefitCards = [
+  {
+    title: 'Federal Tax Credit',
+    body: 'The federal Investment Tax Credit (ITC) currently allows homeowners to deduct 30% of their solar installation costs from their federal taxes. That\'s a significant reduction in upfront cost.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
+  },
+  {
+    title: 'Lower Energy Bills',
+    body: 'Central Texas summers are long and expensive. Solar generation during peak daylight hours directly offsets what you\'d otherwise pull from the grid — reducing monthly bills from the moment the system goes live.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
+  },
+  {
+    title: 'Increased Home Value',
+    body: 'Homes with solar systems installed sell for more in most markets. In a Central Texas and DFW market where energy costs are a known concern, solar is a selling point.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+  },
+  {
+    title: 'Long-Term ROI',
+    body: 'Solar panels typically last 25-30 years. With Texas energy costs and sun exposure, most homeowners in the Temple, Killeen, and DFW area see strong returns over the life of the system.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>`,
+  },
+];
+
+const whyCards = [
+  {
+    title: 'One Contractor for Everything',
+    body: 'Panels and roof handled by the same crew. No finger-pointing between two companies if something goes wrong.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>`,
+  },
+  {
+    title: 'Roof-First Thinking',
+    body: 'We assess the roof before the panels go on. If it needs repair or replacement, we handle that first — so you\'re not pulling panels off in five years to fix a roof that should have been addressed before installation.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+  },
+  {
+    title: 'Proper Penetration & Waterproofing',
+    body: 'Every attachment point is flashed and waterproofed correctly. Solar panels shouldn\'t mean roof leaks.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  },
+  {
+    title: 'Full Warranty Coverage',
+    body: 'One warranty conversation covers both the roofing work and the installation. You know exactly who to call if anything needs attention.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
+  },
+  {
+    title: 'Veteran-Owned & Operated',
+    body: 'Straight answers, honest assessments, work done right. The same standard on solar as on every roof we put on.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`,
+  },
+  {
+    title: 'Financing Available',
+    body: 'Solar is a significant investment. We offer financing options to make the numbers work for your household.',
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>`,
+  },
+];
+
+const CITY_SLUGS: Record<string, string | null> = {
+  'Temple': 'temple', 'Killeen': 'killeen', 'Harker Heights': 'harker-heights',
+  'Belton': 'belton', 'Salado': 'salado', 'Nolanville': 'nolanville',
+  'Little River-Academy': 'little-river-academy', 'Troy': 'troy',
+  'Copperas Cove': 'copperas-cove', 'Gatesville': 'gatesville',
+  'Waco': 'waco', 'Moody': 'moody',
+  "Morgan's Point Resort": null, 'Bartlett': null, 'Holland': null,
+  'Arlington': 'dfw', 'Plano': 'dfw', 'Irving': 'dfw', 'Garland': 'dfw',
+  'Frisco': 'dfw', 'Denton': 'dfw', 'Richardson': 'dfw', 'McKinney': 'dfw',
+  'Grapevine': 'dfw', 'Euless': 'dfw', 'Bedford': 'dfw', 'Southlake': 'dfw',
+  'Burnet': 'burnet', 'surrounding areas': 'burnet',
+};
+
+const serviceAreas = {
+  'Bell County': ['Temple', 'Killeen', 'Harker Heights', 'Belton', 'Salado', 'Nolanville', "Morgan's Point Resort", 'Little River-Academy', 'Troy', 'Bartlett', 'Holland', 'Copperas Cove', 'Gatesville', 'Moody'],
+  'McLennan County': ['Waco'],
+  'DFW Metroplex': ['Arlington', 'Plano', 'Irving', 'Garland', 'Frisco', 'Denton', 'Richardson', 'McKinney', 'Grapevine', 'Euless', 'Bedford', 'Southlake'],
+  'Burnet County': ['Burnet', 'surrounding areas'],
+};
+---
+
+<MainLayout
+  title="Solar Panel Installation in Temple, Killeen & Central Texas | Lone Ranger Roofing"
+  description="Lone Ranger Roofing installs solar panels and handles the roofing side so you don't need two contractors. One call, one crew, done right. Serving Temple, Killeen, and Central Texas."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[65vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/solar-hero.webp"
+        alt="Solar panel installation — Temple and Killeen TX"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-28">
+      <div class="max-w-2xl">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">Residential Services</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Solar Panel Installation in Temple, Killeen &amp; Central Texas
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed mb-8">
+          Most homeowners going solar need two contractors — one for the panels, one for the roof. With Lone Ranger Roofing, you need one call.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center shadow-lg">
+            Get a Free Solar Consultation
+          </a>
+          <a href="tel:+12543001413" class="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors text-center hover:bg-white/10">
+            Call (254) 300-1413
+          </a>
+        </div>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-10">
+          {[
+            'Panels + Roof in One',
+            '30% Federal Tax Credit',
+            'Financing Available',
+          ].map(t => (
+            <div class="flex items-center gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ONE CONTRACTOR ADVANTAGE ===================== -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+
+        <div>
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">THE ONE-CONTRACTOR ADVANTAGE</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-6">
+            Why Using One Contractor for Solar and Roofing Is the Smarter Move
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Here's a problem most solar companies won't tell you about: solar panels are installed through your roof. Every penetration point is a potential leak if it isn't handled correctly. Most solar companies aren't roofing companies — they're focused on the panels. The roofing side is an afterthought.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            When something goes wrong (and with bad penetration work, it often does), you're stuck between two contractors pointing at each other. Lone Ranger Roofing installs both the solar panels and handles all the roofing work — penetrations, flashing, waterproofing, and making sure the roof can carry the system for decades. One contractor, one warranty conversation, one point of accountability. Serving homeowners across Temple, Killeen, Harker Heights, Belton, Georgetown, Burnet, and throughout DFW.
+          </p>
+        </div>
+
+        <div class="relative">
+          <img
+            src="/solar1.webp"
+            alt="Solar and roofing installation — Central Texas"
+            class="w-full h-[480px] object-cover rounded-2xl shadow-xl"
+          />
+          <div class="absolute bottom-6 right-6 bg-brand-900 text-white rounded-xl px-5 py-4 shadow-xl max-w-[230px] border border-white/10">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest mb-3">What Lone Ranger Handles</p>
+            <ul class="space-y-2">
+              {[
+                'Solar panel installation',
+                'Roof penetration and flashing',
+                'Waterproofing around all attachment points',
+                'Roof assessment before installation',
+                'Roof repair or replacement if needed before solar',
+                'Full roofing warranty alongside the solar',
+              ].map(item => (
+                <li class="flex items-start gap-2 text-gray-300 text-xs">
+                  <svg class="w-3 h-3 text-gold-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY SOLAR IN CENTRAL TEXAS ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">WHY SOLAR IN CENTRAL TEXAS</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Central Texas Gets More Sun Than Almost Anywhere. Here's What That's Worth.
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Texas ranks among the top states in the country for solar potential — and Central Texas specifically gets the kind of consistent sun exposure that makes solar a genuinely strong financial decision. The 30% federal solar tax credit (ITC) reduces the cost of installation significantly. Pair that with lower monthly utility bills from a Texas summer that runs six months long, and most homeowners in Temple, Killeen, and the surrounding area see meaningful payback on their investment within several years.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/solar2.webp" alt="Solar installation Central Texas home" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/solar3.webp" alt="Solar panels on Central Texas roof" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {benefitCards.map(item => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="relative py-24 bg-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/home-gallery1.webp"
+        alt="Lone Ranger Roofing solar installation crew"
+        class="w-full h-full object-cover opacity-15"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-900/95 via-brand-900/80 to-brand-900/95"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <div>
+          <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">HOW IT WORKS</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            How a Solar Installation Works With Lone Ranger Roofing
+          </h2>
+          <p class="text-brand-200 leading-relaxed">
+            We handle the roof and the panels. Here's what the process looks like from your first call to a live system.
+          </p>
+        </div>
+
+        <div class="space-y-2" id="steps-list">
+          {[
+            { n: '01', title: 'Free Solar & Roof Consultation — We Assess Both', detail: 'We start by assessing your roof condition and your solar potential together. If your roof needs attention before panels go on, we\'ll tell you upfront.' },
+            { n: '02', title: 'Roof Inspection — We Make Sure the Roof Is Ready', detail: 'A thorough inspection of your current roof — shingles, decking, structure. We don\'t put panels on a roof that isn\'t ready for them.' },
+            { n: '03', title: 'Roof Repair or Replacement If Needed', detail: 'If your roof needs repair or replacement before solar goes on, we handle that first. One crew, one project, done right before the panels ever go up.' },
+            { n: '04', title: 'Solar Panel System Design & Permitting', detail: 'We design the system for your home\'s energy needs and handle the permitting process so you don\'t have to navigate the paperwork.' },
+            { n: '05', title: 'Installation — Panels, Penetrations, Flashing, Waterproofing', detail: 'Every attachment point is properly flashed and waterproofed. Panels are installed to spec. The roofing and solar work happens together, by the same team.' },
+            { n: '06', title: 'System Activation & Walkthrough', detail: 'We walk you through your new system — how to monitor it, what to expect, and exactly who to call if anything needs attention. One contractor, one phone number.' },
+          ].map((step, i) => (
+            <div class="step-item rounded-xl border overflow-hidden transition-all duration-200" data-active={i === 0 ? 'true' : 'false'}>
+              <button class="step-item-btn w-full flex items-center gap-4 px-5 py-4 text-left" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <div class="step-circle w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-xs transition-colors">
+                  {step.n}
+                </div>
+                <span class="step-label font-bold text-sm flex-1 transition-colors">{step.title}</span>
+                <svg class="step-arrow w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class={`step-item-body px-5 pb-4 ${i === 0 ? '' : 'hidden'}`}>
+                <p class="text-brand-200 text-sm leading-relaxed pl-[52px]">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY STRIP ===================== -->
+  <div class="grid grid-cols-3 md:grid-cols-6 h-48">
+    {[
+      '/home-gallery1.webp',
+      '/home-gallery2.webp',
+      '/home-gallery3.webp',
+      '/home-gallery4.webp',
+      '/home-gallery5.webp',
+      '/home-gallery6.webp',
+    ].map((src, i) => (
+      <div class="relative overflow-hidden group">
+        <img
+          src={src}
+          alt={`Solar and roofing project ${i + 1} — Central Texas`}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-brand-900/30 group-hover:bg-brand-900/0 transition-colors duration-300"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ===================== WHY LONE RANGER ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="flex flex-col lg:flex-row gap-10 items-center mb-14">
+        <div class="lg:w-1/2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">WHY LONE RANGER ROOFING</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Why Central Texas Homeowners Choose Lone Ranger for Solar
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Solar only works long-term when the roof underneath it is right. We make sure both are.
+          </p>
+        </div>
+        <div class="lg:w-1/2 grid grid-cols-2 gap-3">
+          <img src="/solar4.webp" alt="Lone Ranger Roofing solar installation" class="w-full h-40 object-cover rounded-xl shadow-md" />
+          <img src="/solar5.webp" alt="Central Texas solar roofing crew" class="w-full h-40 object-cover rounded-xl shadow-md mt-6" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {whyCards.map(item => (
+          <div class="bg-gray-50 rounded-2xl p-7 border border-gray-100 flex flex-col gap-4">
+            <div class="w-11 h-11 rounded-xl bg-accent-600/10 text-accent-600 flex items-center justify-center" set:html={item.icon} />
+            <h3 class="font-black text-brand-900 text-lg">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-4 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-lg">
+          Get a Free Solar & Roof Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICE AREAS ===================== -->
+  <section class="py-20 bg-gray-50 border-t border-gray-100 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div class="relative order-2 lg:order-1">
+          <img
+            src="/map-service-areas.png"
+            alt="Lone Ranger Roofing solar service areas across Central Texas and DFW"
+            class="w-full h-auto object-contain rounded-2xl"
+          />
+          <div class="absolute top-4 left-4 bg-brand-900 text-white rounded-xl px-4 py-3 shadow-xl">
+            <p class="text-gold-400 font-black text-xs uppercase tracking-widest">Coverage Area</p>
+            <p class="text-white font-bold text-sm mt-0.5">Bell County · DFW · Burnet</p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">SERVICE AREAS</p>
+          <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-4">
+            Solar Panel Installation in Bell County, DFW &amp; Burnet
+          </h2>
+          <p class="text-gray-500 mb-8 leading-relaxed">
+            Lone Ranger Roofing installs solar systems and handles all roofing work throughout Central Texas and DFW. Call <a href="tel:+12543001413" class="font-bold text-accent-600 hover:underline">(254) 300-1413</a> for a free solar and roof consultation.
+          </p>
+
+          <div class="space-y-6">
+            {Object.entries(serviceAreas).map(([region, cities]) => (
+              <div>
+                <p class="text-brand-900 font-black text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span class="w-4 h-px bg-accent-600 inline-block"></span>
+                  {region}
+                </p>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+                  {cities.map(city => (
+                    <div class="flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-accent-600 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.898-5.096 3.898-8.827a8.25 8.25 0 00-16.5 0c0 3.731 1.954 6.744 3.898 8.827a19.58 19.58 0 002.683 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                      </svg>
+                      {CITY_SLUGS[city] ? (
+                        <a href={`/service-areas/${CITY_SLUGS[city]}`} class="text-gray-600 text-sm hover:text-accent-600 hover:underline transition-colors">
+                          {city === 'surrounding areas' ? city : `${city}, TX`}
+                        </a>
+                      ) : (
+                        <span class="text-gray-500 text-sm">{city === 'surrounding areas' ? city : `${city}, TX`}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="text-center mb-12">
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">COMMON QUESTIONS</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900">
+          Solar Installation FAQs: Temple, Killeen &amp; Central Texas
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden faq-item">
+            <button
+              class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 faq-trigger"
+              aria-expanded="false"
+              data-index={i}
+            >
+              <span class="font-bold text-brand-900 text-sm leading-snug">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-5">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA
+    overline="READY TO STOP PAYING THE POWER COMPANY?"
+    title="Get a Free Solar & Roof Consultation"
+    blurb="We handle the panels and the roof — one contractor, done right. Serving Temple, Killeen, and Central Texas. Financing available."
+    bgImage="/pre-footer-background.webp"
+  />
+
+</MainLayout>
+
+<script>
+  const GOLD = '#ECC765';
+  const NAVY = '#111140';
+  const BLUE = '#AAB0D9';
+
+  function applyStepState(item: Element, active: boolean) {
+    const circle = item.querySelector('.step-circle') as HTMLElement | null;
+    const label  = item.querySelector('.step-label')  as HTMLElement | null;
+    const arrow  = item.querySelector('.step-arrow')  as HTMLElement | null;
+    const body   = item.querySelector('.step-item-body');
+
+    (item as HTMLElement).style.borderColor     = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+    (item as HTMLElement).style.backgroundColor = active ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)';
+    if (circle) { circle.style.backgroundColor = active ? GOLD                     : 'rgba(255,255,255,0.15)';
+                  circle.style.color           = active ? NAVY                     : '#ffffff'; }
+    if (label)  { label.style.color            = active ? '#ffffff'                : BLUE; }
+    if (arrow)  { arrow.style.color            = active ? GOLD                     : 'rgba(255,255,255,0.4)';
+                  arrow.style.transform        = active ? 'rotate(180deg)'         : 'rotate(0deg)'; }
+    body?.classList.toggle('hidden', !active);
+  }
+
+  document.querySelectorAll<HTMLElement>('.step-item').forEach((item, i) => {
+    applyStepState(item, i === 0);
+  });
+
+  document.querySelectorAll('.step-item-btn').forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.step-item').forEach((item, i) => {
+        applyStepState(item, i === idx);
+      });
+    });
+  });
+</script>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = !answer?.classList.contains('hidden');
+
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+      document.querySelectorAll('.faq-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+      if (!isOpen) {
+        answer?.classList.remove('hidden');
+        icon?.classList.add('rotate-180');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Lone Ranger Roofing install solar panels?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Lone Ranger Roofing installs solar panels and handles all roofing work — penetrations, flashing, and waterproofing — across Temple, Killeen, and Central Texas." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why should I use one contractor for both solar and roofing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Solar panels are installed through your roof. Improper penetrations and flashing can cause leaks. Lone Ranger handles both, ensuring proper waterproofing and one clear warranty." }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I replace my roof before installing solar panels?",
+      "acceptedAnswer": { "@type": "Answer", "text": "If your roof is aging or damaged, address it before solar goes on. Installing panels on a failing roof means expensive removal later. We assess first and give you an honest recommendation." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the federal solar tax credit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The federal ITC allows homeowners to deduct 30% of solar installation costs from federal taxes. Consult a tax professional to confirm eligibility for your situation." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long do solar panels last in Central Texas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Solar panels typically carry 25-30 year warranties and can produce energy beyond that lifespan. Central Texas sun exposure makes solar a strong long-term investment." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a solar installation take?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Timeline depends on roof condition, system size, and permitting. We provide a realistic timeline during the free consultation before work begins." }
+    }
+  ]
+}
+</script>

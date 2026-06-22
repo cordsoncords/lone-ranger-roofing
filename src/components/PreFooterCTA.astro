@@ -22,7 +22,7 @@ const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-5
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
       <!-- Left: title, blurb, map -->
-      <div class="lg:pt-4 text-center lg:text-left">
+      <div class="lg:pt-4 text-center lg:text-left anim-fade-left">
         {overline && (
           <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-3">{overline}</p>
         )}
@@ -49,7 +49,7 @@ const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-5
       </div>
 
       <!-- Right: contact form — pushed down slightly -->
-      <div class="lg:mt-16">
+      <div class="lg:mt-16 anim-fade-right">
         <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
           <form
             action="https://formspree.io/f/mlgyrabo"

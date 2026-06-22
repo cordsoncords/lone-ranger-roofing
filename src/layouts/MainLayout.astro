@@ -146,7 +146,7 @@ const schemaOrg = {
           href="/contact"
           class="flex items-center justify-center bg-accent-600 text-white font-bold py-4 text-xs uppercase tracking-wide text-center leading-tight px-2"
         >
-          Free Inspection
+          Schedule Inspection
         </a>
       </div>
     </div>
@@ -168,6 +168,48 @@ const schemaOrg = {
       }
       window.addEventListener('scroll', checkScroll, { passive: true });
       checkScroll();
+    </script>
+
+    <style>
+      /* Animate-on-scroll base states */
+      .anim-fade-up   { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .anim-fade-in   { opacity: 0; transition: opacity 0.6s ease; }
+      .anim-fade-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .anim-fade-right{ opacity: 0; transform: translateX(32px);  transition: opacity 0.6s ease, transform 0.6s ease; }
+      .anim-scale-in  { opacity: 0; transform: scale(0.92); transition: opacity 0.5s ease, transform 0.5s ease; }
+
+      /* Visible state — added by IntersectionObserver */
+      .anim-visible { opacity: 1 !important; transform: none !important; }
+
+      /* Stagger delays for children inside .anim-stagger */
+      .anim-stagger > *:nth-child(1) { transition-delay: 0s; }
+      .anim-stagger > *:nth-child(2) { transition-delay: 0.1s; }
+      .anim-stagger > *:nth-child(3) { transition-delay: 0.2s; }
+      .anim-stagger > *:nth-child(4) { transition-delay: 0.3s; }
+      .anim-stagger > *:nth-child(5) { transition-delay: 0.4s; }
+      .anim-stagger > *:nth-child(6) { transition-delay: 0.5s; }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .anim-fade-up, .anim-fade-in, .anim-fade-left, .anim-fade-right, .anim-scale-in {
+          opacity: 1 !important; transform: none !important; transition: none !important;
+        }
+      }
+    </style>
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('anim-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.anim-fade-up, .anim-fade-in, .anim-fade-left, .anim-fade-right, .anim-scale-in').forEach(el => {
+        observer.observe(el);
+      });
     </script>
   </body>
 </html>

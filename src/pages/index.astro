@@ -78,17 +78,31 @@ const areas = [
     <!-- Video background (fallback to image if video not loaded) -->
     <div class="absolute inset-0 z-0">
       <video
+        id="hero-video"
         autoplay
         muted
         loop
         playsinline
+        preload="none"
         poster="/home-roof-replacement.webp"
         class="w-full h-full object-cover object-center"
-      >
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
+      ></video>
       <div class="absolute inset-0 bg-brand-900/65"></div>
     </div>
+
+    <script>
+      // Load hero video after page is interactive so it doesn't block LCP
+      window.addEventListener('load', () => {
+        const v = document.getElementById('hero-video') as HTMLVideoElement | null;
+        if (!v) return;
+        const src = document.createElement('source');
+        src.src = '/hero-video.mp4';
+        src.type = 'video/mp4';
+        v.appendChild(src);
+        v.load();
+        v.play().catch(() => {});
+      });
+    </script>
 
     <div class="relative z-10 container mx-auto px-4 pt-20 pb-12 lg:pt-16 lg:pb-16 text-center">
       <div class="max-w-3xl mx-auto">
@@ -228,18 +242,18 @@ const areas = [
     <div class="marquee-track">
       <div class="marquee-inner">
         {[
-          { src: '/taba-badge.webp',    alt: 'TABA Member',                  h: 'h-20' },
-          { src: '/belton-badge.webp',  alt: 'Belton Chamber of Commerce',   h: 'h-16' },
-          { src: '/salado-badge.webp',  alt: 'Salado Chamber of Commerce',   h: 'h-16' },
-          { src: '/killeen-badge.webp', alt: 'Killeen Chamber of Commerce',  h: 'h-16' },
-          { src: '/tba-badge.webp',     alt: 'Temple Business Association',  h: 'h-16' },
-          { src: '/taba-badge.webp',    alt: 'TABA Member',                  h: 'h-20' },
-          { src: '/belton-badge.webp',  alt: 'Belton Chamber of Commerce',   h: 'h-16' },
-          { src: '/salado-badge.webp',  alt: 'Salado Chamber of Commerce',   h: 'h-16' },
-          { src: '/killeen-badge.webp', alt: 'Killeen Chamber of Commerce',  h: 'h-16' },
-          { src: '/tba-badge.webp',     alt: 'Temple Business Association',  h: 'h-16' },
+          { src: '/taba-badge.webp',    alt: 'TABA Member',                  h: 'h-20', w: 292, nh: 107 },
+          { src: '/belton-badge.webp',  alt: 'Belton Chamber of Commerce',   h: 'h-16', w: 245, nh: 122 },
+          { src: '/salado-badge.webp',  alt: 'Salado Chamber of Commerce',   h: 'h-16', w: 226, nh: 172 },
+          { src: '/killeen-badge.webp', alt: 'Killeen Chamber of Commerce',  h: 'h-16', w: 790, nh: 316 },
+          { src: '/tba-badge.webp',     alt: 'Temple Business Association',  h: 'h-16', w: 1024, nh: 559 },
+          { src: '/taba-badge.webp',    alt: 'TABA Member',                  h: 'h-20', w: 292, nh: 107 },
+          { src: '/belton-badge.webp',  alt: 'Belton Chamber of Commerce',   h: 'h-16', w: 245, nh: 122 },
+          { src: '/salado-badge.webp',  alt: 'Salado Chamber of Commerce',   h: 'h-16', w: 226, nh: 172 },
+          { src: '/killeen-badge.webp', alt: 'Killeen Chamber of Commerce',  h: 'h-16', w: 790, nh: 316 },
+          { src: '/tba-badge.webp',     alt: 'Temple Business Association',  h: 'h-16', w: 1024, nh: 559 },
         ].map(b => (
-          <img loading="lazy" decoding="async" src={b.src} alt={b.alt} class={`${b.h} w-auto object-contain flex-shrink-0`} />
+          <img loading="lazy" decoding="async" src={b.src} alt={b.alt} width={b.w} height={b.nh} class={`${b.h} w-auto object-contain flex-shrink-0`} />
         ))}
       </div>
     </div>
@@ -320,7 +334,7 @@ const areas = [
           </div>
           <!-- IKO badge hanging off top-left corner -->
           <div class="hidden sm:block absolute -top-5 -left-5 z-10 bg-white rounded-2xl p-2 shadow-xl border border-gray-100">
-            <img loading="lazy" decoding="async" src="/iko-badge.webp" alt="IKO Craftsman Premier" class="h-40 w-auto object-contain" />
+            <img loading="lazy" decoding="async" src="/iko-badge.webp" alt="IKO Craftsman Premier" width="235" height="235" class="h-40 w-auto object-contain" />
           </div>
         </div>
 

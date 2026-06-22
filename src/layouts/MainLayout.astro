@@ -173,9 +173,10 @@ const schemaOrg = {
       const cta = document.getElementById('sticky-mobile-cta');
       const spacer = document.getElementById('sticky-cta-spacer');
       let shown = false;
+      let cachedHalf = document.documentElement.scrollHeight / 2;
+      window.addEventListener('resize', () => { cachedHalf = document.documentElement.scrollHeight / 2; }, { passive: true });
       function checkScroll() {
-        const half = document.documentElement.scrollHeight / 2;
-        if (!shown && window.scrollY + window.innerHeight >= half) {
+        if (!shown && window.scrollY + window.innerHeight >= cachedHalf) {
           shown = true;
           cta?.classList.remove('translate-y-full');
           spacer?.classList.remove('hidden');

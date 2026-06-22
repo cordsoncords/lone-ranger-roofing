@@ -156,8 +156,8 @@ const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-5
 
               <!-- Service needed -->
               <div>
-                <label class={labelClass}>Service Needed <span class="text-accent-600">(required)</span></label>
-                <select name="service" required class={inputClass + " bg-white"}>
+                <label for="service-contact" class={labelClass}>Service Needed <span class="text-accent-600">(required)</span></label>
+                <select id="service-contact" name="service" required aria-label="Select a service" class={inputClass + " bg-white"}>
                   <option value="" disabled selected>Select a service…</option>
                   <option value="Roof Repair">Roof Repair</option>
                   <option value="Roof Replacement">Roof Replacement</option>

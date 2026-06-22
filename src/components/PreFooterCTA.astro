@@ -113,6 +113,20 @@ const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-5
               ></textarea>
             </div>
 
+            <!-- SMS opt-in consent (required for 10DLC) -->
+            <div class="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="sms-consent-cta"
+                name="sms_consent"
+                required
+                class="mt-0.5 h-4 w-4 flex-shrink-0 cursor-pointer accent-accent-600"
+              />
+              <label for="sms-consent-cta" class="text-[10px] text-gray-400 leading-snug cursor-pointer">
+                I agree to receive text messages from Lone Ranger Roofing about my estimate and project needs. Messaging frequency varies. Message and data rates may apply. Reply STOP to opt out. Consent is not a condition of purchase. <a href="/terms" class="underline hover:text-gray-300">Terms &amp; Conditions</a> | <a href="/privacy-policy" class="underline hover:text-gray-300">Privacy Policy</a>
+              </label>
+            </div>
+
             <!-- Submit -->
             <button
               type="submit"
@@ -120,11 +134,6 @@ const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-5
             >
               Send
             </button>
-
-            <p class="text-[10px] text-gray-400 leading-snug">
-              By submitting this form, you authorize Lone Ranger Roofing to contact you via text message regarding your estimate request and project needs. We will never share your personal information with third parties for marketing purposes. Messaging frequency varies based on your project needs. You can opt out at any time by replying STOP. Message and data rates may apply. Consent is not a condition of purchase.{' '}
-              <a href="/terms" class="underline hover:text-gray-600">Terms &amp; Conditions</a> | <a href="/privacy-policy" class="underline hover:text-gray-600">Privacy Policy</a>
-            </p>
           </form>
         </div>
       </div>

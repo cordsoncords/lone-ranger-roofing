@@ -18,6 +18,7 @@ export const MultiStepForm: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [smsConsent, setSmsConsent] = useState(false);
 
   const updateField = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -282,20 +283,32 @@ export const MultiStepForm: React.FC = () => {
               onChange={(e) => updateField('address', e.target.value)}
             />
 
-            <Button 
-              type="submit" 
-              fullWidth 
+            {/* SMS opt-in consent (required for 10DLC) */}
+            <div className="flex items-start gap-3 mt-2">
+              <input
+                type="checkbox"
+                id="sms-consent-multistep"
+                checked={smsConsent}
+                onChange={e => setSmsConsent(e.target.checked)}
+                required
+                className="mt-0.5 h-4 w-4 flex-shrink-0 cursor-pointer accent-red-600"
+              />
+              <label htmlFor="sms-consent-multistep" className="text-[10px] text-gray-400 leading-snug cursor-pointer">
+                I agree to receive text messages from Lone Ranger Roofing about my estimate and project needs. Messaging frequency varies. Message and data rates may apply. Reply STOP to opt out. Consent is not a condition of purchase.{' '}
+                <a href="/terms" className="underline hover:text-gray-600">Terms &amp; Conditions</a> | <a href="/privacy-policy" className="underline hover:text-gray-600">Privacy Policy</a>
+              </label>
+            </div>
+
+            <Button
+              type="submit"
+              fullWidth
               variant="primary"
               isLoading={isSubmitting}
+              disabled={!smsConsent}
               className="mt-2 text-lg py-4 uppercase tracking-wide"
             >
               Get My Free Quote
             </Button>
-            
-            <p className="text-[10px] text-gray-400 text-center leading-snug px-2">
-              By submitting this form, you authorize Lone Ranger Roofing to contact you via text message regarding your estimate request and project needs. We will never share your personal information with third parties for marketing purposes. Messaging frequency varies based on your project needs. You can opt out at any time by replying STOP. Message and data rates may apply. Consent is not a condition of purchase.{' '}
-              <a href="/terms" className="underline hover:text-gray-600">Terms &amp; Conditions</a> | <a href="/privacy-policy" className="underline hover:text-gray-600">Privacy Policy</a>
-            </p>
 
             <div className="flex justify-center pt-2">
                <button type="button" onClick={prevStep} className="text-sm font-medium text-gray-500 hover:text-gray-800">Back</button>

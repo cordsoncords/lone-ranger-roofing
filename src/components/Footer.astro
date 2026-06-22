@@ -36,13 +36,13 @@ const areas = [
         </p>
         <div class="flex gap-3 justify-center md:justify-start">
           <a href="https://facebook.com/lonerangerroofing" target="_blank" rel="noopener noreferrer"
-             class="bg-brand-800 hover:bg-brand-700 p-2.5 rounded-lg transition-colors" aria-label="Facebook">
+             class="bg-brand-800 hover:bg-brand-700 p-3 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Facebook">
             <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
             </svg>
           </a>
           <a href="https://instagram.com/lonerangerroofing" target="_blank" rel="noopener noreferrer"
-             class="bg-brand-800 hover:bg-brand-700 p-2.5 rounded-lg transition-colors" aria-label="Instagram">
+             class="bg-brand-800 hover:bg-brand-700 p-3 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Instagram">
             <svg class="w-4 h-4 fill-none stroke-white stroke-2" viewBox="0 0 24 24">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
               <circle cx="12" cy="12" r="4"/>
@@ -50,7 +50,7 @@ const areas = [
             </svg>
           </a>
           <a href="https://youtube.com/@lonerangerroofing" target="_blank" rel="noopener noreferrer"
-             class="bg-brand-800 hover:bg-brand-700 p-2.5 rounded-lg transition-colors" aria-label="YouTube">
+             class="bg-brand-800 hover:bg-brand-700 p-3 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="YouTube">
             <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
               <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
             </svg>
@@ -60,7 +60,7 @@ const areas = [
 
       <!-- Services column -->
       <div>
-        <h4 class="font-bold text-white uppercase tracking-widest text-xs mb-4 text-gold-400">Our Services</h4>
+        <h3 class="font-bold text-white uppercase tracking-widest text-xs mb-4 text-gold-400">Our Services</h3>
         <ul class="space-y-2">
           {services.map(s => (
             <li>
@@ -74,7 +74,7 @@ const areas = [
 
       <!-- Service areas column -->
       <div>
-        <h4 class="font-bold text-white uppercase tracking-widest text-xs mb-4 text-gold-400">Service Areas</h4>
+        <h3 class="font-bold text-white uppercase tracking-widest text-xs mb-4 text-gold-400">Service Areas</h3>
         <ul class="space-y-2">
           {areas.map(a => (
             <li>
@@ -88,7 +88,7 @@ const areas = [
 
       <!-- Contact + map column -->
       <div>
-        <h4 class="font-bold text-white uppercase tracking-widest text-xs mb-4 text-gold-400">Contact</h4>
+        <h3 class="font-bold text-white uppercase tracking-widest text-xs mb-4 text-gold-400">Contact</h3>
         <ul class="space-y-3 text-sm text-brand-200 mb-6">
           <li>
             <a href="tel:+12543001413" class="flex items-start gap-2 hover:text-white transition-colors justify-center md:justify-start">

@@ -18,6 +18,9 @@ build/
 .env.test.local
 .env.production.local
 
+# Local backup files
+public/*-backup.*
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

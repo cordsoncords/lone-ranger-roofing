@@ -71,6 +71,7 @@ const areas = [
   title="Lone Ranger Roofing | Central Texas Roofing Contractor | (254) 300-1413"
   description="Lone Ranger Roofing serves Killeen, Temple, Belton, Salado, Georgetown, Burnet, and DFW with roof replacements, storm damage repair, inspections, and gutters. Veteran-owned. Most jobs done in one day."
   darkHero={true}
+  preloadImage="/home-roof-replacement.webp"
 >
 
   <!-- ===================== HERO ===================== -->
@@ -85,6 +86,7 @@ const areas = [
         playsinline
         preload="none"
         poster="/home-roof-replacement.webp"
+        fetchpriority="high"
         class="w-full h-full object-cover object-center"
       ></video>
       <div class="absolute inset-0 bg-brand-900/65"></div>
@@ -176,6 +178,8 @@ const areas = [
           <img
             src="/home-about.webp"
             alt="Lone Ranger Roofing crew completing a Central Texas job"
+            width="1400" height="725"
+            loading="lazy" decoding="async"
             class="rounded-2xl shadow-2xl w-full object-cover"
           />
           <!-- Floating review badge -->
@@ -533,8 +537,10 @@ const areas = [
         <!-- Right: service area map photo -->
         <div class="lg:w-[55%] flex items-center justify-center">
           <img
-            src="/map-service-areas.png"
+            src="/map-service-areas.webp"
             alt="Lone Ranger Roofing service area map — Central Texas and DFW"
+            width="940" height="788"
+            loading="lazy" decoding="async"
             class="w-full h-auto object-contain"
           />
         </div>

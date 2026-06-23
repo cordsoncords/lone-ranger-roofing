@@ -94,6 +94,9 @@ const schemaOrg = {
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="/logo.webp" />
 
+    <!-- Page-specific head injections (schema, meta, etc.) -->
+    <slot name="head" />
+
     <!-- LCP image preload (page-specific, passed via prop) -->
     {preloadImage && <link rel="preload" as="image" fetchpriority="high" href={preloadImage} />}
 

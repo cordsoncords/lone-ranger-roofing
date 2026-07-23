@@ -1,0 +1,123 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const inputClass = "w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent";
+const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2";
+const sectionLabelClass = "text-sm font-bold uppercase tracking-widest text-brand-900 border-b border-gray-200 pb-2 mb-5";
+---
+
+<MainLayout
+  title="Refer a Friend | Lone Ranger Roofing"
+  description="Know someone in Temple, Killeen, or Central Texas who needs a roof? Send Lone Ranger Roofing their info and we'll take it from there."
+  darkHero={true}
+>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative min-h-[38vh] flex items-center bg-brand-900 overflow-hidden -mt-28">
+    <div class="absolute inset-0">
+      <img
+        src="/about-hero.webp"
+        alt="Lone Ranger Roofing — Refer a Friend"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/85 to-brand-900/30"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 pt-20 pb-12 text-center">
+      <div class="max-w-2xl mx-auto">
+        <p class="text-gold-400 font-bold text-sm uppercase tracking-widest mb-4">REFER A FRIEND</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Know Someone Who Needs a Roof?
+        </h1>
+        <p class="text-xl text-gray-200 leading-relaxed">
+          Give us their name and number and we'll take it from there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REFERRAL SECTION ===================== -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-2xl text-center">
+
+      <!-- Why referrals matter -->
+      <div>
+        <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-3">Built On Word Of Mouth</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mb-8 leading-tight">
+          We Treat Referrals Like Family
+        </h2>
+
+        <p class="text-gray-700 text-lg leading-relaxed">
+          Most of our new customers come from someone who already trusted us with their roof. When you send us a name, we treat that person exactly the way we treated you: straight answers, a real inspection, and zero pressure.
+        </p>
+      </div>
+
+      <!-- Referral form -->
+      <div class="mt-12 text-left">
+        <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+          <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-2 text-center">Refer A Friend</p>
+          <h3 class="text-2xl font-black text-brand-900 mb-6 text-center">Send Us Their Info</h3>
+          <form
+            action="https://formspree.io/f/mlgyrabo"
+            method="POST"
+            class="space-y-8"
+          >
+              <!-- Section 1: Your Info -->
+              <div>
+                <p class={sectionLabelClass}>Your Info</p>
+                <div>
+                  <label class={labelClass}>Your Name <span class="text-accent-600">(required)</span></label>
+                  <input type="text" name="referrer_name" placeholder="Your Full Name" required class={inputClass} />
+                </div>
+              </div>
+
+              <!-- Section 2: Who Are You Referring? -->
+              <div>
+                <p class={sectionLabelClass}>Who Are You Referring?</p>
+                <div class="space-y-5">
+                  <div>
+                    <label class={labelClass}>Referee Full Name <span class="text-accent-600">(required)</span></label>
+                    <input type="text" name="referee_name" placeholder="Their Full Name" required class={inputClass} />
+                  </div>
+
+                  <div>
+                    <label class={labelClass}>Referee Phone Number <span class="text-accent-600">(required)</span></label>
+                    <input type="tel" name="referee_phone" placeholder="(___) ___-____" required class={inputClass} />
+                  </div>
+
+                  <div>
+                    <label class={labelClass}>Referee Email</label>
+                    <input type="email" name="referee_email" placeholder="their@email.com" class={inputClass} />
+                  </div>
+
+                  <div>
+                    <label class={labelClass}>Referee Address</label>
+                    <input type="text" name="referee_address" placeholder="123 Main St, Killeen, TX" class={inputClass} />
+                  </div>
+
+                  <div>
+                    <label class={labelClass}>Additional Notes</label>
+                    <textarea
+                      name="notes"
+                      rows="3"
+                      placeholder="What's going on with their roof, best time to reach them, etc."
+                      class={inputClass + " resize-none"}
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <button
+                type="submit"
+                class="w-full bg-accent-600 hover:bg-accent-700 text-white font-black px-8 py-3.5 rounded-lg text-sm uppercase tracking-wide transition-colors shadow-md"
+              >
+                Send Referral
+              </button>
+            </form>
+          </div>
+      </div>
+
+    </div>
+  </section>
+
+</MainLayout>

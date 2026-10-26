@@ -53,7 +53,8 @@ const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-5
       <div class="lg:mt-16 anim-fade-right">
         <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
           <form
-            action="https://formspree.io/f/mlgyrabo"
+            id="prefooter-lead-form"
+            action="/api/lead"
             method="POST"
             class="space-y-5"
           >
@@ -141,6 +142,8 @@ const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-5
             >
               Send
             </button>
+
+            <p class="form-message hidden text-sm font-semibold text-center" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -148,3 +151,61 @@ const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-5
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('#prefooter-lead-form').forEach((formEl) => {
+    const form = formEl as HTMLFormElement;
+    const messageEl = form.querySelector('.form-message') as HTMLElement | null;
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    const messageField = form.querySelector('[name="message"]') as HTMLTextAreaElement | null;
+    const phoneField = form.querySelector('[name="phone"]') as HTMLInputElement | null;
+
+    function showMessage(text: string, isError: boolean) {
+      if (!messageEl) return;
+      messageEl.textContent = text;
+      messageEl.classList.remove('hidden', 'text-green-600', 'text-red-600');
+      messageEl.classList.add(isError ? 'text-red-600' : 'text-green-600');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const messageVal = (messageField?.value || '').trim();
+      const phoneVal = (phoneField?.value || '').trim();
+
+      if (messageVal.length < 10 || /^\d+$/.test(messageVal) || messageVal === phoneVal) {
+        showMessage('Please add a few more details about your project (at least 10 characters).', true);
+        return;
+      }
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+      }
+
+      try {
+        const res = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          showMessage("Thanks! We'll be in touch shortly.", false);
+          form.reset();
+        } else {
+          showMessage('Something went wrong. Please call us at (254) 300-1413.', true);
+        }
+      } catch (err) {
+        showMessage('Something went wrong. Please call us at (254) 300-1413.', true);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send';
+        }
+      }
+    });
+  });
+</script>
